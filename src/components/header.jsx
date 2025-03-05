@@ -22,8 +22,8 @@ export default function Header() {
     };
 
     return (
-      <header className="py-4 px-6 max-w-full mx-auto">
-        <div className="mx-auto flex flex-wrap justify-between items-center bg-[var(--black)] text-[var(--white)]  p-4 md:p-8 border-2 rounded-full border-orange-50">
+      <header className="py-4 px-6 max-w-full mx-auto fixed top-0 z-50 left-0 w-full">
+        <div className="mx-auto flex flex-wrap justify-between items-center bg-[var(--black)] text-[var(--white)]  p-4 md:p-4 border-2 rounded-full border-orange-50">
           {/* Logo */}
           <Image src={logo} width={150} height={150} alt="Logo" />
 
@@ -71,15 +71,17 @@ export default function Header() {
           </nav>
 
           {/* Donation Button */}
-          <a
-            href="#"
-            className="bg-yellow-500 text-black font-semibold py-2 px-4 rounded-full flex items-center space-x-2 mt-4 md:mt-0 w-full md:w-auto justify-center"
-          >
-            <span>Donate Now</span>
-            <span className="bg-white p-4 rounded-full">
-              <ArrowUpRight />
+          <div className="hidden md:flex items-center justify-center gap-2">
+            <a
+              href="#"
+              className="bg-yellow-500 text-black font-semibold py-3 px-4 rounded-full flex items-center space-x-2 mt-4 md:mt-0 w-full md:w-auto justify-center"
+            >
+              <span>Donate Now</span>
+            </a>
+            <span className="bg-yellow-500 p-3 rounded-full">
+              <ArrowUpRight className="" />
             </span>
-          </a>
+          </div>
         </div>
       </header>
     );
