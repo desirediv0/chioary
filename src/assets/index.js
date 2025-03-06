@@ -16,10 +16,12 @@ import donation from "./donation-img-1.jpg"
 import process1 from "./process-1.jpg"
 import process2 from "./process-2.jpg"
 import process3 from "./process-3.jpg"
+import processbg from "./processbg-1.png"
+import sqaure from "./process-one-shape-2.png"
 
 
 
 
-export { logo, slider1, slider2, slider3, slider4, sliderB, sliderB2, sliderB3, sliderB4,team1,teambg,team2,team3,team4,donation,process1,process2,process3 };
+export { logo, slider1, slider2, slider3, slider4, sliderB, sliderB2, sliderB3, sliderB4,team1,teambg,team2,team3,team4, donation, process1, process2, process3, processbg, sqaure };
 // Compare this snippet from src/components/services.jsx:;
 

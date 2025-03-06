@@ -216,8 +216,3 @@ export default function DonationForm() {
         </div>
     )
 }
-
-{/* <TeamSection />
-    <Testimonials/>
-    <DonationForm/>
-    <WorkingProcess/> */}
