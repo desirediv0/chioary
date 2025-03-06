@@ -169,3 +169,9 @@ export const Footer = () => {
     </>
   )
 }
+
+// import DonationForm from "@/components/donation-form";
+// import TeamSection from "@/components/ourteam";
+// import WorkingProcess from "@/components/process";
+// import Testimonials from "@/components/ui/cases-with-infinite-scroll";
+// import { Service } from "@/components/service";
