@@ -22,6 +22,5 @@ import sqaure from "./process-one-shape-2.png"
 
 
 
-export { logo, slider1, slider2, slider3, slider4, sliderB, sliderB2, sliderB3, sliderB4,team1,teambg,team2,team3,team4, donation, process1, process2, process3, processbg, sqaure };
+export { logo, slider1, slider2, slider3, slider4, sliderB, sliderB2, sliderB3, sliderB4, team1, teambg, team2, team3, team4, donation, process1, process2, process3, processbg, sqaure };
 // Compare this snippet from src/components/services.jsx:;
-

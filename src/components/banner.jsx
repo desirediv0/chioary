@@ -7,22 +7,18 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
 export const Banner = () => {
   const plugin = useRef(Autoplay({ delay: 2000 }));
-
   const images = [
     sliderB,
     sliderB2,
     sliderB3,
     sliderB4 
     ];
-    
-    
-
-
   return (
     <div>
       <Carousel
@@ -43,38 +39,34 @@ export const Banner = () => {
 
       {/* banner content */}
 
-      <section className="  text-white py-20 px-8 absolute inset-0 top-80">
+      <section className="  text-white py-20 px-8 absolute inset-0 top-60">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center relative">
           {/* Left Content */}
           <div className="md:w-[50%] text-center md:text-left">
             <span className="text-yellow-400 font-semibold uppercase text-sm">
               Charity Foundation Non Profit
             </span>
-            <h1 className="text-5xl font-bold mt-4">
+            <h1 className="text-8xl font-semibold ">
               Your <span className="text-yellow-400">Compassion</span>
               <br /> Their Hope
             </h1>
-            <p className="text-gray-400 mt-4 text-lg">
+            <p className="text-gray-400 mt-4 text-2xl">
               Your Compassion Their Hope Is A Powerful And Inspiring Choice For
               Your Charity Website. It Effectively Captures The Essence Of Your
               Mission And The Impact Of Support.
             </p>
-            <button className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg flex items-center space-x-2">
-              <span>Donate Now</span>
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            {/* <button className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg flex items-center space-x-2"> */}
+            <div className="md:flex  justify-start mt-4 gap-2  px-6 py-3 space-x-2">
+              <a
+                href="#"
+                className="bg-yellow-500 text-black font-semibold py-3 px-4 rounded-full flex items-center space-x-2 mt-4 md:mt-0 w-full md:w-auto justify-center"
               >
-                {" "}
-                <path d="M5 12h14M12 5l7 7-7 7" />{" "}
-              </svg> */}
-            </button>
+                <span>Donate Now</span>
+              </a>
+              <span className="bg-yellow-500 p-3 rounded-full">
+                <ArrowUpRight className="" />
+              </span>
+            </div>
           </div>
 
           {/* Right Image */}
