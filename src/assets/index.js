@@ -7,7 +7,39 @@ import sliderB from "./slider-2-1.jpg"
 import sliderB2 from "./slider-2-2.jpg"
 import sliderB3 from "./slider-2-3.jpg"
 import sliderB4 from "./slider-2-4.jpg"
+import service1 from "./services-3-1.jpg";
+import service2 from "./services-3-2.jpg";
+import service3 from "./services-3-3.jpg";
+import team1 from "./team-1.png";
+import team2 from "./team-2.png";
+import team3 from "./team-3.png";
+import team4 from "./team-4.png";
+import teambg from "./team-shape-bg-1.png";
+import donation from "./donation-img-1.jpg";
+import process1 from "./process-1.jpg";
+import process2 from "./process-2.jpg";
+import process3 from "./process-3.jpg";
 
-
-export { logo, slider1, slider2, slider3, slider4, sliderB, sliderB2, sliderB3, sliderB4 }
-// Compare this snippet from src/components/services.jsx:;
+export {
+  logo,
+  slider1,
+  slider2,
+  slider3,
+  slider4,
+  sliderB,
+  sliderB2,
+  sliderB3,
+  sliderB4,
+  team1,
+  teambg,
+  team2,
+  team3,
+  team4,
+  donation,
+  process1,
+  process2,
+  process3,
+    service1,
+    service2,
+    service3,
+};
