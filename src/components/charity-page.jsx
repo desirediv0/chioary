@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ArrowRight, MoveUpRight, ArrowUpRight } from "lucide-react"
 import { Progress } from "./ui/progress"
-import { course1, course2, course3 } from "@/assets"
+import { course1, course2, course3, slider3 } from "@/assets"
 import Image from "next/image"
 
 
@@ -119,14 +119,14 @@ export default function CharityPage() {
   }
 
   return (
-    <div className="md:max-w-7xl max-w-2xl mx-auto px-4 py-12 bg-white">
-      {/* Header */}
+    <div className="md:max-w-7xl max-w-2xl mx-auto px-4 py-16 bg-white">
+     
       <div className="mb-8 relative">
         <div className="absolute -top-8 right-50">
           <div className="w-4 h-4 rounded-full bg-amber-100"></div>
           <div className="w-16 h-16 rounded-full bg-amber-50 absolute -top-12 -right-12 z-0"></div>
         </div>
-        <div className="flex items-center justify-center mb-2 ">
+        <div className="flex items-center justify-center mb-4 ">
           <span className="text-gray-700 font-medium">Recent Courses</span>
           <div className="w-2 h-2 rounded-full bg-amber-500 ml-2"></div>
         </div>
@@ -135,10 +135,10 @@ export default function CharityPage() {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 mt-16">
         {/* Left sidebar with tabs */}
         <div className="lg:col-span-4">
-          <div className="space-y-4">
+          <div className="space-y-6 mt-8">
             {categories.map((category, index) => (
               <motion.div
                 key={category.id}
@@ -177,7 +177,7 @@ export default function CharityPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-gray-900 rounded-xl overflow-hidden"
+              className="bg-gray-900  overflow-hidden"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12">
                 {/* Campaign image with navigation */}
@@ -230,10 +230,8 @@ export default function CharityPage() {
                       <span className="text-gray-400 ml-2">Raised</span>
                     </div>
 
-                    <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white text-black border-4 border border-amber-500 relative">
-                      <span className="text-xl font-bold">
-                        {progressPercentage}%
-                      </span>
+                    <div className="flex items-center justify-center p-[8%] w-12 h-12 rounded-full bg-white text-black border-4 border-b-2 border-r-0 border-amber-500 relative">
+                      <span className=" text-base ">{progressPercentage}%</span>
                     </div>
 
                     <div className="flex items-center">
@@ -256,10 +254,10 @@ export default function CharityPage() {
 
                   <div className="flex gap-4">
                     <div className="flex space-x-2 mr-auto md:mx-auto">
-                      <button className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-colors">
+                      <button className="px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-yellow-600 transition-colors">
                         Read More
                       </button>
-                      <button className="p-3 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors">
+                      <button className="p-3 bg-white text-black rounded-full hover:bg-yellow-600 transition-colors">
                         <ArrowUpRight className="w-5 h-5" />
                       </button>
                     </div>
