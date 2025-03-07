@@ -133,7 +133,7 @@ export default function DonationForm() {
                                         key={value}
                                         variant="outline"
                                         className={cn(
-                                            "rounded-full border-2 py-6 w-[70px] text-lg font-medium",
+                                            "rounded-full border-2 py-6 w-[70px] text-lg font-medium hover:text-white",
                                             amount === value
                                                 ? "bg-[var(--custom-color)] text-white border-[var(--custom-color)] hover:bg-[var(--custom-color)] hover:border-[var(--custom-color)]"
                                                 : "bg-transparent text-white border-gray-700 hover:bg-gray-800 hover:border-gray-600",
