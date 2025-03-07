@@ -19,7 +19,11 @@ import donation from "./donation-img-1.jpg";
 import process1 from "./process-1.jpg";
 import process2 from "./process-2.jpg";
 import process3 from "./process-3.jpg";
-
+import about1 from "./about-three-left-img-1.jpg"
+import about2 from "./about-three-right-img-1.png"
+import course1 from "./courses-3-1.jpg";
+import course2 from "./courses-3-2.jpg";
+import course3 from "./courses-3-2.jpg";
 export {
   logo,
   slider1,
@@ -42,4 +46,9 @@ export {
     service1,
     service2,
     service3,
+    about1,
+    about2,
+    course1,
+    course2,
+    course3
 };
