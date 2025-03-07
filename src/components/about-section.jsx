@@ -73,7 +73,7 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <div className="flex space-x-2 mr-auto md:mx-auto">
+              <div className="flex mr-auto ">
                 <button className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-colors">
                   Read More
                 </button>

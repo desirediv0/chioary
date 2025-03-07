@@ -26,7 +26,7 @@ import course2 from "./courses-3-2.jpg";
 import course3 from "./courses-3-2.jpg";
 import processbg from "./processbg-1.png";
 import square from "./process-one-shape-2.png";
-
+// import  bg  from "./project-one-bg.jpg";
 
 export {
   logo,
@@ -56,5 +56,6 @@ export {
     about2,
     course1,
     course2,
-    course3
+    course3,
+    // bg
 };

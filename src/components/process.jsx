@@ -45,7 +45,7 @@ const WorkingProcess = () => {
                     className="absolute inset-0 -z-10 opacity-100 priority bg-cover bg-center bg-no-repeat w-[600px] h-[200px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden sm:block"
                 />
 
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-20 relative">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:mt-10 relative">
                     {[
                         { img: process1, title: "Identifying Needs" },
                         { img: process2, title: "Planning Solutions" },

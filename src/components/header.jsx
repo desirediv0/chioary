@@ -23,7 +23,7 @@ export default function Header() {
 
     return (
       <header className="py-4 px-6 max-w-full mx-auto fixed top-0 z-50 left-0 w-full">
-        <div className="mx-auto flex flex-wrap justify-between items-center bg-[var(--black)] text-[var(--white)]  p-4 md:p-4 border-2 rounded-full border-orange-50">
+        <div className="mx-auto flex flex-wrap justify-between items-center bg-[var(--black)] text-[var(--white)]  p-4 md:p-4  rounded-full ">
           {/* Logo */}
           <Image src={logo} width={150} height={150} alt="Logo" />
 
