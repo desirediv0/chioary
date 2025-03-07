@@ -47,7 +47,7 @@ function Testimonials() {
   return (
     
     <section className="w-full py-16 lg:py-1 lg:mb-1 bg-gray-50 sm:mt-[-100px] lg:mt-[-300px] lg:mb-[30px]">
-      <div className="flex justify-center items-center h-screen lg:mb-[-200px] ">
+      <div className="flex justify-center items-center md:h-screen lg:mb-[-200px] ">
         <div className="relative w-40 h-40 flex justify-center items-center border border-gray-700 rounded-full">
           {/* Rotating Text Border */}
           <motion.div

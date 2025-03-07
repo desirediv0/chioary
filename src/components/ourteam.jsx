@@ -36,7 +36,7 @@ const TeamSection = () => {
                 alt={member.name}
                 width={400}
                 height={500}
-                className="w-full h-auto transition-all duration-500 group-hover:opacity-0 z-10 bg-gray-100"
+                className="w-full h-auto transition-all duration-500 group-hover:opacity-0 z-10 bg-gray-100 -z-10"
               />
   
               {/* Social Icons Inside the Card */}
@@ -70,7 +70,7 @@ const TeamSection = () => {
       ))}
     </div>
   
-    {/* Responsive Button Section */}
+    {/*Button Section */}
     <div className="flex items-center justify-center my-12 px-4">
       <div className="flex items-center gap-2 sm:gap-3 w-full max-w-[600px]">
         <div className="h-px bg-gray-300 flex-1"></div>
