@@ -1,5 +1,5 @@
 "use client";
-import { about1, about2 } from "@/assets";
+import { about1, about2, slider3 } from "@/assets";
 import {
   GraduationCap,
   Droplets,
@@ -17,7 +17,8 @@ const features = [
 
 export default function AboutSection() {
   return (
-    <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24">
+    <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24 ">
+     
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left side with logo, heading and content */}
         <div className="lg:col-span-6 space-y-8">
@@ -86,14 +87,14 @@ export default function AboutSection() {
 
         <div className="lg:col-span-6 space-y-8">
           <div className="relative mt-8">
-                       {/* // Replace the existing motion.div with this updated version */}
-            
+            {/* // Replace the existing motion.div with this updated version */}
+
             <div className="absolute top-5 md:right-[440px] right-[550px] w-28 h-28">
               {/* Static background and 25+ */}
               <div className="absolute w-full h-full bg-gray-900 text-white rounded-full flex flex-col items-center justify-center">
                 <span className="text-2xl font-bold z-10">25+</span>
               </div>
-              
+
               {/* Rotating text */}
               <motion.div
                 animate={{ rotate: 360 }}
