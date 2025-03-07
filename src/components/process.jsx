@@ -1,6 +1,6 @@
 "use client";
 
-import { process1, process2, process3, processbg, sqaure } from "@/assets";
+import { process1, process2, process3, processbg, square } from "@/assets";
 import Image from "next/image";
 import React from "react";
 
@@ -9,7 +9,7 @@ const WorkingProcess = () => {
         <div className="mx-auto px-4 py-16 max-w-7xl relative overflow-hidden lg:mt-20">
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <Image
-                    src={sqaure}
+                    src={square}
                     alt="Background"
                     width={150}
                     height={100}

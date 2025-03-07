@@ -128,7 +128,7 @@ export default function DonationForm() {
                                 $60
                             </Button>
                             <div className="flex flex-row gap-2">
-                                {[30, 40, 50, 60].map((value) => (
+                                {[30, 40, 50].map((value) => (
                                     <Button
                                         key={value}
                                         variant="outline"

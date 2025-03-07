@@ -24,6 +24,10 @@ import about2 from "./about-three-right-img-1.png"
 import course1 from "./courses-3-1.jpg";
 import course2 from "./courses-3-2.jpg";
 import course3 from "./courses-3-2.jpg";
+import processbg from "./processbg-1.png";
+import square from "./process-one-shape-2.png";
+
+
 export {
   logo,
   slider1,
@@ -43,6 +47,8 @@ export {
   process1,
   process2,
   process3,
+  processbg,
+  square,
     service1,
     service2,
     service3,

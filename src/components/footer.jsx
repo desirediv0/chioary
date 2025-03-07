@@ -2,9 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoYoutube } from "react-icons/io5";
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
 
 export const Footer = () => {
@@ -170,8 +167,3 @@ export const Footer = () => {
   )
 }
 
-// import DonationForm from "@/components/donation-form";
-// import TeamSection from "@/components/ourteam";
-// import WorkingProcess from "@/components/process";
-// import Testimonials from "@/components/ui/cases-with-infinite-scroll";
-// import { Service } from "@/components/service";

@@ -1,3 +1,4 @@
+"use client";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 import { team1, team2, team3, team4, teambg } from "@/assets"; // bgPattern = background image
