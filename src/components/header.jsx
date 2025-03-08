@@ -39,7 +39,7 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={`mx-auto flex flex-wrap justify-between items-center  text-[var(--white)] p-4 md:p-4  transition-all duration-300 ${isScrolled ? 'w-full bg-[var(--black)]' : 'w-[90%] mx-auto mt-4  md:rounded-full rounded-md'}`}
+        className={`mx-auto flex flex-wrap justify-between items-center  text-[var(--white)] p-4 md:p-4  transition-all duration-300 ${isScrolled ? 'w-full bg-[var(--black)] border-none' : 'w-[90%] mx-auto mt-4  md:rounded-full rounded-md border border-gray-400'}`}
       >
         {/* Logo */}
         <Image src={logo} width={150} height={150} alt="Logo" />
