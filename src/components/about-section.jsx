@@ -18,7 +18,7 @@ const features = [
 export default function AboutSection() {
   return (
     <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24 ">
-     
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left side with logo, heading and content */}
         <div className="lg:col-span-6 space-y-8">
