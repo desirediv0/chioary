@@ -43,18 +43,36 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+      duration: 0.6,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: -30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
     },
   },
 };
@@ -63,16 +81,21 @@ export function Service() {
   return (
     <section className="relative overflow-hidden bg-gray-50 py-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 z-0">
-        <div className="h-full w-full bg-[url('/placeholder.svg?height=20&width=20')] bg-repeat opacity-5" />
-      </div>
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.05 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="h-full w-full bg-[url('/placeholder.svg?height=20&width=20')] bg-repeat" />
+      </motion.div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
         >
           <div className="flex items-center justify-center gap-2">
             <div className="h-2 w-2 rounded-full bg-[#FFA500]" />
@@ -90,33 +113,47 @@ export function Service() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          viewport={{ once: true }}
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`group relative overflow-hidden rounded-3xl hover:bg-black h-[450px] hover:text-white transition-all duration-300 hover:shadow-2xl`}
+              whileHover={{
+                scale: 1.03,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
+              className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100`}
             >
-              {/* Service Card Content */}
               <div className="relative z-10 p-8">
-                <div
-                  className={`absolute -top-4 left-1/2 flex h-24 w-20 -translate-x-1/2 items-center justify-center p-4  border-gray-200 rounded-b-full bg-slate-100 group-hover:bg-yellow-500 group-hover:text-white bg-transparent transition-colors duration-300 ease-in-out  text-2xl`}
+                <motion.div
+                  className={`absolute -top-6 left-[38%] flex h-28 w-28 -translate-x-1/2 items-center justify-center p-4 border-gray-200 rounded-b-full bg-slate-100 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 >
                   {service.icon}
-                </div>
-                <div className="mt-16 space-y-6  text-center">
+                </motion.div>
+                <motion.div
+                  className="mt-20 space-y-6 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 0.2 }}
+                >
                   <h3 className="text-2xl group-hover:underline font-semibold">{service.title}</h3>
                   <p className="text-sm opacity-90">{service.description}</p>
-                  <div className="overflow-hidden rounded-full">
+                  <motion.div
+                    className="overflow-hidden rounded-full"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <Image
                       src={service.image || "/placeholder.svg"}
                       alt={service.title}
                       width={700}
                       height={300}
-                      className="h-28 w-full object-cover  transition-transform duration-500 group-hover:scale-110"
+                      className="h-28 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -124,14 +161,23 @@ export function Service() {
 
         <motion.div
           className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.8,
+            type: "spring",
+            stiffness: 100
+          }}
         >
-          <button className="group flex w-full items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-white transition-colors duration-300 hover:bg-[#FFA500] sm:w-auto">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group flex w-full items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-white transition-colors duration-300 hover:bg-[#FFA500] sm:w-auto"
+          >
             <span className="font-semibold">Join With Us</span>
             <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>
