@@ -1,5 +1,5 @@
 "use client";
-import { about1, about2, slider3 } from "@/assets";
+import { about1, about2 } from "@/assets";
 import {
   GraduationCap,
   Droplets,
