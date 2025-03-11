@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight, Droplets, GraduationCap, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
-import { service1, service2, service3 } from "@/assets";
+import { service1, service2, service3, world } from "@/assets";
 
 const services = [
   {
@@ -79,15 +79,28 @@ const titleVariants = {
 
 export function Service() {
   return (
-    <section className="relative overflow-hidden bg-gray-50 py-20">
-      {/* Background Pattern */}
+    <section
+      className="relative overflow-hidden bg-gray-50 py-20 bg-cover bg-center bg-no-repeat"
+    >
+      {/* Background Pattern with Smooth Animation */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.05 }}
-        transition={{ duration: 1 }}
+        animate={{
+          opacity: 0.1,
+          x: [0, 10, 0, -10, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
       >
-        <div className="h-full w-full bg-[url('/placeholder.svg?height=20&width=20')] bg-repeat" />
+        <div
+          className="h-full w-full bg-repeat"
+          style={{ backgroundImage: `url(${world.src})` }}
+        />
       </motion.div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -113,23 +126,28 @@ export function Service() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{
-                scale: 1.03,
+                scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
               }}
               className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100`}
             >
               <div className="relative z-10 p-8">
                 <motion.div
-                  className={`absolute -top-6 left-[38%] flex h-28 w-28 -translate-x-1/2 items-center justify-center p-4 border-gray-200 rounded-b-full bg-slate-100 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                  className={`absolute -top-6 left-[38%] flex h-28 w-28 -translate-x-1/2 items-center justify-center p-4 border-2 border-gray-200 rounded-b-full bg-white shadow-lg group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
+                  whileHover={{ scale: 1.1, rotate: [0, 5, 0, -5, 0] }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 10,
+                    rotate: { duration: 0.5, repeat: 0 }
+                  }}
                 >
                   {service.icon}
                 </motion.div>
@@ -139,10 +157,10 @@ export function Service() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className="text-2xl group-hover:underline font-semibold">{service.title}</h3>
-                  <p className="text-sm opacity-90">{service.description}</p>
+                  <h3 className="text-2xl font-semibold group-hover:underline">{service.title}</h3>
+                  <p className="text-sm opacity-90 group-hover:text-white/90">{service.description}</p>
                   <motion.div
-                    className="overflow-hidden rounded-full"
+                    className="overflow-hidden rounded-2xl shadow-inner"
                     whileHover={{ scale: 1.05 }}
                   >
                     <Image
@@ -150,7 +168,7 @@ export function Service() {
                       alt={service.title}
                       width={700}
                       height={300}
-                      className="h-28 w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </motion.div>
                 </motion.div>
@@ -171,7 +189,7 @@ export function Service() {
           }}
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)" }}
             whileTap={{ scale: 0.95 }}
             className="group flex w-full items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-white transition-colors duration-300 hover:bg-[#FFA500] sm:w-auto"
           >

@@ -26,6 +26,7 @@ import course2 from "./courses-3-2.jpg";
 import course3 from "./courses-3-2.jpg";
 import processbg from "./processbg-1.png";
 import square from "./process-one-shape-2.png";
+import world from "./world.png";
 // import  bg  from "./project-one-bg.jpg";
 
 export {
@@ -49,13 +50,14 @@ export {
   process3,
   processbg,
   square,
-    service1,
-    service2,
-    service3,
-    about1,
-    about2,
-    course1,
-    course2,
-    course3,
-    // bg
+  service1,
+  service2,
+  service3,
+  about1,
+  about2,
+  course1,
+  course2,
+  course3,
+  world,
+  // bg
 };
