@@ -1,114 +1,265 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { FaStar } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Star } from "lucide-react"
 
 const testimonials = [
   {
     text: "The Educational Programs Offered By Chioary Have Changed My Life. I Was Able To Complete My Education And Now Have The Skills To Support My Family. I'm Forever Grateful.",
     name: "Mate Henry",
     role: "General Manager",
+    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "Chioary's courses helped me gain confidence in my career. The instructors are very knowledgeable and supportive. Highly recommend!",
     name: "Jessica Brown",
     role: "Marketing Lead",
+    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "I appreciate the flexible learning options and hands-on training provided by Chioary. It has truly made a difference in my skill set.",
     name: "David Williams",
     role: "Software Engineer",
+    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
-    text: "I appreciate the flexible learning options and hands-on training provided by Chioary. It has truly made a difference in my skill set.",
+    text: "The mentorship program at Chioary connected me with industry experts who guided me through my career transition. It was invaluable!",
     name: "Rahul Sharma",
-    role: "Software Engineer",
+    role: "Product Manager",
+    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
-    text: "I appreciate the flexible learning options and hands-on training provided by Chioary. It has truly made a difference in my skill set.",
+    text: "The community support and networking opportunities at Chioary helped me land my dream job. The curriculum is cutting-edge and relevant.",
     name: "Himank Yadav",
-    role: "Software Engineer",
+    role: "UX Designer",
+    avatar: "/placeholder.svg?height=80&width=80",
   },
-];
+]
 
-function Testimonials() {
-  const [current, setCurrent] = useState(0);
+export default function Testimonials() {
+  const [current, setCurrent] = useState(0)
+  const [isAutoplay, setIsAutoplay] = useState(true)
+  const autoplayRef = useRef(null)
+
+  const startAutoplay = () => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current)
+
+    autoplayRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+  }
+
+  const stopAutoplay = () => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current)
+      autoplayRef.current = null
+    }
+  }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
+    if (isAutoplay) {
+      startAutoplay()
+    }
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => stopAutoplay()
+  }, [isAutoplay])
+
+  const handleDotClick = (index) => {
+    setCurrent(index)
+    setIsAutoplay(false)
+    stopAutoplay()
+
+    // Resume autoplay after 10 seconds of inactivity
+    setTimeout(() => setIsAutoplay(true), 10000)
+  }
 
   return (
-    
-    <section className="w-full py-16 lg:py-1 lg:mb-1 bg-gray-50 sm:mt-[-100px] lg:mt-[-300px] lg:mb-[80px]">
-      <div className="flex justify-center items-center md:h-screen lg:mb-[-200px] ">
-        <div className="relative w-40 h-40 flex justify-center items-center border border-gray-700 rounded-full">
-          {/* Rotating Text Border */}
-          <motion.div
-            className="absolute w-full h-full flex justify-center items-center"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-          >
-            <svg viewBox="0 0 100 100" className="absolute w-full h-full p-2">
-              <path
-                id="textPath"
-                fill="transparent"
-                d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
-              />
-              <text className="text-sm font-bold uppercase tracking-[10px] fill-gray-700">
-                <textPath href="#textPath" startOffset="0%"  className="text-gray-700">
-                  YEARS OF EXPERIENCE - YEARS OF EXPERIENCE -
-                </textPath>
-              </text>
-            </svg>
-          </motion.div>
+    <section className="w-full py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Experience Circle */}
+        <div className="flex justify-center mb-16 sm:mb-20 md:mb-24">
+          <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex justify-center items-center">
+            {/* Rotating Text Border */}
+            <motion.div
+              className="absolute w-full h-full"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 20, ease: "linear" }}
+            >
+              <svg viewBox="0 0 100 100" className="absolute w-full h-full">
+                <defs>
+                  <path id="textPath" fill="none" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+                </defs>
+                <text className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] fill-gray-800">
+                  <textPath href="#textPath" startOffset="0%">
+                    YEARS OF EXPERIENCE • YEARS OF EXCELLENCE •
+                  </textPath>
+                </text>
+              </svg>
+            </motion.div>
 
-          {/* Center Circle */}
-          <div className="w-24 h-24 bg-black rounded-full flex justify-center items-center">
-            <span className="text-white text-xl font-bold">25+</span>
+            {/* Center Circle */}
+            <motion.div
+              className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-black rounded-full flex justify-center items-center shadow-lg"
+              initial={{ scale: 0.8 }}
+              animate={{
+                scale: [0.8, 1, 0.8],
+                boxShadow: [
+                  "0px 0px 0px rgba(0,0,0,0.2)",
+                  "0px 0px 20px rgba(0,0,0,0.4)",
+                  "0px 0px 0px rgba(0,0,0,0.2)",
+                ],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            >
+              <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">25+</span>
+            </motion.div>
           </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="w-full max-w-5xl mx-auto">
-          <Carousel className="w-full">
-            <CarouselContent className="flex">
-              <CarouselItem key={current} className="flex justify-center w-full">
-                <div className="p-6 sm:p-8 max-w-lg sm:max-w-xl lg:max-w-7xl">
-                  <div className="flex justify-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="text-yellow-500" />
-                    ))}
-                  </div>
-                  <p className="text-lg sm:text-xl italic text-gray-700">{testimonials[current].text}</p>
-                  <h3 className="font-semibold mt-6 text-lg sm:text-xl">{testimonials[current].name}</h3>
+
+        {/* Testimonial Section */}
+        <div className="relative max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10 md:p-12 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="quotesPattern" patternUnits="userSpaceOnUse" width="100" height="100">
+                  <text x="10" y="50" fontSize="80" fill="currentColor" className="text-black">
+                    &quot;
+                  </text>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#quotesPattern)" />
+            </svg>
+          </div>
+
+          {/* Large Quote Mark */}
+          <div className="absolute top-4 left-4 text-6xl sm:text-7xl md:text-8xl text-gray-200 font-serif leading-none">
+            &quot;
+          </div>
+
+          {/* Testimonial Content */}
+          <div className="relative z-10 min-h-[300px] sm:min-h-[250px] flex flex-col justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+              >
+                {/* Stars */}
+                <div className="flex justify-center mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1, duration: 0.3 }}
+                    >
+                      <Star className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500 fill-yellow-500 mx-0.5" />
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Testimonial Text */}
+                <p className="text-lg sm:text-xl md:text-2xl italic text-gray-700 mb-8 px-6">
+                  {testimonials[current].text}
+                </p>
+
+                {/* Avatar and Name */}
+                <div className="flex flex-col items-center">
+
+                  <h3 className="font-bold text-xl sm:text-2xl text-gray-900">{testimonials[current].name}</h3>
                   <p className="text-gray-500 text-md sm:text-lg">{testimonials[current].role}</p>
                 </div>
-              </CarouselItem>
-            </CarouselContent>
-          </Carousel>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Arrows */}
+          <div className="absolute top-1/2 left-0 right-0 -mt-6 flex justify-between px-2 sm:px-4">
+            <motion.button
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+                setIsAutoplay(false)
+                stopAutoplay()
+                setTimeout(() => setIsAutoplay(true), 10000)
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+            <motion.button
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                setCurrent((prev) => (prev + 1) % testimonials.length)
+                setIsAutoplay(false)
+                stopAutoplay()
+                setTimeout(() => setIsAutoplay(true), 10000)
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+          </div>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
+        <div className="flex justify-center gap-3 mt-8 sm:mt-10">
           {testimonials.map((_, index) => (
-            <div
+            <motion.button
               key={index}
-              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full cursor-pointer transition-all duration-300 ${current === index ? "bg-orange-500 scale-110" : "bg-gray-300"
+              className={`relative h-3 rounded-full transition-all duration-300 ${current === index ? "w-8 bg-black" : "w-3 bg-gray-300"
                 }`}
-              onClick={() => setCurrent(index)}
-            />
+              onClick={() => handleDotClick(index)}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {current === index && (
+                <motion.span
+                  className="absolute inset-0 bg-black rounded-full"
+                  layoutId="activeDot"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className="sr-only">Testimonial {index + 1}</span>
+            </motion.button>
           ))}
         </div>
       </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-gray-100 rounded-full opacity-50"></div>
+      <div className="absolute -top-16 -left-16 w-64 h-64 bg-gray-100 rounded-full opacity-50"></div>
     </section>
-  );
+  )
 }
 
-export default Testimonials;
