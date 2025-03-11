@@ -11,7 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import {  course1, course2, course3, service1, slider1, slider2, sliderB } from "@/assets";
+import { course1, course2, course3, slider2, sliderB } from "@/assets";
 
 export default function HumanitarianProject() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -140,9 +140,8 @@ export default function HumanitarianProject() {
           {images.map((_, index) => (
             <motion.button
               key={index}
-              className={`h-3 w-3  border border-black ${
-                activeSlide === index ? "bg-amber-500" : "bg-transparent"
-              }`}
+              className={`h-3 w-3  border border-black ${activeSlide === index ? "bg-amber-500" : "bg-transparent"
+                }`}
               onClick={() => setActiveSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
               whileHover={{ scale: 1.2 }}

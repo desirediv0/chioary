@@ -67,15 +67,9 @@ export default function Header() {
           </svg>
         </button>
 
-        {/* Navigation Links */}
-        <motion.nav
-          className={`w-full md:w-auto ${isMenuOpen ? "block" : "hidden"
-            } md:block mt-4 md:mt-0`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isMenuOpen ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ul className="flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0">
+        {/* Navigation Links - Mobile */}
+        <div className={`w-full md:hidden ${isMenuOpen ? "block" : "hidden"} mt-4`}>
+          <ul className="flex flex-col space-y-2">
             {navItems.map((item, index) => (
               <motion.li
                 key={index}
@@ -92,7 +86,27 @@ export default function Header() {
               </motion.li>
             ))}
           </ul>
-        </motion.nav>
+        </div>
+
+        {/* Navigation Links - Desktop */}
+        <div className="hidden md:block">
+          <ul className="flex flex-row md:space-x-6">
+            {navItems.map((item, index) => (
+              <motion.li
+                key={index}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href={item.link}
+                  className="text-xl hover:text-yellow-500 transition-colors"
+                >
+                  {item.name}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
 
         {/* Donation Button */}
         <motion.div
