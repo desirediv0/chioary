@@ -7,6 +7,8 @@ import { team1, team2, team3, team4, teambg } from "@/assets"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
+import AnimatedButton from "./AnimatedButton"
+import { MdArrowOutward } from "react-icons/md"
 
 const TeamSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
@@ -187,28 +189,7 @@ const TeamSection = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             />
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
-              <Link
-                href="/"
-                className="flex items-center gap-2 bg-[#121C17] text-white px-4 sm:px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-[#0E1613] transition duration-300"
-              >
-                All Team Member
-                <motion.span
-                  className="w-8 h-8 bg-[#121C17] rounded-full flex items-center justify-center shadow-md"
-                  animate={{
-                    x: [0, 3, 0],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <ArrowUpRight size={16} className="text-white" />
-                </motion.span>
-              </Link>
-            </motion.div>
+            <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px] bg-black text-white before:bg-[#FFA415] group-hover:text-white"} className2={"py-[8px] md:py-[12px] bg-black text-white before:bg-[#FFA415] group-hover:text-white"} />
 
             <motion.div
               className="h-px bg-gray-300 flex-1"
