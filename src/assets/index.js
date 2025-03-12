@@ -28,6 +28,10 @@ import processbg from "./processbg-1.png";
 import square from "./process-one-shape-2.png";
 import world from "./world.png";
 import bgFooter from "./site-footer-three-bg.jpg";
+import gift from "./process-one-shape-3.png"
+import footerbg1 from "./site-footer-three-shape-1.png";
+import testibg from "./testimonial-three-shape-4.png";
+import ourteamlogo from "./team-three-shape-3.png";
 // import  bg  from "./project-one-bg.jpg";
 
 export {
@@ -61,5 +65,9 @@ export {
   course3,
   world,
   bgFooter,
+  gift,
+  footerbg1,
+  testibg,
+  ourteamlogo,
   // bg
 };

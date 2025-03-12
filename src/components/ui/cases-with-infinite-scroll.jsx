@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Star } from "lucide-react"
+import Image from "next/image"
+import { testibg } from "@/assets"
 
 const testimonials = [
   {
@@ -72,6 +74,15 @@ export default function Testimonials() {
   return (
     <section className="w-full py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="hidden md:block">
+          <Image
+            src={testibg}
+            alt={"testibg"}
+            width={400}
+            height={500}
+            className="w-[200px] h-[200px] object-cover absolute top-[80px] lg:left-[200px] md:left-[10px] hidden sm:block"
+          />
+        </div>
         {/* Experience Circle */}
         <div className="flex justify-center mb-16 sm:mb-20 md:mb-24">
           <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 flex justify-center items-center">
@@ -91,7 +102,7 @@ export default function Testimonials() {
                   </textPath>
                 </text>
               </svg>
-            </motion.div> 
+            </motion.div>
 
             {/* Center Circle */}
             <motion.div

@@ -1,17 +1,17 @@
 "use client";
 
-import { process1, process2, process3, processbg, square } from "@/assets";
+import { gift, process1, process2, process3, processbg, square } from "@/assets";
 import Image from "next/image";
 import React from "react";
 
 const WorkingProcess = () => {
     return (
-        <div className="mx-auto px-4 py-16 max-w-7xl relative overflow-hidden lg:mt-20">
-            <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="mx-auto px-4 py-16 max-w-7xl relative overflow-hidden lg:mt-20 sm:mt-20 ">
+            <div className="absolute inset-0 -z-10 overflow-hidden hidden sm:block">
                 <Image
                     src={square}
                     alt="Background"
-                    width={150}
+                    width={210}
                     height={100}
                     className="opacity-100 hidden sm:block"
                 />
@@ -19,14 +19,14 @@ const WorkingProcess = () => {
 
             {/* Header Section */}
             <div className="text-center mb-16 relative">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <Image
-                        src={processbg}
-                        alt="Working Process"
-                        width={50}
-                        height={50}
-                        className="w-12 h-12 animate-spin-slow hidden sm:block"
-                    />
+                <div className="absolute top-[100px] left-3/4 transform -translate-x-1/2 -translate-y-1/2">
+                <Image
+                    src={gift}
+                    alt="Background"
+                    width={200}
+                    height={100}
+                    className="opacity-100 hidden sm:block"
+                />
                 </div>
                 <div className="flex items-center justify-center gap-1 mb-4">
                     <div className="w-2 h-2 rounded-full bg-green-600"></div>
@@ -42,7 +42,7 @@ const WorkingProcess = () => {
                     alt="Background"
                     width={300}
                     height={700}
-                    className="absolute inset-0 -z-10 opacity-100 priority bg-cover bg-center bg-no-repeat w-[600px] h-[200px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden sm:block"
+                    className="absolute inset-0 -z-10 opacity-100 priority bg-cover bg-center bg-no-repeat w-[600px] h-[200px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:block"
                 />
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:mt-10 relative">
@@ -53,24 +53,24 @@ const WorkingProcess = () => {
                     ].map((step, index) => (
                         <div
                             key={index}
-                            className={`flex flex-col items-center relative ${index === 1 ? "md:mt-0" : ""
+                            className={`flex flex-col items-center relative group ${index === 1 ? "md:mt-0" : ""
                                 }`}
                         >
-                            <div className="relative group">
-                                <div className="w-64 h-64 rounded-full overflow-hidden border-8 border-[#f8e8d4] mb-6 relative">
+                            <div className="relative ">
+                                <div className="w-64 h-64 rounded-full overflow-hidden border-b-8 border-[#f7c27f] group-hover:border-[var(--custom-color)] mb-6 relative">
                                     <Image
                                         src={step.img}
                                         width={100}
                                         height={100}
                                         alt={step.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110  "
                                     />
-                                </div>
-                                <div className="absolute bottom-6 left-6 bg-gray-900 text-white px-4 py-2 rounded-full">
+                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white h-32 w-32 flex items-start p-3 justify-center rounded-full group-hover:bg-[#FFA415] transition-transform duration-300 ">
                                     Step 0{index + 1}
                                 </div>
+                                </div>
                             </div>
-                            <h3 className="text-2xl font-bold text-center mb-2">{step.title}</h3>
+                            <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#FFA415] transition-transform duration-300 md:mt-10">{step.title}</h3>
                             <p className="text-center">
                                 We start by listening to communities and conducting thorough assessments
                             </p>

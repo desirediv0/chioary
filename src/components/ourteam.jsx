@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
 import Image from "next/image"
-import { team1, team2, team3, team4, teambg } from "@/assets"
+import { ourteamlogo, team1, team2, team3, team4, teambg, testibg } from "@/assets"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -61,6 +61,15 @@ const TeamSection = () => {
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
+      <div className="hidden md:block">
+                <Image
+                  src={ourteamlogo}
+                  alt={"testibg"}
+                  width={400}
+                  height={500}
+                  className="w-[150px] h-[120px] object-cover absolute right-[350px] hidden sm:block"
+                />
+              </div>
         <motion.div className="text-center" variants={itemVariants}>
           <div className="flex items-center justify-center gap-2">
             <motion.div

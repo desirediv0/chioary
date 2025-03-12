@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
 import { motion } from "framer-motion"
-import { bgFooter } from "@/assets"
+import { bgFooter,footerbg1, logo} from "@/assets"
+import Image from "next/image"
 
 // Custom hook to detect when element is in viewport
 function useInView(options = {}) {
@@ -122,11 +123,23 @@ export const Footer = () => {
       animate={isFooterInView ? "visible" : "hidden"}
       variants={containerVariants}
     >
-      {/* Dark overlay for background image */}
-      <div className="absolute inset-0 bg-black opacity-90 z-0"></div>
+      <div className="absolute top-[100px] left-[82rem] transform -translate-x-1/2 -translate-y-1/2 z-50">
+                      <Image
+                          src={footerbg1}
+                          alt="Background"
+                          width={200}
+                          height={100}
+                          className="w-[150px] opacity-100 hidden sm:block h-[150px]"
+                          filter
+                      />
+                      </div>
 
+      {/* Dark overlay for background image */}
+      <div className="absolute inset-0 bg-black opacity-90 z-0">
+      </div>
+      
       {/* Main Footer Content - positioned above the overlay */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10 md:p-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-56 mb-8">
           {/* Logo and Social Media Section */}
           <motion.div className="space-y-4 sm:space-y-6" variants={itemVariants}>
@@ -138,11 +151,16 @@ export const Footer = () => {
                   animate={isFooterInView ? { scale: [0, 1.5, 1] } : { scale: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 />
-                <svg viewBox="0 0 24 24" className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" fill="currentColor">
-                  <path d="M17,10c0,4.4-3.6,8-8,8s-8-3.6-8-8s3.6-8,8-8S17,5.6,17,10z M12,10c0-1.7-1.3-3-3-3s-3,1.3-3,3s1.3,3,3,3S12,11.7,12,10z" />
-                  <path d="M19.5,10c0,1.7-0.3,3.4-1,5l3.8,3.8c1.3-2.5,2-5.5,2-8.8s-0.7-6.3-2-8.8L18.5,5C19.2,6.6,19.5,8.3,19.5,10z" />
-                </svg>
               </div>
+              {/* <Image
+                          src={logo}
+                          alt="Background"
+                          width={600}
+                          height={500}
+                          className="w-[200px] h-[200px] sm:w-8 sm:h-8 text-white absolute z-10 opacity-100 "
+                          filter
+                      /> */}
+
               <motion.h2
                 className="text-xl sm:text-2xl font-bold"
                 initial={{ opacity: 0, x: -20 }}

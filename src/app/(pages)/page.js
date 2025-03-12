@@ -17,9 +17,9 @@ export default function Home() {
     <CharityPage />
     <HumanitarianProject />
     <WorkingProcess />
-    <TeamSection />
-    <Testimonials />
     <DonationForm />
+    <Testimonials />
+    <TeamSection />
     </>
   );
 }
