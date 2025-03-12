@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+import { MdArrowOutward } from "react-icons/md";
 
 const features = [
   { icon: GraduationCap, label: "Education" },
@@ -72,14 +74,7 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <div className="flex mr-auto ">
-                <button className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-colors">
-                  Read More
-                </button>
-                <button className="p-3 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors">
-                  <ArrowUpRight className="w-5 h-5" />
-                </button>
-              </div>
+              <span className="mr-auto"> <AnimatedButton text={"Read More"} icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} /></span>
             </div>
           </div>
         </div>
@@ -89,10 +84,7 @@ export default function AboutSection() {
             {/* // Replace the existing motion.div with this updated version */}
 
             <div className="absolute -top-5 lg:left-0 md:left-10  left-0 w-28 h-28">
-              {/* Static background and 25+ */}
-              {/* <div className="absolute w-full h-full bg-gray-900 text-white rounded-full flex flex-col items-center justify-center">
-                <span className="text-2xl font-bold z-10">25+</span>
-              </div> */}
+
 
               {/* Rotating text */}
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-36 md:h-56  flex justify-center items-center ">

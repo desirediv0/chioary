@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ArrowRight, MoveUpRight, ArrowUpRight } from "lucide-react"
 import { course1, course2, course3 } from "@/assets"
 import Image from "next/image"
+import AnimatedButton from "./AnimatedButton"
+import { MdArrowOutward } from "react-icons/md"
 
 // Sample campaign data
 const campaigns = [
@@ -419,23 +421,7 @@ export default function CharityPage() {
                     transition={{ delay: 0.9 }}
                   >
                     <div className="flex space-x-2 mr-auto">
-                      <motion.button
-                        className="px-4 sm:px-6 py-2 sm:py-3 bg-white text-black font-medium rounded-full hover:bg-yellow-600 hover:text-white transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Read More
-                      </motion.button>
-                      <motion.button
-                        className="p-2 sm:p-3 bg-white text-black rounded-full hover:bg-yellow-600 hover:text-white transition-colors"
-                        whileHover={{
-                          scale: 1.1,
-                          rotate: 10,
-                        }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ArrowUpRight className="w-4 sm:w-5 h-4 sm:h-5" />
-                      </motion.button>
+                      <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]"} className2={"py-[8px] md:py-[12px]"} />
                     </div>
                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
                       <Button
