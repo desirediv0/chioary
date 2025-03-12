@@ -6,6 +6,8 @@ import Image from "next/image";
 import { logo } from "@/assets";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+import { MdArrowOutward } from "react-icons/md";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,8 +82,8 @@ export default function Header() {
     >
       <motion.div
         className={`mx-auto flex flex-wrap justify-between items-center text-[var(--white)] p-4 md:p-4 transition-all duration-300 ${isScrolled
-            ? "w-full bg-[var(--black)] border-none"
-            : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
+          ? "w-full bg-[var(--black)] border-none"
+          : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
           }`}
       >
         {/* Logo */}
@@ -150,6 +152,9 @@ export default function Header() {
                     </motion.li>
                   ))}
                 </ul>
+
+
+
                 <motion.div
                   className="mt-auto"
                   variants={itemVariants}
@@ -186,9 +191,9 @@ export default function Header() {
             ))}
           </ul>
         </div>
-
+        <AnimatedButton text={"fesgves"} icon={<MdArrowOutward />} />
         {/* Donation Button */}
-        <motion.div
+        {/* <motion.div
           className="hidden md:flex items-center justify-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
@@ -201,7 +206,7 @@ export default function Header() {
           <span className="bg-yellow-500 p-3 rounded-full">
             <ArrowUpRight className="" />
           </span>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </motion.header>
   );
