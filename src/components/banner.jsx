@@ -17,7 +17,7 @@ import { MdArrowOutward } from "react-icons/md";
 export const Banner = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const autoplayRef = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
-  const images = [sliderB, sliderB2, sliderB3, sliderB4];
+  const images = [sliderB, sliderB2];
 
   // Preload images to ensure they're available before rendering carousel
   useEffect(() => {
@@ -37,7 +37,7 @@ export const Banner = () => {
         await Promise.all(imagePromises);
         setImagesLoaded(true);
       } catch (error) {
-        console.error("Failed to preload images:", error);
+        // console.error("Failed to preload images:", error);
         // Set images as loaded anyway to avoid blocking the UI
         setImagesLoaded(true);
       }
@@ -146,42 +146,50 @@ export const Banner = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center lg:items-end gap-8 lg:gap-12">
             <motion.div
-              className="w-full lg:w-2/5 text-left space-y-4 md:space-y-6 lg:space-y-8 p-4 lg:p-10"
+              className="w-full lg:w-full text-left space-y-4 md:space-y-6 lg:space-y-8 p-4 lg:p-10"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <motion.span
+              {/* <motion.span
                 className="text-white font-semibold uppercase text-xs sm:text-sm tracking-wider"
                 variants={itemVariants}
               >
                 Charity Foundation Non Profit
-              </motion.span>
+              </motion.span> */}
 
               <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[80px!important]"
                 variants={headingVariants}
               >
-                Your{" "}
+                सर्वे भवन्तु सुखिनः {" "}
+                <br/>
                 <motion.span
-                  className="text-yellow-400"
+                  className="text-[#983532]"
                   variants={highlightVariants}
                   initial="initial"
                   whileHover="hover"
                 >
-                  Compassion
+                  सर्वे सन्तु निरामयाः।
                 </motion.span>
-                <br className="hidden sm:block" />
-                Their Hope
+                <br/>
+                सर्वे भद्राणि पश्यन्तु {" "}
+                <br/>
+                <motion.span
+                  className="text-[#983532]"
+                  variants={highlightVariants}
+                  initial="initial"
+                  whileHover="hover"
+                >
+                   मा कश्चित् दुःखभाग्भवेत्॥
+                </motion.span>
               </motion.h1>
 
               <motion.p
                 className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl"
                 variants={itemVariants}
               >
-                Your Compassion Their Hope Is A Powerful And Inspiring Choice
-                For Your Charity Website. It Effectively Captures The Essence Of
-                Your Mission And The Impact Of Support.
+                सभी सुखी रहें, सभी निरोगी रहें, सभी शुभ चीजें देखें, और कोई भी दुखी न हो।
               </motion.p>
 
               <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} />

@@ -12,14 +12,14 @@ export default function Home() {
   return (
     <>
           <Banner />
-      <Service />
       <AboutSection />
-    <CharityPage />
+      <Service />
+    {/* <CharityPage /> */}
     <HumanitarianProject />
     <WorkingProcess />
     <DonationForm />
     <Testimonials />
-    <DonationForm />
+    {/* <DonationForm /> */}
     </>
   );
 }

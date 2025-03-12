@@ -81,14 +81,14 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={`mx-auto flex flex-wrap justify-between items-center text-[var(--white)] p-4 md:p-4 transition-all duration-300 ${
+        className={`mx-auto flex flex-wrap bg-white justify-between items-center p-4 md:p-4 transition-all duration-300 ${
           isScrolled
             ? "w-full bg-[var(--black)] border-none"
             : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
         }`}
       >
         {/* Logo */}
-        <Image src={logo} width={150} height={150} alt="Logo" />
+        <Image src="/logo.png" width={150} height={150} alt="Logo" />
 
         {/* Mobile Menu Button */}
         <button
@@ -156,7 +156,7 @@ export default function Header() {
 
                 <div className="max-w-min mt-8">
                   <AnimatedButton
-                    text={"Donation Now"}
+                    text={"Donate Now"}
                     icon={<MdArrowOutward />}
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function Header() {
 
         {/* Donation Button - Desktop */}
         <div className="hidden md:block">
-          <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
+          <AnimatedButton text={"Donate Now"} icon={<MdArrowOutward />} />
         </div>
       </motion.div>
     </motion.header>

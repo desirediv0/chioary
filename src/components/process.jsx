@@ -57,7 +57,7 @@ const WorkingProcess = () => {
                                 }`}
                         >
                             <div className="relative ">
-                                <div className="w-64 h-64 rounded-full overflow-hidden border-b-8 border-[#f7c27f] group-hover:border-[var(--custom-color)] mb-6 relative">
+                                <div className="w-64 h-64 rounded-full overflow-hidden border-b-8 border-[#983532] group-hover:border-[var(--custom-color)] mb-6 relative">
                                     <Image
                                         src={step.img}
                                         width={100}
@@ -65,12 +65,12 @@ const WorkingProcess = () => {
                                         alt={step.title}
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110  "
                                     />
-                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white h-32 w-32 flex items-start p-3 justify-center rounded-full group-hover:bg-[#FFA415] transition-transform duration-300 ">
+                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white h-32 w-32 flex items-start p-3 justify-center rounded-full group-hover:bg-[#983532] transition-transform duration-300 ">
                                     Step 0{index + 1}
                                 </div>
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#FFA415] transition-transform duration-300 md:mt-10">{step.title}</h3>
+                            <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#983532] transition-transform duration-300 md:mt-10">{step.title}</h3>
                             <p className="text-center">
                                 We start by listening to communities and conducting thorough assessments
                             </p>

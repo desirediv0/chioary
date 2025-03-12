@@ -67,7 +67,7 @@ export default function HumanitarianProject() {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full mt-16 overflow-hidden h-screen bg-white bg-cover bg-center bg-no-repeat`}
+      className={`relative w-full overflow-hidden h-screen bg-white bg-cover bg-center bg-no-repeat`}
     >
       {/* Background image with parallax effect */}
       <motion.div
@@ -79,7 +79,7 @@ export default function HumanitarianProject() {
         }}
       >
         <Image
-          src="/project-one-bg.jpg"
+          src="/project-bg.jpeg"
           alt="Background"
           width={1920}
           height={200}
@@ -127,7 +127,7 @@ export default function HumanitarianProject() {
         <motion.div className="mb-8 flex items-center justify-center" variants={itemVariants}>
           <div className="flex items-center gap-2 text-white">
             <motion.div
-              className="h-2 w-2 rounded-full bg-amber-500"
+              className="h-2 w-2 rounded-full bg-[#983532]"
               animate={{
                 scale: [1, 1.5, 1],
                 opacity: [0.7, 1, 0.7],
@@ -161,7 +161,7 @@ export default function HumanitarianProject() {
           >
             At A Time
             <motion.span
-              className="absolute -bottom-2 left-0 h-1 w-full bg-amber-500"
+              className="absolute -bottom-2 left-0 h-1 w-full bg-[#983532]"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 1.2 }}

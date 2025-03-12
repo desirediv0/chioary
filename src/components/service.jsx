@@ -10,9 +10,9 @@ import { MdArrowOutward } from "react-icons/md";
 const services = [
   {
     icon: <Droplets />,
-    title: "Clean Water Initiatives",
+    title: "Education",
     description:
-      "Providing Access To Safe Drinking Water Through Well Construction And Purification Projects.",
+      "We firmly believe that education is the most powerful tool for change.",
     image: service1,
     bgColor: "bg-[#1a2721]",
     textColor: "text-white",
@@ -20,9 +20,9 @@ const services = [
   },
   {
     icon: <GraduationCap />,
-    title: "Educational Programs",
+    title: "Fighting Malnutrition",
     description:
-      "Providing Access To Safe Drinking Water Through Well Construction And Purification Projects.",
+      "A well-fed body leads to a strong mind and a productive life.",
     image: service2,
     bgColor: "bg-white",
     textColor: "text-black",
@@ -30,9 +30,9 @@ const services = [
   },
   {
     icon: <UtensilsCrossed />,
-    title: "Food Distribution",
+    title: "Mental Wellness",
     description:
-      "Providing Access To Safe Drinking Water Through Well Construction And Purification Projects.",
+      "Mental well-being is just as important as physical health.",
     image: service3,
     bgColor: "bg-white",
     textColor: "text-black",
@@ -111,13 +111,13 @@ export function Service() {
           animate="visible"
         >
           <div className="flex items-center justify-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-[#FFA500]" />
-            <span className="text-sm font-semibold uppercase text-[#FFA500]">
-              Best Of Service
+            <div className="h-2 w-2 rounded-full bg-[#983532]" />
+            <span className="text-sm font-semibold uppercase text-[#983532]">
+              Our Services
             </span>
           </div>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            The Best Service
+            Our Mission and Service Areas
           </h2>
         </motion.div>
 
@@ -140,7 +140,7 @@ export function Service() {
             >
               <div className="relative z-10 p-8">
                 <motion.div
-                  className={`absolute -top-6 left-[35%] flex h-28 w-28  items-center justify-center p-4 border-2 border-gray-200 rounded-b-full bg-white shadow-lg group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
+                  className={`absolute -top-6 left-[35%] flex h-28 w-28  items-center justify-center p-4 border-2 border-gray-200 rounded-b-full bg-white shadow-lg group-hover:bg-[#983532] group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
                   whileHover={{ scale: 1.1, rotate: [0, 5, 0, -5, 0] }}
                   transition={{
                     type: "spring",
@@ -192,7 +192,7 @@ export function Service() {
             stiffness: 100,
           }}
         >
-          <AnimatedButton text="Join with us" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
+          <AnimatedButton text="View All Services" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
         </motion.div>
       </div>
     </section>
