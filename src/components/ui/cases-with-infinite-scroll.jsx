@@ -91,7 +91,7 @@ export default function Testimonials() {
                   </textPath>
                 </text>
               </svg>
-            </motion.div>
+            </motion.div> 
 
             {/* Center Circle */}
             <motion.div

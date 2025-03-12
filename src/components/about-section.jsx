@@ -18,7 +18,6 @@ const features = [
 export default function AboutSection() {
   return (
     <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24 ">
-
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left side with logo, heading and content */}
         <div className="lg:col-span-6 space-y-8">
@@ -89,39 +88,65 @@ export default function AboutSection() {
           <div className="relative mt-8">
             {/* // Replace the existing motion.div with this updated version */}
 
-            <div className="absolute top-5 md:right-[440px] right-[550px] w-28 h-28">
+            <div className="absolute -top-5 lg:left-0 md:left-10  left-0 w-28 h-28">
               {/* Static background and 25+ */}
-              <div className="absolute w-full h-full bg-gray-900 text-white rounded-full flex flex-col items-center justify-center">
+              {/* <div className="absolute w-full h-full bg-gray-900 text-white rounded-full flex flex-col items-center justify-center">
                 <span className="text-2xl font-bold z-10">25+</span>
-              </div>
+              </div> */}
 
               {/* Rotating text */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 10,
-                  ease: "linear",
-                }}
-                className="absolute w-full h-full"
-              >
-                <svg className="w-full h-full" viewBox="0 0 100 100">
-                  <path
-                    id="textPath"
-                    d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                    fill="none"
-                  />
-                  <text className="text-[8px] uppercase tracking-wider">
-                    <textPath
-                      href="#textPath"
-                      startOffset="0%"
-                      className="fill-white"
-                    >
-                      Years of Experience • Years of Experience •
-                    </textPath>
-                  </text>
-                </svg>
-              </motion.div>
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-36 md:h-56  flex justify-center items-center ">
+                {/* Rotating Text Border */}
+                <motion.div
+                  className="absolute w-40 h-40  "
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Number.POSITIVE_INFINITY,
+                    duration: 20,
+                    ease: "linear",
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="absolute w-40 h-40 p-2  bg-white rounded-full "
+                  >
+                    <defs>
+                      <path
+                        id="textPath"
+                        fill="none"
+                        d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                      />
+                    </defs>
+                    <text className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] fill-gray-800">
+                      <textPath href="#textPath" startOffset="0%">
+                        YEARS OF EXPERIENCE • YEARS OF EXCELLENCE •
+                      </textPath>
+                    </text>
+                  </svg>
+                </motion.div>
+
+                {/* Center Circle */}
+                <motion.div
+                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-black rounded-full flex justify-center items-center shadow-lg"
+                  initial={{ scale: 0.8 }}
+                  animate={{
+                    boxShadow: [
+                      "0px 0px 0px rgba(0,0,0,0.2)",
+                      "0px 0px 20px rgba(0,0,0,0.4)",
+                      "0px 0px 0px rgba(0,0,0,0.2)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "reverse",
+                  }}
+                >
+                  <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
+                    25+
+                  </span>
+                </motion.div>
+              </div>
             </div>
             <Image
               src={about2}

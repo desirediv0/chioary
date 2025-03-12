@@ -130,17 +130,18 @@ export function Service() {
         >
           {services.map((service, index) => (
             <motion.div
+
               key={index}
               variants={itemVariants}
               whileHover={{
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
               }}
-              className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100`}
+              className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100 bg-white text-black `}
             >
               <div className="relative z-10 p-8">
                 <motion.div
-                  className={`absolute -top-6 left-[38%] flex h-28 w-28 -translate-x-1/2 items-center justify-center p-4 border-2 border-gray-200 rounded-b-full bg-white shadow-lg group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
+                  className={`absolute -top-6 left-[35%] flex h-28 w-28  items-center justify-center p-4 border-2 border-gray-200 rounded-b-full bg-white shadow-lg group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-500 ease-in-out text-3xl`}
                   whileHover={{ scale: 1.1, rotate: [0, 5, 0, -5, 0] }}
                   transition={{
                     type: "spring",
