@@ -174,7 +174,7 @@ export default function DonationForm() {
     return (
         <motion.div
             ref={formRef}
-            className="flex flex-col md:flex-row w-full mx-auto bg-black text-white overflow-hidden relative lg:p-8 shadow-2xl"
+            className="flex flex-col md:flex-row w-full mx-auto bg-[var(--custom-color-2)] text-white overflow-hidden relative lg:p-8 shadow-2xl"
             initial="hidden"
             animate={isFormInView ? "visible" : "hidden"}
             variants={containerVariants}
@@ -182,7 +182,7 @@ export default function DonationForm() {
             {/* Left side - Image and heading */}
             <div className="relative w-full md:w-1/2 overflow-hidden">
                 <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"
+                    className="absolute inset-0 bg-gradient-to-t from-[var(--custom-color-2)]/80 to-transparent z-10"
                     initial={{ opacity: 0 }}
                     animate={isFormInView ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
@@ -248,7 +248,7 @@ export default function DonationForm() {
             </div>
 
             {/* Right side - Donation form */}
-            <motion.div className="w-full md:w-1/2 p-6 md:p-8 bg-black relative" variants={containerVariants}>
+            <motion.div className="w-full md:w-1/2 p-6 md:p-8 bg-[var(--custom-color-2)] relative" variants={containerVariants}>
                 <div className="space-y-6 md:space-y-8">
                     {/* Frequency selection */}
                     <motion.div variants={itemVariants}>

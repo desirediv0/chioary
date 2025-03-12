@@ -118,7 +118,7 @@ export default function HumanitarianProject() {
       </motion.div>
 
       <motion.div
-        className="relative z-20 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
+        className="relative z-20 mx-auto  px-4 py-12 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -243,21 +243,6 @@ export default function HumanitarianProject() {
             </CarouselContent>
 
 
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 hidden md:block"
-            >
-              <CarouselPrevious className="bg-black/50 text-white hover:bg-black/70 border-amber-500 hover:border-amber-600 transition-all duration-300" />
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 hidden md:block"
-            >
-              <CarouselNext className="bg-black/50 text-white hover:bg-black/70 border-amber-500 hover:border-amber-600 transition-all duration-300" />
-            </motion.div>
           </Carousel>
         </motion.div>
 

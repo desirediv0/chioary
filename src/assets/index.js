@@ -27,6 +27,7 @@ import course3 from "./courses-3-2.jpg";
 import processbg from "./processbg-1.png";
 import square from "./process-one-shape-2.png";
 import world from "./world.png";
+import bgFooter from "./site-footer-three-bg.jpg";
 // import  bg  from "./project-one-bg.jpg";
 
 export {
@@ -59,5 +60,6 @@ export {
   course2,
   course3,
   world,
+  bgFooter,
   // bg
 };

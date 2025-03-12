@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
 import { motion } from "framer-motion"
+import { bgFooter } from "@/assets"
 
 // Custom hook to detect when element is in viewport
 function useInView(options = {}) {

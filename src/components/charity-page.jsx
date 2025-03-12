@@ -232,9 +232,9 @@ export default function CharityPage() {
               >
                 <Button
                   variant={activeCategory === category.id ? "default" : "outline"}
-                  className={`w-full justify-between text-base sm:text-lg py-4 sm:py-6 ${activeCategory === category.id
-                      ? "bg-amber-500 hover:bg-amber-600 text-white"
-                      : "bg-gray-50 hover:bg-gray-100 text-gray-700"
+                  className={`w-full justify-between text-base sm:text-lg py-4 sm:py-6 rounded-none ${activeCategory === category.id
+                    ? "bg-amber-500 hover:bg-amber-600 text-white"
+                    : "bg-gray-50 hover:bg-gray-100 text-gray-700"
                     }`}
                   onClick={() => {
                     setActiveCategory(category.id)
@@ -268,7 +268,7 @@ export default function CharityPage() {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
               }}
-              className="bg-gray-900 overflow-hidden rounded-lg shadow-xl"
+              className="bg-gray-900 overflow-hidden shadow-xl"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12">
                 {/* Campaign image with navigation */}
@@ -320,7 +320,7 @@ export default function CharityPage() {
                 </div>
 
                 {/* Campaign details */}
-                <div className="lg:col-span-6 p-4 sm:p-6 text-white">
+                <div className="lg:col-span-6 p-4 sm:pt-6 sm:pb-6 sm:pr-6 text-white">
                   <motion.h2
                     className="text-xl sm:text-2xl font-bold mb-2"
                     initial={{ opacity: 0, y: -20 }}
@@ -339,7 +339,7 @@ export default function CharityPage() {
                   </motion.p>
 
                   <motion.div
-                    className="flex flex-wrap items-center justify-between mb-2 gap-4"
+                    className="flex items-center justify-between mb-2 gap-2"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
