@@ -242,11 +242,11 @@ export default function HumanitarianProject() {
               ))}
             </CarouselContent>
 
-            {/* Custom navigation buttons */}
+
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-30"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 hidden md:block"
             >
               <CarouselPrevious className="bg-black/50 text-white hover:bg-black/70 border-amber-500 hover:border-amber-600 transition-all duration-300" />
             </motion.div>
@@ -254,7 +254,7 @@ export default function HumanitarianProject() {
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-30"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 hidden md:block"
             >
               <CarouselNext className="bg-black/50 text-white hover:bg-black/70 border-amber-500 hover:border-amber-600 transition-all duration-300" />
             </motion.div>

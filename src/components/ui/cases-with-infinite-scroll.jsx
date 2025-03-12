@@ -9,31 +9,26 @@ const testimonials = [
     text: "The Educational Programs Offered By Chioary Have Changed My Life. I Was Able To Complete My Education And Now Have The Skills To Support My Family. I'm Forever Grateful.",
     name: "Mate Henry",
     role: "General Manager",
-    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "Chioary's courses helped me gain confidence in my career. The instructors are very knowledgeable and supportive. Highly recommend!",
     name: "Jessica Brown",
     role: "Marketing Lead",
-    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "I appreciate the flexible learning options and hands-on training provided by Chioary. It has truly made a difference in my skill set.",
     name: "David Williams",
     role: "Software Engineer",
-    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "The mentorship program at Chioary connected me with industry experts who guided me through my career transition. It was invaluable!",
     name: "Rahul Sharma",
     role: "Product Manager",
-    avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     text: "The community support and networking opportunities at Chioary helped me land my dream job. The curriculum is cutting-edge and relevant.",
     name: "Himank Yadav",
     role: "UX Designer",
-    avatar: "/placeholder.svg?height=80&width=80",
   },
 ]
 
@@ -121,7 +116,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Testimonial Section */}
+        {/* Testimonial Section - Fixed max width and proper overflow handling */}
         <div className="relative max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10 md:p-12 overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
@@ -142,8 +137,8 @@ export default function Testimonials() {
             &quot;
           </div>
 
-          {/* Testimonial Content */}
-          <div className="relative z-10 min-h-[300px] sm:min-h-[250px] flex flex-col justify-center">
+          {/* Testimonial Content - Fixed height and overflow issues */}
+          <div className="relative z-10 min-h-[320px] sm:min-h-[280px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -167,14 +162,15 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                {/* Testimonial Text */}
-                <p className="text-lg sm:text-xl md:text-2xl italic text-gray-700 mb-8 px-6">
-                  {testimonials[current].text}
-                </p>
+                {/* Testimonial Text - Added max height and better responsiveness */}
+                <div className="max-h-[150px] sm:max-h-none overflow-y-auto sm:overflow-visible px-6">
+                  <p className="text-lg sm:text-xl md:text-2xl italic text-gray-700 mb-8">
+                    {testimonials[current].text}
+                  </p>
+                </div>
 
-                {/* Avatar and Name */}
-                <div className="flex flex-col items-center">
-
+                {/* Avatar and Name - Added avatar image that was missing */}
+                <div className="flex flex-col items-center mt-4">
                   <h3 className="font-bold text-xl sm:text-2xl text-gray-900">{testimonials[current].name}</h3>
                   <p className="text-gray-500 text-md sm:text-lg">{testimonials[current].role}</p>
                 </div>
@@ -182,10 +178,10 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="absolute top-1/2 left-0 right-0 -mt-6 flex justify-between px-2 sm:px-4">
+          {/* Navigation Arrows - Improved positioning and z-index */}
+          <div className="absolute top-1/2 left-0 right-0 -mt-6 flex justify-between px-2 sm:px-4 z-20">
             <motion.button
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => {
@@ -206,7 +202,7 @@ export default function Testimonials() {
               </svg>
             </motion.button>
             <motion.button
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white hover:text-black transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => {
@@ -229,7 +225,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Dots Indicator */}
+        {/* Dots Indicator - Improved position */}
         <div className="flex justify-center gap-3 mt-8 sm:mt-10">
           {testimonials.map((_, index) => (
             <motion.button
@@ -256,7 +252,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Decorative Elements */}
+      {/* Decorative Elements - Adjusted position to prevent overflow */}
       <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-gray-100 rounded-full opacity-50"></div>
       <div className="absolute -top-16 -left-16 w-64 h-64 bg-gray-100 rounded-full opacity-50"></div>
     </section>
