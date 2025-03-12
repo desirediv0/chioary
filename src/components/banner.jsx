@@ -184,7 +184,7 @@ export const Banner = () => {
                 Your Mission And The Impact Of Support.
               </motion.p>
 
-              <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} />
+              <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} />
             </motion.div>
 
             {/* Right Images */}

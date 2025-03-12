@@ -192,7 +192,7 @@ export function Service() {
             stiffness: 100,
           }}
         >
-          <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
+          <AnimatedButton text="Join with us" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
         </motion.div>
       </div>
     </section>

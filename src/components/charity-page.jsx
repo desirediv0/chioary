@@ -421,7 +421,7 @@ export default function CharityPage() {
                     transition={{ delay: 0.9 }}
                   >
                     <div className="flex space-x-2 mr-auto">
-                      <AnimatedButton text="Read More" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]"} className2={"py-[8px] md:py-[12px]"} />
+                      <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]"} className2={"py-[8px] md:py-[12px]"} />
                     </div>
                     <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
                       <Button
