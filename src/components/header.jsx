@@ -81,10 +81,11 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={`mx-auto flex flex-wrap justify-between items-center text-[var(--white)] p-4 md:p-4 transition-all duration-300 ${isScrolled
-          ? "w-full bg-[var(--black)] border-none"
-          : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
-          }`}
+        className={`mx-auto flex flex-wrap justify-between items-center text-[var(--white)] p-4 md:p-4 transition-all duration-300 ${
+          isScrolled
+            ? "w-full bg-[var(--black)] border-none"
+            : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
+        }`}
       >
         {/* Logo */}
         <Image src={logo} width={150} height={150} alt="Logo" />
@@ -153,20 +154,12 @@ export default function Header() {
                   ))}
                 </ul>
 
-
-
-                <motion.div
-                  className="mt-auto"
-                  variants={itemVariants}
-                >
-                  <a
-                    href="#"
-                    className="bg-yellow-500 text-black font-semibold py-3 px-4 rounded-full flex items-center space-x-2 mt-4 w-full justify-center"
-                  >
-                    <span>Donate Now</span>
-                    <ArrowUpRight className="ml-2" />
-                  </a>
-                </motion.div>
+                <div className="max-w-min mt-8">
+                  <AnimatedButton
+                    text={"Donation Now"}
+                    icon={<MdArrowOutward />}
+                  />
+                </div>
               </motion.div>
             </>
           )}
@@ -191,22 +184,11 @@ export default function Header() {
             ))}
           </ul>
         </div>
-        <AnimatedButton text={"fesgves"} icon={<MdArrowOutward />} />
-        {/* Donation Button */}
-        {/* <motion.div
-          className="hidden md:flex items-center justify-center gap-2"
-          whileHover={{ scale: 1.05 }}
-        >
-          <a
-            href="#"
-            className="bg-yellow-500 text-black font-semibold py-3 px-4 rounded-full flex items-center space-x-2 mt-4 md:mt-0 w-full md:w-auto justify-center"
-          >
-            <span>Donate Now</span>
-          </a>
-          <span className="bg-yellow-500 p-3 rounded-full">
-            <ArrowUpRight className="" />
-          </span>
-        </motion.div> */}
+
+        {/* Donation Button - Desktop */}
+        <div className="hidden md:block">
+          <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
+        </div>
       </motion.div>
     </motion.header>
   );

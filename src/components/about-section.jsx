@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+import { MdArrowOutward } from "react-icons/md";
 
 const features = [
   { icon: GraduationCap, label: "Education" },
@@ -72,14 +74,7 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <div className="flex mr-auto ">
-                <button className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-colors">
-                  Read More
-                </button>
-                <button className="p-3 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors">
-                  <ArrowUpRight className="w-5 h-5" />
-                </button>
-              </div>
+              <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
             </div>
           </div>
         </div>

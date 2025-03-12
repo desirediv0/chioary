@@ -9,40 +9,14 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
+import { MdArrowOutward } from "react-icons/md";
 
 export const Banner = () => {
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const autoplayRef = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+  const plugin = useRef(Autoplay({ delay: 2000 }));
   const images = [sliderB, sliderB2, sliderB3, sliderB4];
-
-  // Preload images to ensure they're available before rendering carousel
-  useEffect(() => {
-    const preloadImages = async () => {
-      try {
-        // Create an array of promises for each image
-        const imagePromises = images.map((src) => {
-          return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = typeof src === 'string' ? src : src.src;
-            img.onload = resolve;
-            img.onerror = reject;
-          });
-        });
-
-        // Wait for all images to load
-        await Promise.all(imagePromises);
-        setImagesLoaded(true);
-      } catch (error) {
-        console.error("Failed to preload images:", error);
-        // Set images as loaded anyway to avoid blocking the UI
-        setImagesLoaded(true);
-      }
-    };
-
-    preloadImages();
-  }, []);
 
   // Animation variants
   const containerVariants = {
@@ -99,46 +73,40 @@ export const Banner = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
-      {imagesLoaded && (
-        <Carousel
-          plugins={[autoplayRef.current]}
-          className="w-screen"
-          onMouseEnter={() => autoplayRef.current.stop()}
-          onMouseLeave={() => autoplayRef.current.reset()}
-          opts={{
-            align: "center",
-            loop: true,
-            skipSnaps: false,
-            dragFree: false,
-          }}
-        >
-          <CarouselContent className="relative">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ duration: 1 }}
-              className="absolute w-full h-full bg-black inset-0 z-10"
-            />
-            {images.map((image, index) => (
-              <CarouselItem key={index} className="flex justify-center">
-                <div className="relative h-[80vh] w-full sm:h-[90vh] md:h-[100vh] lg:h-[120vh]">
-                  <Image
-                    src={image}
-                    alt={`banner-${index + 1}`}
-                    fill
-                    className="object-cover object-center animate-slowZoom"
-                    priority={true}
-                    sizes="100vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      )}
+    <div className="relative w-full overflow-hidden ">
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-screen "
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+        opts={{
+          align: "center",
+          containScroll: "trimSnaps",
+          loop: true,
+        }}
+      >
+        <CarouselContent className="relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ duration: 1 }}
+            className="absolute w-full h-full bg-black inset-0 z-10 overflow-hidden"
+          />
+          {images.map((image, index) => (
+            <CarouselItem key={index} className="flex justify-center">
+              <div className="relative h-[80vh] w-full sm:h-[90vh] md:h-[100vh] lg:h-[120vh]">
+                <Image
+                  src={image}
+                  alt={`banner-${index + 1}`}
+                  fill
+                  className="object-cover object-center animate-slowZoom bg-center"
+                  priority={index === 0}
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       <section className="absolute inset-0 z-20 flex items-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,32 +150,7 @@ export const Banner = () => {
                 Your Mission And The Impact Of Support.
               </motion.p>
 
-              <motion.div
-                className="flex flex-wrap items-center gap-4 mt-6"
-                variants={itemVariants}
-              >
-                <motion.a
-                  href="#"
-                  className="bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-black font-semibold py-3 px-6 rounded-full flex items-center gap-2 text-sm md:text-base shadow-lg"
-                  variants={buttonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  <span>Donate Now</span>
-                </motion.a>
-
-                <motion.button
-                  className="bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 p-3 rounded-full shadow-lg"
-                  aria-label="Learn more"
-                  variants={buttonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  <ArrowUpRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
+              <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
             </motion.div>
 
             {/* Right Images */}
@@ -226,7 +169,7 @@ export const Banner = () => {
                     duration: 1,
                     delay: 0.8,
                     type: "spring",
-                    stiffness: 100
+                    stiffness: 100,
                   }}
                 >
                   <Image
@@ -234,7 +177,6 @@ export const Banner = () => {
                     alt="Primary charity image"
                     fill
                     className="z-50 object-cover"
-                    priority={true}
                   />
                 </motion.div>
                 <motion.div
@@ -248,7 +190,6 @@ export const Banner = () => {
                     alt="Secondary charity image"
                     fill
                     className="object-cover"
-                    priority={true}
                   />
                 </motion.div>
               </div>

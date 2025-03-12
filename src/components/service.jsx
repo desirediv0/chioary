@@ -4,6 +4,8 @@ import Image from "next/image";
 import { ArrowUpRight, Droplets, GraduationCap, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
 import { service1, service2, service3, world } from "@/assets";
+import AnimatedButton from "./AnimatedButton";
+import { MdArrowOutward } from "react-icons/md";
 
 const services = [
   {
@@ -79,9 +81,7 @@ const titleVariants = {
 
 export function Service() {
   return (
-    <section
-      className="relative overflow-hidden bg-gray-50 py-20 bg-cover bg-center bg-no-repeat"
-    >
+    <section className="relative overflow-hidden bg-gray-50 py-20 bg-cover bg-center bg-no-repeat">
       {/* Background Pattern with Smooth Animation */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -94,7 +94,7 @@ export function Service() {
           duration: 15,
           repeat: Infinity,
           repeatType: "reverse",
-          ease: "easeInOut"
+          ease: "easeInOut",
         }}
       >
         <div
@@ -130,12 +130,11 @@ export function Service() {
         >
           {services.map((service, index) => (
             <motion.div
-
               key={index}
               variants={itemVariants}
               whileHover={{
                 scale: 1.05,
-                transition: { type: "spring", stiffness: 400, damping: 10 }
+                transition: { type: "spring", stiffness: 400, damping: 10 },
               }}
               className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100 bg-white text-black `}
             >
@@ -147,7 +146,7 @@ export function Service() {
                     type: "spring",
                     stiffness: 300,
                     damping: 10,
-                    rotate: { duration: 0.5, repeat: 0 }
+                    rotate: { duration: 0.5, repeat: 0 },
                   }}
                 >
                   {service.icon}
@@ -158,8 +157,12 @@ export function Service() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className="text-2xl font-semibold group-hover:underline">{service.title}</h3>
-                  <p className="text-sm opacity-90 group-hover:text-white/90">{service.description}</p>
+                  <h3 className="text-2xl font-semibold group-hover:underline">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm opacity-90 group-hover:text-white/90">
+                    {service.description}
+                  </p>
                   <motion.div
                     className="overflow-hidden rounded-2xl shadow-inner"
                     whileHover={{ scale: 1.05 }}
@@ -186,17 +189,10 @@ export function Service() {
             duration: 0.7,
             delay: 0.8,
             type: "spring",
-            stiffness: 100
+            stiffness: 100,
           }}
         >
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)" }}
-            whileTap={{ scale: 0.95 }}
-            className="group flex w-full items-center justify-center gap-2 rounded-full bg-black px-8 py-4 text-white transition-colors duration-300 hover:bg-[#FFA500] sm:w-auto"
-          >
-            <span className="font-semibold">Join With Us</span>
-            <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </motion.button>
+          <AnimatedButton text={"Donation Now"} icon={<MdArrowOutward />} />
         </motion.div>
       </div>
     </section>
