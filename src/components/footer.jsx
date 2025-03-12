@@ -111,13 +111,22 @@ export const Footer = () => {
   return (
     <motion.footer
       ref={footerRef}
-      className="bg-black text-white py-6 sm:py-8 md:py-10 overflow-hidden"
+      style={{
+        backgroundImage: `url(${bgFooter.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
+      }}
+      className="text-white py-6 sm:py-8 md:py-10 overflow-hidden relative"
       initial="hidden"
       animate={isFooterInView ? "visible" : "hidden"}
       variants={containerVariants}
     >
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
+      {/* Dark overlay for background image */}
+      <div className="absolute inset-0 bg-black opacity-90 z-0"></div>
+
+      {/* Main Footer Content - positioned above the overlay */}
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-56 mb-8">
           {/* Logo and Social Media Section */}
           <motion.div className="space-y-4 sm:space-y-6" variants={itemVariants}>
@@ -244,7 +253,7 @@ export const Footer = () => {
       </div>
 
       {/* Contact Information Section */}
-      <motion.div className="border-t border-gray-800 pt-6 sm:pt-8" variants={itemVariants}>
+      <motion.div className="border-t border-gray-800 pt-6 sm:pt-8 relative z-10" variants={itemVariants}>
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {/* Office Address */}
@@ -351,10 +360,10 @@ export const Footer = () => {
         </div>
       </motion.div>
 
-      <motion.hr className="border-gray-700 my-4 sm:my-6 mx-4 sm:mx-6 md:mx-8 lg:mx-0" variants={lineVariants} />
+      <motion.hr className="border-gray-700 my-4 sm:my-6 mx-4 sm:mx-6 md:mx-8 lg:mx-0 relative z-10" variants={lineVariants} />
 
       {/* Bottom Section */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
         <motion.div className="flex flex-col sm:flex-row justify-between items-center py-4" variants={itemVariants}>
           <motion.p
             className="text-sm sm:text-base"
@@ -378,7 +387,7 @@ export const Footer = () => {
       </div>
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
         <motion.div
           className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[var(--custom-color)] opacity-5"
           initial={{ scale: 0 }}
