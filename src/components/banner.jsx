@@ -71,10 +71,10 @@ export const Banner = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden ">
       <Carousel
         plugins={[plugin.current]}
-        className="w-full"
+        className="w-screen "
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
         opts={{
@@ -83,12 +83,12 @@ export const Banner = () => {
           loop: true,
         }}
       >
-        <CarouselContent className="relative">
+        <CarouselContent className="relative overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.6 }}
             transition={{ duration: 1 }}
-            className="absolute w-full h-full bg-black inset-0 z-10"
+            className="absolute w-full h-full bg-black inset-0 z-10 overflow-hidden"
           />
           {images.map((image, index) => (
             <CarouselItem key={index} className="flex justify-center">
@@ -97,7 +97,7 @@ export const Banner = () => {
                   src={image}
                   alt={`banner-${index + 1}`}
                   fill
-                  className="object-cover object-center animate-slowZoom"
+                  className="object-cover object-center animate-slowZoom bg-center"
                   priority={index === 0}
                 />
               </div>

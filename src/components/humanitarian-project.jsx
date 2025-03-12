@@ -86,7 +86,7 @@ export default function HumanitarianProject() {
           className="object-cover bg-black/80 h-96"
         />
         <motion.div
-          className="absolute inset-0 bg-black/50"
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ duration: 1.5 }}

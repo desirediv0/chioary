@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { donation } from "@/assets"
 
 function useInView(options = {}) {
     const ref = useRef(null)
@@ -188,7 +189,7 @@ export default function DonationForm() {
                 />
                 <motion.div variants={imageVariants} className="w-full h-full min-h-[400px]">
                     <Image
-                        src="/placeholder.svg?height=600&width=500"
+                        src={donation}
                         alt="Children in need"
                         width={500}
                         height={600}
