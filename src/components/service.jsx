@@ -87,7 +87,7 @@ export function Service() {
         className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
         animate={{
-          opacity: 0.1,
+          opacity: 0.6,
           x: [0, 10, 0, -10, 0],
         }}
         transition={{
