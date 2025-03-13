@@ -39,6 +39,8 @@ import footerbg1 from "./site-footer-three-shape-1.png";
 import testibg from "./testimonial-three-shape-4.png";
 import ourteamlogo from "./team-three-shape-3.png";
 // import  bg  from "./project-one-bg.jpg";
+import girlbg from "./girl-bg.jpg";
+import portraitwoman from "./portrait-woman.jpg";
 
 export {
   logo,
@@ -76,4 +78,6 @@ export {
   testibg,
   ourteamlogo,
   // bg
+  girlbg,
+  portraitwoman
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { sliderB, sliderB2 } from "@/assets";
+import { girlbg, sliderB, sliderB2 } from "@/assets";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,10 +10,9 @@ import { MdArrowOutward } from "react-icons/md";
 export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const images = [sliderB, sliderB2];
+  const images = [girlbg, sliderB, sliderB2];
   const intervalRef = useRef(null);
 
-  // Preload images to ensure they're available before rendering
   useEffect(() => {
     const preloadImages = async () => {
       try {
@@ -35,12 +34,12 @@ export const Banner = () => {
     preloadImages();
   }, []);
 
-  // Set up the image transition interval
+
   useEffect(() => {
     if (imagesLoaded) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 5000); // Change image every 5 seconds
+      }, 5000);
     }
 
     return () => {
