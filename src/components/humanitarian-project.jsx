@@ -56,9 +56,9 @@ export default function HumanitarianProject() {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      <div className="absolute left-0 top-0 md:block hidden">
-        <svg width="400" height="400" viewBox="0 0 400 400" className="opacity-90">
-          <circle cx="200" cy="200" r="200" fill="#FF9500" />
+      <div className="absolute left-8 top-8 md:block hidden">
+        <svg width="350" height="350" viewBox="0 0 400 400" className="opacity-90">
+          <circle cx="200" cy="200" r="200" fill="#983532" />
         </svg>
       </div>
 
