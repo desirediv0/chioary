@@ -1,272 +1,174 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils"
-import { course1, course2, course3, slider2, sliderB } from "@/assets"
 import { useInView } from "framer-motion"
-import Autoplay from "embla-carousel-autoplay"
+import { ArrowUpRight } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import { about1, donation, service3 } from "@/assets"
 
 export default function HumanitarianProject() {
-  const [activeSlide, setActiveSlide] = useState(0)
   const [hoveredIndex, setHoveredIndex] = useState(null)
-  const carouselRef = useRef(null)
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: false, amount: 0.2 })
+  const [api, setApi] = useState(null)
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
 
-  const images = [sliderB, course1, course2, course3, course1, course2, course3]
+  const images = [service3, donation, about1, service3, donation, about1]
 
-  // Plugin for autoplay
-  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }))
-
-  // Reset autoplay on slide change
+  // Auto-play functionality
   useEffect(() => {
-    if (plugin.current) {
-      plugin.current.reset()
+    if (!api) return
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap())
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+
+    // Auto-play timer
+    const autoPlayInterval = setInterval(() => {
+      if (api) {
+        api.scrollNext()
+      }
+    }, 4000)
+
+    return () => {
+      clearInterval(autoPlayInterval)
     }
-  }, [activeSlide])
+  }, [api])
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  }
-
-  const imageHoverVariants = {
-    rest: { scale: 1, filter: "brightness(0.9)" },
-    hover: {
-      scale: 1.05,
-      filter: "brightness(1.1)",
-      transition: { duration: 0.4, ease: "easeOut" },
-    },
-    active: {
-      scale: 1.03,
-      filter: "brightness(1.05)",
-      boxShadow: "0 0 20px rgba(255, 165, 0, 0.5)",
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
+  const scrollTo = (index) => {
+    if (api) {
+      api.scrollTo(index)
+    }
   }
 
   return (
-    <div
-      ref={containerRef}
-      className={`relative w-full overflow-hidden h-screen bg-white bg-cover bg-center bg-no-repeat`}
-    >
-      {/* Background image with parallax effect */}
-      <motion.div
-        className="absolute inset-0 z-0 brightness-[0.5]"
-        style={{
-          y: isInView ? 0 : -30,
-          scale: isInView ? 1 : 1.1,
-          transition: "all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s",
-        }}
-      >
-        <Image
-          src="/project-bg.jpeg"
-          alt="Background"
-          width={1920}
-          height={200}
-          className="object-cover bg-black/80 h-96"
-        />
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1.5 }}
-        />
-      </motion.div>
+    <div ref={containerRef} className="relative w-full min-h-screen bg-gradient-to-b from-black to-white">
+      {/* Background with overlay */}
+      <div className="absolute inset-0 h-[60%] overflow-hidden">
+        <Image src="/project-bg.jpeg" alt="Background" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
 
-      {/* Orange shape with floating animation */}
-      <motion.div
-        className="md:flex hidden absolute left-0 top-0 z-10 h-[400px] w-[400px]"
-        initial={{ opacity: 0, scale: 0.8, x: -50 }}
-        animate={{
-          opacity: 1,
-          scale: 1,
-          x: 0,
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut",
-          y: {
-            duration: 4,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          },
-        }}
-      >
-        <Image src={slider2 || "/placeholder.svg"} alt="Orange shape" fill />
-      </motion.div>
+      <div className="absolute left-0 top-0 md:block hidden">
+        <svg width="400" height="400" viewBox="0 0 400 400" className="opacity-90">
+          <circle cx="200" cy="200" r="200" fill="#FF9500" />
+        </svg>
+      </div>
 
-      <motion.div
-        className="relative z-20 mx-auto  px-4 py-12 sm:px-6 lg:px-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        {/* Header section */}
-        <motion.div className="mb-8 flex items-center justify-center" variants={itemVariants}>
-          <div className="flex items-center gap-2 text-white">
-            <motion.div
-              className="h-2 w-2 rounded-full bg-[#983532]"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-              }}
-            ></motion.div>
-            <p className="text-sm font-medium">Our Recent Project</p>
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-2 h-2 rounded-full bg-[#983532] animate-pulse" />
+            <p className="text-white text-sm">Our Recent Project</p>
           </div>
-        </motion.div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white">
+            One Project At A Time
+            <div className="h-1 w-32 bg-[#983532] mx-auto mt-4" />
+          </h1>
+        </div>
 
-        <motion.h1
-          className="mb-12 text-center text-4xl font-bold text-white sm:text-5xl md:text-6xl"
-          variants={itemVariants}
-        >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            One Project
-          </motion.span>{" "}
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="relative"
-          >
-            At A Time
-            <motion.span
-              className="absolute -bottom-2 left-0 h-1 w-full bg-[#983532]"
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            />
-          </motion.span>
-        </motion.h1>
-
-        {/* Image gallery/carousel using shadcn/ui */}
-        <motion.div className="relative mb-8" variants={itemVariants} ref={carouselRef}>
+        {/* Carousel */}
+        <div className="relative px-4 md:px-12">
           <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[plugin.current]}
+            setApi={setApi}
             className="w-full"
-            onSelect={(index) => setActiveSlide(index)}
+            opts={{
+              loop: true,
+              align: "center",
+              containScroll: "trimSnaps",
+            }}
           >
-            <CarouselContent className="-ml-2 gap-6 md:-ml-4">
+            <CarouselContent className="-ml-4">
               {images.map((src, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-2 md:pl-3 md:basis-1/2 lg:basis-1/3 transition-all duration-500 ease-in-out"
-                >
+                <CarouselItem key={index} className="pl-4 sm:basis-1/2 md:basis-1/3">
                   <motion.div
-                    className={cn("relative overflow-hidden rounded-lg", "h-[450px] w-full", "cursor-pointer group")}
-                    initial="rest"
-                    whileHover="hover"
-                    animate={activeSlide === index ? "active" : "rest"}
-                    variants={imageHoverVariants}
+                    className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden"
+                    whileHover={{ scale: 1.03 }}
                     onHoverStart={() => setHoveredIndex(index)}
                     onHoverEnd={() => setHoveredIndex(null)}
                   >
-                    <motion.div
-                      className={cn("absolute inset-0 z-10", activeSlide === index ? "ring-2 ring-amber-500" : "")}
-                      whileHover={{
-                        boxShadow: "0 0 0 4px rgba(255, 165, 0, 0.5)",
-                      }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    <Image src={src} alt={`Project ${index + 1}`} fill className="object-cover" />
 
-                    {/* Image */}
-                    <Image
-                      src={src || "/placeholder.svg"}
-                      alt={`Project image ${index + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out"
-                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
-                    {/* Overlay with gradient */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                    />
-
-                    {/* Caption that appears on hover */}
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
-                      initial={{ y: 50, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                    >
-                      <h3 className="text-lg font-bold">Project {index + 1}</h3>
-                      <p className="text-sm opacity-80">Humanitarian initiative</p>
-                    </motion.div>
-
-                    {/* Shine effect on hover */}
+                    {/* Hover effects */}
                     {hoveredIndex === index && (
-                      <motion.div
-                        className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
-                        initial={{ left: "-100%" }}
-                        animate={{ left: "100%" }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                      />
+                      <>
+                        <motion.div
+                          className="absolute inset-x-4 h-[1px] bg-white/70"
+                          style={{ top: "5%" }}
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                        />
+                        <motion.div
+                          className="absolute inset-x-4 h-[1px] bg-white/70"
+                          style={{ bottom: "5%" }}
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                        />
+                        <motion.div
+                          className="absolute top-[5%] bottom-[5%] w-[1px] bg-white/70"
+                          style={{ left: "4%" }}
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                        />
+                        <motion.div
+                          className="absolute top-[5%] bottom-[5%] w-[1px] bg-white/70"
+                          style={{ right: "4%" }}
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                        />
+
+                        {/* Red circle with arrow */}
+                        <motion.div
+                          className="absolute top-[70%] left-[40%] md:left-[45%] transform -translate-x-1/2 -translate-y-1/2
+                                   bg-[#983532] rounded-full p-4 cursor-pointer"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                        >
+                          <ArrowUpRight className="w-6 h-6 text-white" />
+                        </motion.div>
+
+                        {/* Shine effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+                          initial={{ x: "-100%" }}
+                          animate={{ x: "100%" }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      </>
                     )}
                   </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-
-
           </Carousel>
-        </motion.div>
 
-        {/* Navigation dots with animations */}
-        <motion.div className="flex justify-center gap-3 -mt-4" variants={itemVariants}>
-          {images.map((_, index) => (
-            <motion.button
-              key={index}
-              className={`h-3 w-3 border border-black transition-all duration-300 ease-out ${activeSlide === index ? "bg-amber-500 scale-125" : "bg-transparent"
-                }`}
-              onClick={() => setActiveSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              whileHover={{ scale: 1.3, backgroundColor: "#f59e0b" }}
-              whileTap={{ scale: 0.9 }}
-              animate={
-                activeSlide === index
-                  ? { scale: [1, 1.2, 1], backgroundColor: "#f59e0b" }
-                  : { scale: 1, backgroundColor: "transparent" }
-              }
-              transition={{ duration: 0.3 }}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
+          {/* Navigation dots */}
+          <div className="flex justify-center gap-3 mt-8">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={cn(
+                  "w-3 h-3 rounded-full transition-all duration-300",
+                  current === index ? "bg-[#983532] scale-110" : "bg-white/40 hover:bg-[#983532]/50",
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { logo } from "@/assets";
-import { ArrowUpRight } from "lucide-react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
@@ -81,11 +80,10 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={`mx-auto flex flex-wrap bg-white justify-between items-center p-4 md:p-4 transition-all duration-300 ${
-          isScrolled
+        className={`mx-auto flex flex-wrap bg-white justify-between items-center p-4 md:p-4 transition-all duration-300 ${isScrolled
             ? "w-full bg-[var(--black)] border-none"
             : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
-        }`}
+          }`}
       >
         {/* Logo */}
         <Image src="/logo.png" width={150} height={150} alt="Logo" />
