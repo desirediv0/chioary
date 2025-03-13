@@ -130,7 +130,6 @@ export const Footer = () => {
           width={200}
           height={100}
           className="w-[150px] opacity-100 hidden sm:block h-[150px]"
-          filter
         />
       </div>
 
@@ -143,49 +142,14 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-56 mb-8">
           {/* Logo and Social Media Section */}
           <motion.div className="space-y-4 sm:space-y-6" variants={itemVariants}>
-            {/* <motion.div className="flex items-center" variants={logoVariants}> */}
-            {/* <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--custom-color)] rounded-full flex items-center justify-center mr-2 relative overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-[var(--custom-color)] rounded-full"
-                  initial={{ scale: 0 }}
-                  animate={isFooterInView ? { scale: [0, 1.5, 1] } : { scale: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                />
-              </div> */}
+
             <Image
-                          src="/logo-white.png"
-                          alt="Background"
-                          width={180}
-                          height={180}
-                          className="text-white z-10 opacity-100 "
-                          filter
-                      />
-
-            {/* <motion.h2
-                className="text-xl sm:text-2xl font-bold"
-                initial={{ opacity: 0, x: -20 }}
-                animate={isFooterInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              >
-                Chi
-                <motion.span
-                  className="text-[#FFA415]"
-                  initial={{ opacity: 0 }}
-                  animate={isFooterInView ? { opacity: [0, 1, 0, 1] } : { opacity: 0 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
-                >
-                  oary
-                </motion.span>
-              </motion.h2> */}
-            {/* </motion.div> */}
-
-            {/* <Image
               src="/logo-white.png"
               alt="Background"
-              width={120}
-              height={120}
-              className="text-white absolute z-10 opacity-100 "
-            /> */}
+              width={180}
+              height={180}
+              className="text-white z-10 opacity-100 "
+            />
 
             <motion.p className="text-gray-300 text-sm sm:text-base" variants={itemVariants}>
               Charity And Donation Is Category That
@@ -207,9 +171,9 @@ export const Footer = () => {
                 >
                   <Link
                     href="/"
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-[var(--custom-color)] transition-colors p-2 rounded-full"
+                    className="w-8 h-8 sm:w-10 sm:h-10  flex items-center justify-center hover:bg-[var(--custom-color)] transition-colors p-2 rounded-full"
                   >
-                    <Icon size={22} className="" />
+                    <Icon size={22} />
                   </Link>
                 </motion.div>
               ))}
