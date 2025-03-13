@@ -136,7 +136,7 @@ export function Service() {
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 },
               }}
-              className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-black before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100 bg-white text-black `}
+              className={`group relative overflow-hidden rounded-3xl hover:text-white transition-all duration-500 hover:shadow-2xl before:absolute before:inset-0 before:bg-[#cbafa1] before:origin-center before:rounded-3xl before:scale-x-0 before:transition-transform before:duration-500 hover:before:scale-x-100 bg-white text-black `}
             >
               <div className="relative z-10 p-8">
                 <motion.div
@@ -157,10 +157,10 @@ export function Service() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className="text-2xl font-semibold group-hover:underline">
+                  <h3 className="text-2xl font-semibold group-hover:underline text-black">
                     {service.title}
                   </h3>
-                  <p className="text-sm opacity-90 group-hover:text-white/90">
+                  <p className="text-sm opacity-90 text-black">
                     {service.description}
                   </p>
                   <motion.div
