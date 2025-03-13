@@ -171,7 +171,7 @@ export const Footer = () => {
                 >
                   <Link
                     href="/"
-                    className="w-8 h-8 sm:w-10 sm:h-10  flex items-center justify-center hover:bg-[var(--custom-color)] transition-colors p-2 rounded-full"
+                    className="w-8 h-8 sm:w-10 sm:h-10  flex items-center justify-center hover:bg-[var(--custom-color-4)] transition-colors p-2 rounded-full"
                   >
                     <Icon size={22} />
                   </Link>
@@ -190,7 +190,7 @@ export const Footer = () => {
                 <motion.li key={index} variants={itemVariants} custom={index} whileHover={{ x: 5 }}>
                   <Link
                     href="#"
-                    className="text-gray-300 hover:text-[var(--custom-color)] transition-colors inline-block"
+                    className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors inline-block"
                   >
                     <motion.span initial={{ width: 0 }} whileHover={{ width: "100%" }} className="relative">
                       {text}
@@ -223,7 +223,7 @@ export const Footer = () => {
                 <motion.li key={index} variants={itemVariants} custom={index} whileHover={{ x: 5 }}>
                   <Link
                     href="#"
-                    className="text-gray-300 hover:text-[var(--custom-color)] transition-colors inline-block"
+                    className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors inline-block"
                   >
                     <motion.span initial={{ width: 0 }} whileHover={{ width: "100%" }} className="relative">
                       {text}
@@ -243,13 +243,13 @@ export const Footer = () => {
       </div>
 
       {/* Contact Information Section */}
-      <motion.div className="border-t border-gray-800 pt-6 sm:pt-8 relative z-10" variants={itemVariants}>
+      <motion.div className="border-t border-[#F59E0B] pt-6 sm:pt-8 relative z-10" variants={itemVariants}>
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {/* Office Address */}
             <motion.div className="flex items-start" variants={contactItemVariants} custom={0}>
               <motion.div
-                className="w-10 h-10 sm:w-12 sm:h-12 border border-gray-700 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
+                className="w-10 h-10 sm:w-12 sm:h-12 border border-[#F59E0B] rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
                 whileHover={{
                   scale: 1.1,
                   borderColor: "var(--custom-color)",
@@ -271,7 +271,7 @@ export const Footer = () => {
                 <motion.div variants={itemVariants}>
                   <Link
                     href="https://maps.google.com/?q=4517+Washington+Ave.+Manchester,+Kentucky+39495"
-                    className="text-gray-300 hover:text-[var(--custom-color)] transition-colors text-sm sm:text-base"
+                    className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors text-sm sm:text-base"
                   >
                     4517 Washington Ave.
                     <br />
@@ -284,7 +284,7 @@ export const Footer = () => {
             {/* Email */}
             <motion.div className="flex items-start mt-6 md:mt-0" variants={contactItemVariants} custom={1}>
               <motion.div
-                className="w-10 h-10 sm:w-12 sm:h-12 border border-gray-700 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
+                className="w-10 h-10 sm:w-12 sm:h-12 border border-[#F59E0B] rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
                 whileHover={{
                   scale: 1.1,
                   borderColor: "var(--custom-color)",
@@ -305,10 +305,10 @@ export const Footer = () => {
                 </motion.h4>
                 <motion.div variants={itemVariants}>
                   <Link
-                    href="mailto:Chioary@Gmail.Com"
-                    className="text-gray-300 hover:text-[var(--custom-color)] transition-colors text-sm sm:text-base"
+                    href="mailto:adyashakti@Gmail.Com"
+                    className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors text-sm sm:text-base"
                   >
-                    Chioary@Gmail.Com
+                    adyashakti@gmail.com
                   </Link>
                 </motion.div>
               </div>
@@ -317,7 +317,7 @@ export const Footer = () => {
             {/* Phone */}
             <motion.div className="flex items-start mt-6 md:mt-0" variants={contactItemVariants} custom={2}>
               <motion.div
-                className="w-10 h-10 sm:w-12 sm:h-12 border border-gray-700 rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
+                className="w-10 h-10 sm:w-12 sm:h-12 border border-[#F59E0B] rounded-full flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0 relative overflow-hidden"
                 whileHover={{
                   scale: 1.1,
                   borderColor: "var(--custom-color)",
@@ -339,7 +339,7 @@ export const Footer = () => {
                 <motion.div variants={itemVariants}>
                   <Link
                     href="tel:(239)555-0108"
-                    className="text-gray-300 hover:text-[var(--custom-color)] transition-colors text-sm sm:text-base"
+                    className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors text-sm sm:text-base"
                   >
                     (239) 555-0108 - (239) 555-0108
                   </Link>
@@ -350,7 +350,7 @@ export const Footer = () => {
         </div>
       </motion.div>
 
-      <motion.hr className="border-gray-700 my-4 sm:my-6 mx-4 sm:mx-6 md:mx-8 lg:mx-0 relative z-10" variants={lineVariants} />
+      <motion.hr className="border-[#F59E0B] my-4 sm:my-6 mx-4 sm:mx-6 md:mx-8 lg:mx-0 relative z-10" variants={lineVariants} />
 
       {/* Bottom Section */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 relative z-10">
@@ -367,7 +367,7 @@ export const Footer = () => {
           <motion.ul className="flex gap-3 sm:gap-4 mt-3 sm:mt-0 text-sm sm:text-base" variants={itemVariants}>
             {["Terms of Service", "Privacy Policy"].map((text, index) => (
               <motion.li key={index} variants={itemVariants} whileHover={{ scale: 1.05 }}>
-                <Link href="/" className="transition-colors hover:text-[var(--custom-color)]">
+                <Link href="/" className="transition-colors hover:text-[var(--custom-color-4)]">
                   {text}
                 </Link>
               </motion.li>
