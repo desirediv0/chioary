@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
 import { motion } from "framer-motion"
-import { bgFooter, footerbg1, logo } from "@/assets"
+import { bgFooter, footerbg1, logo, sliderB2 } from "@/assets"
 import Image from "next/image"
 
 // Custom hook to detect when element is in viewport
@@ -113,7 +113,7 @@ export const Footer = () => {
     <motion.footer
       ref={footerRef}
       style={{
-        backgroundImage: `url(${bgFooter.src})`,
+        backgroundImage: `url(${sliderB2.src})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         position: 'relative',
@@ -123,7 +123,7 @@ export const Footer = () => {
       animate={isFooterInView ? "visible" : "hidden"}
       variants={containerVariants}
     >
-      <div className="absolute top-[100px] left-[82rem] transform -translate-x-1/2 -translate-y-1/2 z-50">
+      {/* <div className="absolute top-[100px] left-[82rem] transform -translate-x-1/2 -translate-y-1/2 z-50">
         <Image
           src={footerbg1}
           alt="Background"
@@ -131,10 +131,10 @@ export const Footer = () => {
           height={100}
           className="w-[150px] opacity-100 hidden sm:block h-[150px]"
         />
-      </div>
+      </div> */}
 
       {/* Dark overlay for background image */}
-      <div className="absolute inset-0 bg-black opacity-90 z-0">
+      <div className="absolute inset-0 bg-[#983532] opacity-90 z-0">
       </div>
 
       {/* Main Footer Content - positioned above the overlay */}

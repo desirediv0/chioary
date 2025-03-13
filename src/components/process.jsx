@@ -23,7 +23,7 @@ const WorkingProcess = () => {
                 <Image
                     src={gift}
                     alt="Background"
-                    width={200}
+                    width={150}
                     height={100}
                     className="opacity-100 hidden sm:block"
                 />

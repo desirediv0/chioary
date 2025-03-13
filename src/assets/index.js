@@ -24,7 +24,7 @@ import process1 from "./1.png";
 import process2 from "./2.png";
 import process3 from "./3.png";
 // import about1 from "./about-three-left-img-1.jpg"
-import about1 from "./cow.png"
+import about1 from "./cow1.png"
 // import about2 from "./about-three-right-img-1.png"
 import about2 from "./about2.jpeg"
 import course1 from "./courses-3-1.jpg";
@@ -34,9 +34,12 @@ import processbg from "./processbg-1.png";
 import square from "./process-one-shape-2.png";
 import world from "./world.png";
 import bgFooter from "./site-footer-three-bg.jpg";
-import gift from "./process-one-shape-3.png"
-import footerbg1 from "./site-footer-three-shape-1.png";
-import testibg from "./testimonial-three-shape-4.png";
+import gift from "./trisul-element-right-tilt.png"
+// import gift from "./process-one-shape-3.png"
+// import footerbg1 from "./site-footer-three-shape-1.png";
+import footerbg1 from "./trisul-element-right-tilt.png";
+// import testibg from "./testimonial-three-shape-4.png";
+import testibg from "./trisul-element-left-tilt.png";
 import ourteamlogo from "./team-three-shape-3.png";
 // import  bg  from "./project-one-bg.jpg";
 import girlbg from "./girl-bg.jpg";

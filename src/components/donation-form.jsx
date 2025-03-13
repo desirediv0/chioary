@@ -255,9 +255,9 @@ export default function DonationForm() {
                 <Image
                     src={footerbg1}
                     alt="Children in need"
-                    width={500}
-                    height={600}
-                    className="w-[200px] h-[200px] object-cover absolute top-0 right-[5rem] hidden sm:block"
+                    width={400}
+                    height={400}
+                    className="w-[150px] h-[150px] object-cover absolute top-0 right-[5rem] hidden sm:block"
                 />
             </div>
                         {/* Frequency selection */}
