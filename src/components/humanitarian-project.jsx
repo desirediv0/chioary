@@ -160,7 +160,7 @@ export default function HumanitarianProject() {
                 key={index}
                 onClick={() => scrollTo(index)}
                 className={cn(
-                  "w-3 h-3 rounded-full transition-all duration-300",
+                  "w-3 h-3 rounded-sm transition-all duration-300",
                   current === index ? "bg-[#983532] scale-110" : "bg-white/40 hover:bg-[#983532]/50",
                 )}
                 aria-label={`Go to slide ${index + 1}`}
