@@ -113,11 +113,11 @@ export function Service() {
           <div className="flex items-center justify-center gap-2">
             <div className="h-2 w-2 rounded-full bg-[#983532]" />
             <span className="text-sm font-semibold uppercase text-[#983532]">
-              Our Services
+              Our Vision
             </span>
           </div>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Our Mission and Service Areas
+            Our Vision Selfless Service
           </h2>
         </motion.div>
 
@@ -192,7 +192,7 @@ export function Service() {
             stiffness: 100,
           }}
         >
-          <AnimatedButton text="View All Services" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
+          <AnimatedButton text="View All" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
         </motion.div>
       </div>
     </section>

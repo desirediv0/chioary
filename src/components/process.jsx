@@ -30,9 +30,9 @@ const WorkingProcess = () => {
                 </div>
                 <div className="flex items-center justify-center gap-1 mb-4">
                     <div className="w-2 h-2 rounded-full bg-green-600"></div>
-                    <span className="text-gray-700 italic">Working Process</span>
+                    <span className="text-gray-700 italic">A Way of Life</span>
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900">Our Working Process</h2>
+                <h2 className="text-5xl font-bold text-gray-900">Seva, Shashwat, Shanti – A Way of Life</h2>
             </div>
             {/* Process Steps */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-20 relative">
@@ -47,9 +47,9 @@ const WorkingProcess = () => {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:mt-10 relative">
                     {[
-                        { img: process1, title: "Identifying Needs" },
-                        { img: process2, title: "Planning Solutions" },
-                        { img: process3, title: "Powerful And Inspiring" },
+                        { img: process1, title: "Seva", description: "Living with compassion and serving others without expecting anything in return." },
+                        { img: process2, title: "Satya", description:"Seeking and living in alignment with truth, wisdom, and higher consciousness." },
+                        { img: process3, title: "Shanti", description:"Cultivating inner peace, balance, and harmony with oneself and the universe." },
                     ].map((step, index) => (
                         <div
                             key={index}
@@ -72,7 +72,7 @@ const WorkingProcess = () => {
                             </div>
                             <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#983532] transition-transform duration-300 md:mt-10">{step.title}</h3>
                             <p className="text-center">
-                                We start by listening to communities and conducting thorough assessments
+                                {step.description}
                             </p>
                         </div>
                     ))}
