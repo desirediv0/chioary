@@ -18,7 +18,7 @@ export default function Header() {
     { name: "About", link: "/about" },
     { name: "Services", link: "/services" },
     { name: "Contact", link: "/contact" },
-    { name: "Blog", link: "/blog" },
+    { name: "Events", link: "/events" },
   ];
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function Header() {
           }`}
       >
         {/* Logo */}
-        <Image src="/logo.png" width={150} height={150} alt="Logo" />
+        <Image src="/logo.png" className="logo-shadow" width={160} height={160} alt="Logo" />
 
         {/* Mobile Menu Button */}
         <button

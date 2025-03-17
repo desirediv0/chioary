@@ -86,3 +86,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.logo-shadow{
+  filter: drop-shadow(2px 2px 2px #993432);
+}
