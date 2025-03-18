@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import { Footer } from "@/components/footer";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <BackgroundMusic src="/bg.mp3"/>
         <Footer />
       </body>
     </html>
