@@ -25,7 +25,7 @@ const BackgroundMusic = ({ src }) => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 bg-white p-3 rounded-full shadow-lg flex items-center">
+    <div className="fixed bottom-4 right-4 bg-white p-3 rounded-full shadow-lg flex items-center z-50">
       <button
         onClick={toggleMusic}
         className="p-3 bg-[#983532] text-white rounded-full text-lg"
