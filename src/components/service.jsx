@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { service1, service2, service3, world } from "@/assets";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
+import { useEffect, useState } from "react";
 
 const services = [
   {
@@ -80,6 +81,7 @@ const titleVariants = {
 };
 
 export function Service() {
+
   return (
     <section className="relative overflow-hidden bg-gray-50 py-20 bg-cover bg-center bg-no-repeat">
       {/* Background Pattern with Smooth Animation */}
