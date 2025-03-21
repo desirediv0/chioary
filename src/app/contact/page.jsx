@@ -1,18 +1,13 @@
-import Banner from '@/components/banner'
+
+import Breadcrumb from '@/components/Breadcrumb';
 import React from 'react'
 
 const Page = () => {
   return (
     <>
-
-    <Banner />
-
-
-
-
-
+      <Breadcrumb />
     </>
-  )
+  );
 }
 
 export default Page
