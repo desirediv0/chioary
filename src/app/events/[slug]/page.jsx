@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -16,7 +16,6 @@ import {
           FaUserAlt } from 'react-icons/fa'
 
 const Page = () => {
-  const [isReading, setIsReading] = useState(false);
   // Use state to handle category counts to ensure consistency between server and client
   const [categoryCounts] = useState({
     'Politics': 21,
@@ -26,18 +25,7 @@ const Page = () => {
     'Opinion': 12
   });
   
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setIsReading(true);
-      } else {
-        setIsReading(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   // Animation variants
   const fadeInUp = {
@@ -71,15 +59,6 @@ const Page = () => {
   return (
     <>
       <Breadcrumb title={"Blog Details"} Breadcrumb={"Home"} discription={"Blog Details"} />
-      
-      {/* Reading Progress Indicator */}
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 to-blue-500 z-50"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isReading ? 0.6 : 0 }}
-        style={{ transformOrigin: "left" }}
-        transition={{ ease: "easeOut" }}
-      />
       
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8">
@@ -360,24 +339,7 @@ const Page = () => {
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
-                <h3 className="text-xl font-bold mb-3">Subscribe to Newsletter</h3>
-                <p className="mb-4 text-purple-100">Get the latest news and updates delivered to your inbox</p>
-                <form className="space-y-3">
-                  <input 
-                    type="email" 
-                    placeholder="Your email address" 
-                    className="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-2 bg-white text-purple-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
-                  >
-                    Subscribe
-                  </motion.button>
-                </form>
-              </div>
+             
             </motion.div>
           </div>
         </div>

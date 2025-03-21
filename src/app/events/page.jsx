@@ -60,12 +60,16 @@ export default function EventsSchedule() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-16">
           {events.map((event) => (
-            <motion.div
+           <Link
+           key={event.id}
+           href={`/events/slug`}
+           >
+             <motion.div
               key={event.id}
               className="border border-gray-200 p-6 rounded-lg overflow-hidden"
               initial={{ backgroundColor: "white" }}
               whileHover={{
-                backgroundColor: "#f3f4f6", // gray-100
+                backgroundColor: "#f3f4f6",
                 scale: 1.03,
                 transition: {
                   duration: 0.3,
@@ -80,7 +84,7 @@ export default function EventsSchedule() {
               <div className="flex flex-col md:flex-row gap-6 group">
                 <div className="w-full md:w-1/3">
                   <Image
-                    src={event.image || "/placeholder.svg"}
+                    src={event.image }
                     alt={event.title}
                     width={300}
                     height={300}
@@ -119,6 +123,7 @@ export default function EventsSchedule() {
                 </div>
               </div>
             </motion.div>
+           </Link>
           ))}
         </div>
       </div>
