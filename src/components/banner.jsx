@@ -1,29 +1,21 @@
 "use client";
 
-import { slider1, slider2, sliderB, sliderB2, sliderB3, sliderB4 } from "@/assets";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { ArrowUpRight } from "lucide-react";
+import { girlbg, sliderB, sliderB2 } from "@/assets";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
 
 export const Banner = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const autoplayRef = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
-  const images = [sliderB, sliderB2, sliderB3, sliderB4];
+  const images = [girlbg, sliderB, sliderB2];
+  const intervalRef = useRef(null);
 
-  // Preload images to ensure they're available before rendering carousel
   useEffect(() => {
     const preloadImages = async () => {
       try {
-        // Create an array of promises for each image
         const imagePromises = images.map((src) => {
           return new Promise((resolve, reject) => {
             const img = new Image();
@@ -32,19 +24,30 @@ export const Banner = () => {
             img.onerror = reject;
           });
         });
-
-        // Wait for all images to load
         await Promise.all(imagePromises);
         setImagesLoaded(true);
       } catch (error) {
-        console.error("Failed to preload images:", error);
-        // Set images as loaded anyway to avoid blocking the UI
         setImagesLoaded(true);
       }
     };
 
     preloadImages();
   }, []);
+
+
+  useEffect(() => {
+    if (imagesLoaded) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 5000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [imagesLoaded, images.length]);
 
   // Animation variants
   const containerVariants = {
@@ -81,18 +84,31 @@ export const Banner = () => {
     },
   };
 
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
-      transition: { duration: 0.3 }
+  const imageVariants = {
+    enter: {
+      opacity: 0,
+      scale: 1.2
     },
-    tap: { scale: 0.95 }
+    center: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        opacity: { duration: 1 },
+        scale: { duration: 8 }
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 1.1,
+      transition: {
+        opacity: { duration: 1 },
+        scale: { duration: 2 }
+      }
+    }
   };
 
   const highlightVariants = {
-    initial: { color: "#FBBF24" },
+    initial: { color: "#F59E0B" },
     hover: {
       color: "#F59E0B",
       textShadow: "0px 0px 8px rgba(251, 191, 36, 0.6)",
@@ -101,136 +117,95 @@ export const Banner = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Image Container */}
       {imagesLoaded && (
-        <Carousel
-          plugins={[autoplayRef.current]}
-          className="w-screen"
-          onMouseEnter={() => autoplayRef.current.stop()}
-          onMouseLeave={() => autoplayRef.current.reset()}
-          opts={{
-            align: "center",
-            loop: true,
-            skipSnaps: false,
-            dragFree: false,
-          }}
-        >
-          <CarouselContent className="relative">
+        <div className="absolute inset-0 w-full h-full">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ duration: 1 }}
+            className="absolute w-full h-full bg-black inset-0 z-10"
+          />
+          <AnimatePresence mode="sync">
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ duration: 1 }}
-              className="absolute w-full h-full bg-black inset-0 z-10"
-            />
-            {images.map((image, index) => (
-              <CarouselItem key={index} className="flex justify-center">
-                <div className="relative h-[80vh] w-full sm:h-[90vh] md:h-[100vh] lg:h-[120vh]">
-                  <Image
-                    src={image}
-                    alt={`banner-${index + 1}`}
-                    fill
-                    className="object-cover object-center animate-slowZoom"
-                    priority={true}
-                    sizes="100vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+              key={currentIndex}
+              variants={imageVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={images[currentIndex]}
+                alt={`banner-${currentIndex}`}
+                fill
+                className="object-cover object-center"
+                priority={true}
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       )}
 
-      <section className="absolute inset-0 z-20 flex items-center">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-8 lg:gap-12">
-            <motion.div
-              className="w-full lg:w-2/5 text-left space-y-4 md:space-y-6 lg:space-y-8 p-4 lg:p-10"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
+      {/* Content */}
+      <section className="absolute inset-0 z-20 flex items-center justify-center md:mt-[5%]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto text-center space-y-6 lg:space-y-8 p-4"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight md:leading-[1.3]"
+              variants={headingVariants}
             >
+              सर्वे भवन्तु सुखिनः{" "}
+              <br />
               <motion.span
-                className="text-white font-semibold uppercase text-xs sm:text-sm tracking-wider"
-                variants={itemVariants}
+                className="text-[#F59E0B]"
+                variants={highlightVariants}
+                initial="initial"
+                whileHover="hover"
               >
-                Charity Foundation Non Profit
+                सर्वे सन्तु निरामयाः।
               </motion.span>
-
-              <motion.h1
-                className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-white leading-tight"
-                variants={headingVariants}
+              <br />
+              सर्वे भद्राणि पश्यन्तु{" "}
+              <br />
+              <motion.span
+                className="text-[#F59E0B]"
+                variants={highlightVariants}
+                initial="initial"
+                whileHover="hover"
               >
-                Your{" "}
-                <motion.span
-                  className="text-yellow-400"
-                  variants={highlightVariants}
-                  initial="initial"
-                  whileHover="hover"
-                >
-                  Compassion
-                </motion.span>
-                <br className="hidden sm:block" />
-                Their Hope
-              </motion.h1>
+                मा कश्चित् दुःखभाग्भवेत्॥
+              </motion.span>
+            </motion.h1>
 
-              <motion.p
-                className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl"
-                variants={itemVariants}
-              >
-                Your Compassion Their Hope Is A Powerful And Inspiring Choice
-                For Your Charity Website. It Effectively Captures The Essence Of
-                Your Mission And The Impact Of Support.
-              </motion.p>
-
-              <AnimatedButton text="Donate Now" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} />
-            </motion.div>
-
-            {/* Right Images */}
-            <motion.div
-              className="hidden lg:block w-full lg:w-full relative"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+            <motion.p
+              className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto"
+              variants={itemVariants}
             >
-              <div className="relative w-[400px] h-[400px] xl:w-[500px] xl:h-[500px] mx-auto">
-                <motion.div
-                  className="absolute inset-0 rounded-full top-[15%]"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    duration: 1,
-                    delay: 0.8,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                >
-                  <Image
-                    src={slider1}
-                    alt="Primary charity image"
-                    fill
-                    className="z-50 object-cover"
-                    priority={true}
-                  />
-                </motion.div>
-                <motion.div
-                  className="absolute z-10 overflow-hidden -top-1/3 w-[300px] h-[300px] xl:w-[650px] xl:h-[750px]"
-                  initial={{ x: 200, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 1.2, delay: 1 }}
-                >
-                  <Image
-                    src={slider2}
-                    alt="Secondary charity image"
-                    fill
-                    className="object-cover"
-                    priority={true}
-                  />
-                </motion.div>
-              </div>
+              सभी सुखी रहें, सभी निरोगी रहें, सभी शुभ चीजें देखें, और कोई भी दुखी न हो।
+            </motion.p>
+
+            <motion.div
+              className="w-full flex justify-center"
+              variants={itemVariants}
+            >
+              <AnimatedButton
+                text="Donate Now"
+                icon={<MdArrowOutward />}
+                className="py-[8px] md:py-[10px] text-white"
+                className2="text-white"
+              />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

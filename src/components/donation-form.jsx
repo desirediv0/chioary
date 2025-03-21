@@ -198,7 +198,7 @@ export default function DonationForm() {
                         />
                     </motion.div>
                     <motion.div className="absolute bottom-0 left-0 p-8 z-20" variants={containerVariants}>
-                        <motion.div className="flex items-center mb-4" variants={itemVariants}>
+                        {/* <motion.div className="flex items-center mb-4" variants={itemVariants}>
                             <motion.div
                                 className="w-10 h-10 mr-2"
                                 initial={{ rotate: -180, opacity: 0 }}
@@ -228,7 +228,7 @@ export default function DonationForm() {
                                     oary
                                 </motion.span>
                             </motion.span>
-                        </motion.div>
+                        </motion.div> */}
                         <motion.h1 className="text-4xl md:text-5xl font-bold" variants={headingVariants}>
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
@@ -255,9 +255,9 @@ export default function DonationForm() {
                 <Image
                     src={footerbg1}
                     alt="Children in need"
-                    width={500}
-                    height={600}
-                    className="w-[200px] h-[200px] object-cover absolute top-0 right-[5rem] hidden sm:block"
+                    width={400}
+                    height={400}
+                    className="w-[150px] h-[150px] object-cover absolute top-0 right-[5rem] hidden sm:block"
                 />
             </div>
                         {/* Frequency selection */}

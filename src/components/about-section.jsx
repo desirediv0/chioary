@@ -13,8 +13,11 @@ import { MdArrowOutward } from "react-icons/md";
 
 const features = [
   { icon: GraduationCap, label: "Education" },
-  { icon: Droplets, label: "Water" },
-  { icon: Stethoscope, label: "Medical" },
+  { icon: Droplets, label: "Malnutrition" },
+  { icon: Stethoscope, label: "Mental Wellness" },
+  { icon: Stethoscope, label: "Spritiual Growth" },
+  { icon: Stethoscope, label: "Cow Protection" },
+  { icon: Stethoscope, label: "Social Responsibilty" },
 ];
 
 export default function AboutSection() {
@@ -35,14 +38,12 @@ export default function AboutSection() {
             </div>
             <div className="flex items-center">
               <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-              <span className="ml-2 text-gray-800 font-medium">Our About</span>
+              <span className="ml-2 text-gray-800 font-medium">About Us</span>
             </div>
           </div>
 
           <h1 className="text-4xl md:text-4xl font-bold text-gray-900 leading-tight">
-            Empowering Lives
-            <br />
-            Through Compassion.
+            About Adyashakti Parmarth Niketan Trust
           </h1>
 
           <div className="flex flex-col gap-6 md:flex-row">
@@ -55,12 +56,10 @@ export default function AboutSection() {
             />
             <div className="flex flex-col items-center md:px-4">
               <p className="text-gray-500 ">
-                &quot;Empowering Lives Through Compassion&quot; is a powerful
-                and inspiring heading that perfectly captures the essence of
-                your charity&apos;s mission. It’s a great choice.
+              At Adyashakti Parmarth Niketan Trust, we believe that service to humanity is the highest form of devotion. As a religious charitable trust and non-profit organization, our purpose is to uplift society through education, nourishment, mental wellness, spiritual growth, and Gau Seva (cow protection).
               </p>
 
-              <div className="grid grid-cols-3  mr-auto md:mx-auto  gap-4 py-6">
+              {/* <div className="grid grid-cols-3  mr-auto md:mx-auto  gap-4 py-6">
                 {features.map(({ icon: Icon, label }, index) => (
                   <div
                     key={index}
@@ -72,9 +71,9 @@ export default function AboutSection() {
                     <span className="text-gray-800 font-medium">{label}</span>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
-              <span className="mr-auto"> <AnimatedButton text={"Read More"} icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} /></span>
+              <span className="mr-auto pt-4 md:pt-5"> <AnimatedButton text={"Read More"} icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} /></span>
             </div>
           </div>
         </div>
@@ -109,9 +108,9 @@ export default function AboutSection() {
                         d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
                       />
                     </defs>
-                    <text className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] fill-gray-800">
+                    <text className="text-xs sm:text-sm font-bold uppercase tracking-[0.0em] fill-gray-800">
                       <textPath href="#textPath" startOffset="0%">
-                        YEARS OF EXPERIENCE • YEARS OF EXCELLENCE •
+                      • We exists for selfless service •
                       </textPath>
                     </text>
                   </svg>
@@ -119,7 +118,7 @@ export default function AboutSection() {
 
                 {/* Center Circle */}
                 <motion.div
-                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-black rounded-full flex justify-center items-center shadow-lg"
+                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-[#983532] rounded-full flex justify-center items-center shadow-lg"
                   initial={{ scale: 0.8 }}
                   animate={{
                     boxShadow: [
@@ -134,9 +133,9 @@ export default function AboutSection() {
                     repeatType: "reverse",
                   }}
                 >
-                  <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
+                  {/* <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
                     25+
-                  </span>
+                  </span> */}
                 </motion.div>
               </div>
             </div>

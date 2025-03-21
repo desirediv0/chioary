@@ -122,7 +122,7 @@ export default function Testimonials() {
                 repeatType: "reverse",
               }}
             >
-              <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">25+</span>
+              {/* <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">25+</span> */}
             </motion.div>
           </div>
         </div>

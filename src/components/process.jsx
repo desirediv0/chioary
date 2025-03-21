@@ -23,16 +23,16 @@ const WorkingProcess = () => {
                 <Image
                     src={gift}
                     alt="Background"
-                    width={200}
+                    width={150}
                     height={100}
                     className="opacity-100 hidden sm:block"
                 />
                 </div>
                 <div className="flex items-center justify-center gap-1 mb-4">
                     <div className="w-2 h-2 rounded-full bg-green-600"></div>
-                    <span className="text-gray-700 italic">Working Process</span>
+                    <span className="text-gray-700 italic">A Way of Life</span>
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900">Our Working Process</h2>
+                <h2 className="text-5xl font-bold text-gray-900">Seva, Shashwat, Shanti – A Way of Life</h2>
             </div>
             {/* Process Steps */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-20 relative">
@@ -47,9 +47,9 @@ const WorkingProcess = () => {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:mt-10 relative">
                     {[
-                        { img: process1, title: "Identifying Needs" },
-                        { img: process2, title: "Planning Solutions" },
-                        { img: process3, title: "Powerful And Inspiring" },
+                        { img: process1, title: "Seva", description: "Living with compassion and serving others without expecting anything in return." },
+                        { img: process2, title: "Satya", description:"Seeking and living in alignment with truth, wisdom, and higher consciousness." },
+                        { img: process3, title: "Shanti", description:"Cultivating inner peace, balance, and harmony with oneself and the universe." },
                     ].map((step, index) => (
                         <div
                             key={index}
@@ -57,7 +57,7 @@ const WorkingProcess = () => {
                                 }`}
                         >
                             <div className="relative ">
-                                <div className="w-64 h-64 rounded-full overflow-hidden border-b-8 border-[#f7c27f] group-hover:border-[var(--custom-color)] mb-6 relative">
+                                <div className="w-64 h-64 rounded-full overflow-hidden border-b-8 border-[#983532] group-hover:border-[var(--custom-color)] mb-6 relative">
                                     <Image
                                         src={step.img}
                                         width={100}
@@ -65,14 +65,14 @@ const WorkingProcess = () => {
                                         alt={step.title}
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110  "
                                     />
-                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white h-32 w-32 flex items-start p-3 justify-center rounded-full group-hover:bg-[#FFA415] transition-transform duration-300 ">
+                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white h-32 w-32 flex items-start p-3 justify-center rounded-full group-hover:bg-[#983532] transition-transform duration-300 ">
                                     Step 0{index + 1}
                                 </div>
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#FFA415] transition-transform duration-300 md:mt-10">{step.title}</h3>
+                            <h3 className="text-2xl font-bold text-center mb-2 group-hover:text-[#983532] transition-transform duration-300 md:mt-10">{step.title}</h3>
                             <p className="text-center">
-                                We start by listening to communities and conducting thorough assessments
+                                {step.description}
                             </p>
                         </div>
                     ))}
