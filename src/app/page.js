@@ -1,5 +1,5 @@
 import AboutSection from "@/components/about-section";
-import { Banner } from "@/components/banner";
+import { Banner } from "@/components/hero";
 import CharityPage from "@/components/charity-page";
 import DonationForm from "@/components/donation-form";
 import HumanitarianProject from "@/components/humanitarian-project";
