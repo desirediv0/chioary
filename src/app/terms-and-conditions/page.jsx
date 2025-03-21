@@ -60,9 +60,9 @@ const TermsAndConditionsPage = () => {
               <p className="text-gray-700">
                 For any questions about these Terms, please contact us at:
                 <br />
-                Email: support@example.com
+                Email: adyashakti@gmail.com
                 <br />
-                Phone: (555) 123-4567
+                Phone:  (239) 555-0108
               </p>
             </section>
           </div>

@@ -65,9 +65,9 @@ const PrivacyPolicyPage = () => {
               <p className="text-gray-700">
                 If you have any questions about this Privacy Policy, please contact us:
                 <br />
-                Email: privacy@example.com
+                Email: adyashakti@gmail.com
                 <br />
-                Phone: (555) 123-4567
+                Phone:  (239) 555-0108
               </p>
             </section>
           </div>

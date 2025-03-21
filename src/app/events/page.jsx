@@ -113,10 +113,10 @@ export default function EventsSchedule() {
                         href="/events/slug"
                       >
                     <div className="flex items-center gap-6">
-                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-gray-300 group-hover:bg-red-500 group-hover:text-white  transition-colors">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-gray-300 group-hover:bg-[#983532] group-hover:text-white  transition-colors">
                           <ArrowRight className="h-5 w-5  " />
                         </div>
-                        <span className="group-hover:text-red-500">Read More</span>
+                        <span className="group-hover:text-[#983532]">Read More</span>
                     </div>
                       </Link>
                   </div>
