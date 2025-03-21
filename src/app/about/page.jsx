@@ -1,16 +1,14 @@
 "use client"
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
-
 import Breadcrumb from "@/components/Breadcrumb";
 import {  about1 } from "@/assets";
 import { IoEarthOutline } from "react-icons/io5";
-
 import AboutSection from "@/components/about-section";
 import { IndianRupee, User } from "lucide-react";
 import Testimonials from "@/components/ui/cases-with-infinite-scroll";
 import MissionImpactSection from "@/components/MissionImpactSection";
+import OurImpactSection from "@/components/ourimpact";
 
 
 export default function Page() {
@@ -18,7 +16,7 @@ export default function Page() {
     <>
       <Breadcrumb title={"About"} Breadcrumb={"Home"} discription={"About"} />
       <AboutSection show={false} />
-      {/* About Section */}
+      <OurImpactSection />
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           {/* Main grid container replacing flex layout */}
@@ -114,14 +112,8 @@ export default function Page() {
           </div>
         </div>
       </div>
-
-      <Testimonials />
- {/* Mission & Impact */}
     <MissionImpactSection/>
-
-     
-
-     
+      <Testimonials />
     </>
   );
 }
