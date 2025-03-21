@@ -1,12 +1,18 @@
+"use client"
+
 import Breadcrumb from '@/components/Breadcrumb';
+import Image from 'next/image';
 import React from 'react'
 
-const page = () => {
+const Page = () => {
+
   return (
-    <div>
-      <Breadcrumb  />
-    </div>
+    <>
+      <Breadcrumb title={"Events"}  Breadcrumb={"Home"} discription={"Events"}/>
+
+    
+    </>
   );
 }
 
-export default page
+export default Page

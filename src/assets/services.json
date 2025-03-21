@@ -1,0 +1,29 @@
+[
+    {
+      "icon": "Droplets",
+      "title": "Education",
+      "description": "We firmly believe that education is the most powerful tool for change.",
+      "image": "/images/service1.jpg",
+      "bgColor": "bg-[#1a2721]",
+      "textColor": "text-white",
+      "accentColor": "bg-[#FFA500]"
+    },
+    {
+      "icon": "GraduationCap",
+      "title": "Fighting Malnutrition",
+      "description": "A well-fed body leads to a strong mind and a productive life.",
+      "image": "/images/service2.jpg",
+      "bgColor": "bg-white",
+      "textColor": "text-black",
+      "accentColor": "bg-[#1a2721]"
+    },
+    {
+      "icon": "UtensilsCrossed",
+      "title": "Mental Wellness",
+      "description": "Mental well-being is just as important as physical health.",
+      "image": "/images/service3.jpg",
+      "bgColor": "bg-white",
+      "textColor": "text-black",
+      "accentColor": "bg-[#1a2721]"
+    }
+  ]

@@ -186,10 +186,10 @@ export const Footer = () => {
               Quick Links
             </motion.h3>
             <ul className="space-y-2 sm:space-y-4">
-              {["About Us", "Our Services", "Our Team", "Our Blog", "Contact Us"].map((text, index) => (
+              {["About Us", "Our Services", "Our Team", "Vision", "Contact Us"].map((text, index) => (
                 <motion.li key={index} variants={itemVariants} custom={index} whileHover={{ x: 5 }}>
                   <Link
-                    href="#"
+                    href="/"
                     className="text-gray-300 hover:text-[var(--custom-color-4)] transition-colors inline-block"
                   >
                     <motion.span initial={{ width: 0 }} whileHover={{ width: "100%" }} className="relative">
