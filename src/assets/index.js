@@ -44,6 +44,7 @@ import ourteamlogo from "./team-three-shape-3.png";
 // import  bg  from "./project-one-bg.jpg";
 import girlbg from "./girl-bg.jpg";
 import portraitwoman from "./portrait-woman.jpg";
+import contactimg from "./contact-1.png"
 
 export {
   logo,
@@ -82,5 +83,6 @@ export {
   ourteamlogo,
   // bg
   girlbg,
-  portraitwoman
+  portraitwoman,
+  contactimg
 };
