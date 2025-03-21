@@ -4,10 +4,25 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react"
 import { motion } from "framer-motion"
-import { bgFooter, footerbg1, logo, sliderB2 } from "@/assets"
+import { sliderB2 } from "@/assets"
 import Image from "next/image"
 
-// Custom hook to detect when element is in viewport
+
+const Data = [
+  {
+    id: 1,
+    title: "Privacy Policy",
+    link: "/privacy-policy"
+  },
+  {
+    id: 2,
+    title: "Terms and Conditions",
+    link: "/terms-and-conditions"
+  },
+]
+
+
+
 function useInView(options = {}) {
   const ref = useRef(null)
   const [isInView, setIsInView] = useState(false)
@@ -33,8 +48,6 @@ function useInView(options = {}) {
 
 export const Footer = () => {
   const [footerRef, isFooterInView] = useInView({ threshold: 0.1 })
-
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -365,10 +378,10 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} Adyashakti. All Rights Reserved. Designed with ❤ by <Link href="https://desirediv.com">Desire Div</Link>
           </motion.p>
           <motion.ul className="flex gap-3 sm:gap-4 mt-3 sm:mt-0 text-sm sm:text-base" variants={itemVariants}>
-            {["Terms of Service", "Privacy Policy"].map((text, index) => (
+            {Data.map((text, index) => (
               <motion.li key={index} variants={itemVariants} whileHover={{ scale: 1.05 }}>
-                <Link href="/" className="transition-colors hover:text-[var(--custom-color-4)]">
-                  {text}
+                <Link href={text.link} className="transition-colors hover:text-[var(--custom-color-4)]">
+                  {text.title}
                 </Link>
               </motion.li>
             ))}

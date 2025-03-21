@@ -45,6 +45,10 @@ import ourteamlogo from "./team-three-shape-3.png";
 import girlbg from "./girl-bg.jpg";
 import portraitwoman from "./portrait-woman.jpg";
 import contactimg from "./contact-1.png"
+import event1 from "./event-1.jpg"
+import event2 from "./event-2.jpg"  
+import event3 from "./event-3.jpg"
+import event4 from "./event-4.jpg"
 
 export {
   logo,
@@ -84,5 +88,9 @@ export {
   // bg
   girlbg,
   portraitwoman,
-  contactimg
+  contactimg,
+  event1,
+  event2,
+  event3,
+  event4
 };
