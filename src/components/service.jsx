@@ -1,45 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, Droplets, GraduationCap, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
-import { service1, service2, service3, world } from "@/assets";
+import {  world } from "@/assets";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { services } from "@/lib/data";
 
-const services = [
-  {
-    icon: <Droplets />,
-    title: "Education",
-    description:
-      "We firmly believe that education is the most powerful tool for change.",
-    image: service1,
-    bgColor: "bg-[#1a2721]",
-    textColor: "text-white",
-    accentColor: "bg-[#FFA500]",
-  },
-  {
-    icon: <GraduationCap />,
-    title: "Fighting Malnutrition",
-    description:
-      "A well-fed body leads to a strong mind and a productive life.",
-    image: service2,
-    bgColor: "bg-white",
-    textColor: "text-black",
-    accentColor: "bg-[#1a2721]",
-  },
-  {
-    icon: <UtensilsCrossed />,
-    title: "Mental Wellness",
-    description:
-      "Mental well-being is just as important as physical health.",
-    image: service3,
-    bgColor: "bg-white",
-    textColor: "text-black",
-    accentColor: "bg-[#1a2721]",
-  },
-];
+
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -80,8 +49,10 @@ const titleVariants = {
   },
 };
 
-export function Service() {
-
+export function Service( { limit, show = true }) {
+  const serviceData = services ? services.slice(0, limit) : services;
+  
+       
   return (
     <section className="relative overflow-hidden bg-gray-50 py-20 bg-cover bg-center bg-no-repeat">
       {/* Background Pattern with Smooth Animation */}
@@ -130,7 +101,7 @@ export function Service() {
           animate="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {services.map((service, index) => (
+          {serviceData.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -194,7 +165,15 @@ export function Service() {
             stiffness: 100,
           }}
         >
-          <AnimatedButton text="View All" icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white  capitalize"} className2={" text-white"} />
+          
+          
+          {show &&  <AnimatedButton
+            text="View All"
+            icon={<MdArrowOutward />}
+            className={"py-[8px] md:py-[10px]  text-white  capitalize"}
+            className2={" text-white"}
+            href={"/vision"}
+          />}
         </motion.div>
       </div>
     </section>

@@ -13,7 +13,7 @@ export default function Home() {
     <>
           <Banner />
       <AboutSection />
-      <Service />
+      <Service limit={3}/>
     {/* <CharityPage /> */}
     <HumanitarianProject />
     <WorkingProcess />

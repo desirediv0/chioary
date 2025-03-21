@@ -1,13 +1,20 @@
 "use client"
 
 import Breadcrumb from '@/components/Breadcrumb';
+import { Service } from '@/components/service';
 import React from 'react'
 
 const Page = () => {
   return (
     <>
       <div>
-        <Breadcrumb />
+        <Breadcrumb
+          title={"Our Vision"}
+          Breadcrumb={"Home"}
+          discription={"Our Vision"}
+        />
+        <Service show={false} />
+        
       </div>
     </>
   );

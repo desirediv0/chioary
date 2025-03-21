@@ -4,7 +4,7 @@ import {
   GraduationCap,
   Droplets,
   Stethoscope,
-  ArrowUpRight,
+
 } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -20,7 +20,7 @@ const features = [
   { icon: Stethoscope, label: "Social Responsibilty" },
 ];
 
-export default function AboutSection() {
+export default function AboutSection({show =true}) {
   return (
     <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24 ">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -56,7 +56,11 @@ export default function AboutSection() {
             />
             <div className="flex flex-col items-center md:px-4">
               <p className="text-gray-500 ">
-              At Adyashakti Parmarth Niketan Trust, we believe that service to humanity is the highest form of devotion. As a religious charitable trust and non-profit organization, our purpose is to uplift society through education, nourishment, mental wellness, spiritual growth, and Gau Seva (cow protection).
+                At Adyashakti Parmarth Niketan Trust, we believe that service to
+                humanity is the highest form of devotion. As a religious
+                charitable trust and non-profit organization, our purpose is to
+                uplift society through education, nourishment, mental wellness,
+                spiritual growth, and Gau Seva (cow protection).
               </p>
 
               {/* <div className="grid grid-cols-3  mr-auto md:mx-auto  gap-4 py-6">
@@ -73,7 +77,20 @@ export default function AboutSection() {
                 ))}
               </div> */}
 
-              <span className="mr-auto pt-4 md:pt-5"> <AnimatedButton text={"Read More"} icon={<MdArrowOutward />} className={"py-[8px] md:py-[10px]  text-white "} className2={" text-white"} /></span>
+              {show && (
+                
+                <span className="mr-auto pt-4 md:pt-5">
+                  {" "}
+                  <AnimatedButton
+                    text={"Read More"}
+                    icon={<MdArrowOutward />}
+                    className={"py-[8px] md:py-[10px]  text-white "}
+                    className2={" text-white"}
+                  href={"/about"}
+                  />
+
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -83,8 +100,6 @@ export default function AboutSection() {
             {/* // Replace the existing motion.div with this updated version */}
 
             <div className="absolute -top-5 lg:left-0 md:left-10  left-0 w-28 h-28">
-
-
               {/* Rotating text */}
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-36 md:h-56  flex justify-center items-center ">
                 {/* Rotating Text Border */}
@@ -110,7 +125,7 @@ export default function AboutSection() {
                     </defs>
                     <text className="text-xs sm:text-sm font-bold uppercase tracking-[0.0em] fill-gray-800">
                       <textPath href="#textPath" startOffset="0%">
-                      • We exists for selfless service •
+                        • We exists for selfless service •
                       </textPath>
                     </text>
                   </svg>

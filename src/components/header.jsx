@@ -80,18 +80,25 @@ export default function Header() {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={`mx-auto flex flex-wrap bg-white justify-between items-center p-4 md:p-4 transition-all duration-300 ${isScrolled
+        className={`mx-auto flex flex-wrap bg-white justify-between items-center p-4 md:p-4 transition-all duration-300 ${
+          isScrolled
             ? "w-full bg-[var(--black)] border-none"
             : "w-[90%] mx-auto mt-4 md:rounded-full rounded-md border border-gray-400"
-          }`}
+        }`}
       >
         {/* Logo */}
-        <Image src="/logo.png" className="logo-shadow" width={160} height={160} alt="Logo" />
+        <Image
+          src="/logo.png"
+          className="logo-shadow"
+          width={160}
+          height={160}
+          alt="Logo"
+        />
 
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-white z-50"
+          className="md:hidden text-black z-50"
           aria-label="Toggle menu"
         >
           <svg
@@ -130,7 +137,13 @@ export default function Header() {
                 exit="closed"
               >
                 <div className="flex justify-between items-center mb-8">
-                  <Image src={logo} width={120} height={120} alt="Logo" />
+                  <Image
+                    src="/logo.png"
+                    className="logo-shadow"
+                    width={160}
+                    height={160}
+                    alt="Logo"
+                  />
                 </div>
                 <ul className="flex flex-col space-y-4 mt-8">
                   {navItems.map((item, index) => (
@@ -143,7 +156,7 @@ export default function Header() {
                     >
                       <Link
                         href={item.link}
-                        className="text-xl hover:text-yellow-500 transition-colors block py-2"
+                        className="text-xl text-white hover:text-yellow-500 transition-colors block py-2"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.name}
@@ -156,6 +169,7 @@ export default function Header() {
                   <AnimatedButton
                     text={"Donate Now"}
                     icon={<MdArrowOutward />}
+                    href={"/contact"}
                   />
                 </div>
               </motion.div>
@@ -184,7 +198,7 @@ export default function Header() {
         </div>
 
         {/* Donation Button - Desktop */}
-        <div className="hidden md:block">
+        <div className="hidden md:block ">
           <AnimatedButton text={"Donate Now"} icon={<MdArrowOutward />} />
         </div>
       </motion.div>
