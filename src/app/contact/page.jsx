@@ -55,8 +55,9 @@ const Page = () => {
             Get In Touch!
           </motion.h2>
           <div className="flex flex-col  items-start justify-start gap-2">
-          <p className="text-gray-600">2118 Thornridge Cir. Syracuse, Connecticut 35624.</p>
-          <Link href="mailto:info@gmail.com" className="text-[#983532] font-semibold hover:underline">Info@Gmail.Com</Link>
+          <p className="text-gray-600">4517 Washington Ave Manchester, Kentucky 39495.</p>
+          <Link href="mailto:adyashakti@gmail.com" className="text-[#983532] font-semibold hover:underline">adyashakti@gmail.com</Link>
+          <Link href="telto:(239) 555-0108" className="text-[#983532] font-semibold hover:underline">(239) 555-0108</Link>
           </div>
           <motion.div
             initial={{ opacity: 2 }}

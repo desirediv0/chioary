@@ -83,7 +83,7 @@ const Page = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <div className="flex flex-wrap gap-3 mb-3">
-                  <span className="px-3 py-1 bg-purple-600 rounded-full text-sm font-medium">Politics</span>
+                  <span className="px-3 py-1 bg-[#983532] rounded-full text-sm font-medium">Politics</span>
                   <span className="px-3 py-1 bg-blue-600 rounded-full text-sm font-medium">Election</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
@@ -128,7 +128,7 @@ const Page = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-gray-900 border-l-4 border-purple-600 pl-4"
+                    className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-gray-900 border-l-4 border-[#983532] pl-4"
                   >
                     #1. What is Lorem Ipsum?
                   </motion.h2>
@@ -141,7 +141,7 @@ const Page = () => {
                   </p>
                   
                   <div className="my-8 relative">
-                    <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-purple-600 to-blue-500"></div>
+                    <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-[#983532] to-border-[#983532]"></div>
                     <blockquote className="pl-6 py-2 italic text-xl text-gray-700 font-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry is standard dummy text ever since the 1500s</blockquote>
                       <footer className="text-right text-sm text-gray-500 mt-2">— Political Analyst</footer>
                   </div>
@@ -173,7 +173,7 @@ const Page = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-gray-900 border-l-4 border-purple-600 pl-4"
+                    className="text-2xl sm:text-3xl font-bold mt-10 mb-6 text-gray-900 border-l-4 border-[#983532] pl-4"
                   >
                     #2. Why do we use it?
                   </motion.h2>
@@ -292,7 +292,7 @@ const Page = () => {
                         />
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 line-clamp-2 hover:text-purple-600 transition-colors">
+                        <h4 className="font-medium text-gray-900 line-clamp-2 hover:text-[#983532] transition-colors">
                           <Link href="/">The Political Landscape After the Election</Link>
                         </h4>
                         <p className="text-sm text-gray-500 mt-1">March {10 + item}, 2025</p>
@@ -312,7 +312,7 @@ const Page = () => {
                     >
                       <Link 
                         href="/" 
-                        className="flex justify-between items-center text-gray-700 hover:text-purple-600 transition-colors"
+                        className="flex justify-between items-center text-gray-700 hover:text-[#983532] transition-colors"
                       >
                         <span>{category}</span>
                         <span className="bg-gray-100 text-gray-600 text-xs rounded-full px-2 py-1">
