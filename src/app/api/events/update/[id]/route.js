@@ -6,6 +6,9 @@ import { deleteFromS3 } from "../../../../../../utils/deleteFromS3";
 import slugify from 'slugify';
 import { authOptions } from "@/app/api/(user)/auth/[...nextauth]/authOptions";
 
+// This prevents static generation for this route
+export const dynamic = 'force-dynamic';
+
 export async function PUT(request, { params }) {
     // Track newly uploaded files for cleanup in case of error
     const uploadedFiles = [];

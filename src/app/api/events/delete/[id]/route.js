@@ -4,6 +4,9 @@ import { prisma } from "../../../../../../prisma/client";
 import { authOptions } from "@/app/api/(user)/auth/[...nextauth]/authOptions";
 import { deleteFromS3 } from "../../../../../../utils/deleteFromS3";
 
+// This prevents static generation for this route
+export const dynamic = 'force-dynamic';
+
 export async function DELETE(request, { params }) {
     try {
         // Check authentication

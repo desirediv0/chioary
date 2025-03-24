@@ -6,7 +6,6 @@ import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
-import Link from "next/link";
 
 export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -206,7 +205,7 @@ export const Banner = () => {
                 className2="text-white"
                 href={"/contact"}
               />
-             
+
             </motion.div>
           </motion.div>
         </div>

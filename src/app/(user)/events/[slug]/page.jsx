@@ -10,11 +10,7 @@ import {
   Clock,
   MapPin,
   User,
-  Share2,
   ChevronLeft,
-  Facebook,
-  Twitter,
-  Linkedin,
   ExternalLink,
 } from 'lucide-react'
 import { getImageUrl } from '../../../../../utils/imageHelpers'
@@ -25,8 +21,6 @@ const Page = ({ params }) => {
   const [error, setError] = useState(null);
   const [isClient, setIsClient] = useState(false);
 
-  // Set common tags for events
-  const suggestedTags = ['Conference', 'Seminar', 'Workshop', 'Community', 'Education'];
 
   useEffect(() => {
     setIsClient(true);

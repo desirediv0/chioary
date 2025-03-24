@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import { uploadToS3 } from "../../../../../utils/imageHelpers";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
 import { spacesBucketName } from "../../../../../utils/s3bucket";
+import { authOptions } from "../../(user)/auth/[...nextauth]/authOptions";
+
+// This prevents static generation for this route
+export const dynamic = 'force-dynamic';
 
 export async function POST(request) {
     try {

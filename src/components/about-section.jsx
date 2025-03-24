@@ -11,16 +11,8 @@ import { motion } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
 
-const features = [
-  { icon: GraduationCap, label: "Education" },
-  { icon: Droplets, label: "Malnutrition" },
-  { icon: Stethoscope, label: "Mental Wellness" },
-  { icon: Stethoscope, label: "Spritiual Growth" },
-  { icon: Stethoscope, label: "Cow Protection" },
-  { icon: Stethoscope, label: "Social Responsibilty" },
-];
 
-export default function AboutSection({show =true}) {
+export default function AboutSection({ show = true }) {
   return (
     <section className=" md:max-w-6xl max-w-2xl mx-auto px-4 py-16 md:py-24 ">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -63,22 +55,8 @@ export default function AboutSection({show =true}) {
                 spiritual growth, and Gau Seva (cow protection).
               </p>
 
-              {/* <div className="grid grid-cols-3  mr-auto md:mx-auto  gap-4 py-6">
-                {features.map(({ icon: Icon, label }, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center space-y-3"
-                  >
-                    <div className="p-4 border border-gray-200 rounded-b-full hover:bg-yellow-500 hover:text-white transition-colors duration-500 ease-in-out">
-                      <Icon className="w-6 h-6 text-gray-500" />
-                    </div>
-                    <span className="text-gray-800 font-medium">{label}</span>
-                  </div>
-                ))}
-              </div> */}
-
               {show && (
-                
+
                 <span className="mr-auto pt-4 md:pt-5">
                   {" "}
                   <AnimatedButton
@@ -86,7 +64,7 @@ export default function AboutSection({show =true}) {
                     icon={<MdArrowOutward />}
                     className={"py-[8px] md:py-[10px]  text-white "}
                     className2={" text-white"}
-                  href={"/about"}
+                    href={"/about"}
                   />
 
                 </span>

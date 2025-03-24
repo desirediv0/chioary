@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
 import { Card } from "@/components/ui/card"
-import { Calendar, Image as ImageIcon, Clock, ChevronRight, FilePlus } from 'lucide-react'
+import { Calendar, Clock } from 'lucide-react'
 
 const Dashboard = () => {
     const { data: session, status } = useSession()
@@ -13,7 +11,6 @@ const Dashboard = () => {
         totalEvents: 0,
         upcomingEvents: 0,
     })
-    const [recentEvents, setRecentEvents] = useState([])
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -26,8 +23,7 @@ const Dashboard = () => {
                     event => new Date(event.startDate) > now
                 ).length
 
-                // Set recent events for display
-                setRecentEvents(eventsData.events.slice(0, 3))
+
 
                 setStats({
                     totalEvents: eventsData.pagination.total,
@@ -83,62 +79,6 @@ const Dashboard = () => {
                         <h3 className="text-3xl font-bold">{stats.upcomingEvents}</h3>
                     </div>
                 </Card>
-
-
-            </div>
-
-            {/* Quick Actions */}
-            <div className="flex flex-wrap gap-4 mb-8">
-                <Link href="/events">
-                    <Card className="p-4 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
-                        <div className="p-2 bg-blue-100 rounded-full">
-                            <FilePlus className="h-5 w-5 text-blue-600" />
-                        </div>
-                        <span className="font-medium">New Event</span>
-                    </Card>
-                </Link>
-
-            </div>
-
-            {/* Recent Events */}
-            <div className="mb-8">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-semibold">Recent Events</h2>
-                    <Link href="/events" className="text-blue-600 flex items-center hover:underline">
-                        View all <ChevronRight className="h-4 w-4" />
-                    </Link>
-                </div>
-                <div className="grid gap-6 md:grid-cols-3">
-                    {recentEvents.length > 0 ? (
-                        recentEvents.map((event, index) => (
-                            <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow">
-                                <div className="h-48 bg-gray-200 relative">
-                                    {event.imageUrl ? (
-                                        <Image
-                                            src={event.imageUrl}
-                                            alt={event.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    ) : (
-                                        <div className="flex items-center justify-center h-full text-gray-400">
-                                            <ImageIcon className="h-12 w-12" />
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="p-4">
-                                    <p className="text-sm text-blue-600 mb-1">
-                                        {new Date(event.startDate).toLocaleDateString()}
-                                    </p>
-                                    <h3 className="font-semibold text-lg mb-2">{event.title}</h3>
-                                    <p className="text-sm text-gray-500 line-clamp-2">{event.description}</p>
-                                </div>
-                            </Card>
-                        ))
-                    ) : (
-                        <p className="text-muted-foreground col-span-3 text-center py-8">No recent events found</p>
-                    )}
-                </div>
             </div>
         </div>
     )
