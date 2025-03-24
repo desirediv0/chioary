@@ -5,7 +5,15 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "via.placeholder.com",
-        
+
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+      {
+        protocol: "https",
+        hostname: "desirediv-storage.blr1.digitaloceanspaces.com",
       },
     ],
   },
