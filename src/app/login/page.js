@@ -17,7 +17,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-// import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { EyeIcon, EyeOffIcon } from "lucide-react"
 
@@ -55,9 +54,27 @@ export default function LoginPage() {
                 setError(result.error)
                 setIsLoading(false)
             } else {
-                router.push("/dashboard")
+
+                const navigationTimeout = setTimeout(() => {
+                    setIsLoading(false)
+                }, 5000)
+
+                try {
+                    router.push("/dashboard")
+                    clearTimeout(navigationTimeout)
+                } catch (navigationError) {
+                    console.error("Navigation error:", navigationError)
+                    setError("Failed to navigate to dashboard. Please try again.")
+                    setIsLoading(false)
+                    clearTimeout(navigationTimeout)
+                }
+
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 1000)
             }
         } catch (error) {
+            console.error("Login error:", error)
             setError("An unexpected error occurred. Please try again.")
             setIsLoading(false)
         }

@@ -1,11 +1,5 @@
 "use client";
 import { about1, about2 } from "@/assets";
-import {
-  GraduationCap,
-  Droplets,
-  Stethoscope,
-
-} from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
