@@ -8,8 +8,6 @@ import { Label } from "@/components/ui/label";
 import { ReactQuillEditor } from "@/components/ReactQuillEditor";
 import { FileUploader } from "@/components/FileUploader";
 import { useToast } from "@/components/ui/use-toast";
-import Image from "next/image";
-import { X } from "lucide-react";
 import { getImageUrl } from "../../../../../../utils/imageHelpers";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
