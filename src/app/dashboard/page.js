@@ -89,7 +89,7 @@ const Dashboard = () => {
 
             {/* Quick Actions */}
             <div className="flex flex-wrap gap-4 mb-8">
-                <Link href="/events/new">
+                <Link href="/events">
                     <Card className="p-4 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition">
                         <div className="p-2 bg-blue-100 rounded-full">
                             <FilePlus className="h-5 w-5 text-blue-600" />
