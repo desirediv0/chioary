@@ -366,17 +366,7 @@ const Page = ({ params }) => {
                           className="w-full h-[400px]"
                         ></iframe>
                       </div>
-                      <div className="mt-4 text-center">
-                        <a
-                          href={event.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-medium"
-                        >
-                          <ExternalLink size={16} />
-                          <span>Watch on YouTube</span>
-                        </a>
-                      </div>
+
                     </motion.div>
                   )}
 
