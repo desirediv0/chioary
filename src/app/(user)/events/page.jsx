@@ -118,6 +118,20 @@ export default function EventsSchedule() {
     }
   }
 
+  // Add this helper function before the return statement
+  const truncateHtml = (html, maxLength) => {
+    if (!html) return '';
+    // Create a temporary element to parse HTML and extract text
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const textContent = tempDiv.textContent || tempDiv.innerText;
+
+    // Return truncated text with ellipsis if needed
+    return textContent.length > maxLength ?
+      textContent.substring(0, maxLength) + '...' :
+      textContent;
+  }
+
   return (
     <>
       <Breadcrumb title={"Events"} Breadcrumb={"Home"} discription={"Events"} />
@@ -243,11 +257,10 @@ export default function EventsSchedule() {
                               </div>
                             </div>
 
-                            {/* Use a safer approach for HTML content */}
                             {event.shortDescription && (
                               <div className="text-gray-600 mt-4 prose-sm">
                                 {isClient ? (
-                                  <div dangerouslySetInnerHTML={{ __html: event.shortDescription }} />
+                                  <p>{truncateHtml(event.shortDescription, 150)}</p>
                                 ) : (
                                   <p>Loading description...</p>
                                 )}

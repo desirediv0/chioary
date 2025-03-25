@@ -9,10 +9,20 @@ import Image from "next/image";
 import { formatDate } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import { getImageUrl } from "../../../../utils/imageHelpers";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
 
 const EventsPage = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+    const [eventToDelete, setEventToDelete] = useState(null);
     const router = useRouter();
     const { toast } = useToast();
 
@@ -32,12 +42,19 @@ const EventsPage = () => {
         }
     };
 
-    const handleDelete = async (event) => {
-        if (!confirm("Are you sure you want to delete this event?")) return;
+    const handleDeleteClick = (event, e) => {
+        // Stop event propagation to prevent navigation
+        e.stopPropagation();
+        setEventToDelete(event);
+        setShowDeleteDialog(true);
+    };
+
+    const confirmDelete = async () => {
+        if (!eventToDelete) return;
 
         try {
             // Delete the event directly using the API endpoint
-            const response = await fetch(`/api/events/delete/${event.id}`, {
+            const response = await fetch(`/api/events/delete/${eventToDelete.id}`, {
                 method: "DELETE",
             });
 
@@ -52,6 +69,10 @@ const EventsPage = () => {
                 description: "The event has been deleted successfully",
             });
 
+            // Close the dialog and reset state
+            setShowDeleteDialog(false);
+            setEventToDelete(null);
+
             // Refresh the events list
             fetchEvents();
         } catch (error) {
@@ -61,7 +82,14 @@ const EventsPage = () => {
                 description: error.message || "Failed to delete the event",
                 variant: "destructive",
             });
+            setShowDeleteDialog(false);
+            setEventToDelete(null);
         }
+    };
+
+    const cancelDelete = () => {
+        setShowDeleteDialog(false);
+        setEventToDelete(null);
     };
 
     const columns = [
@@ -108,16 +136,17 @@ const EventsPage = () => {
                         <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() =>
-                                router.push(`/dashboard/events/edit/${row.original.id}`)
-                            }
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                router.push(`/dashboard/events/edit/${row.original.id}`);
+                            }}
                         >
                             <Pencil className="h-4 w-4" />
                         </Button>
                         <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleDelete(row.original)}
+                            onClick={(e) => handleDeleteClick(row.original, e)}
                             className="text-red-500"
                         >
                             <Trash2 className="h-4 w-4" />
@@ -150,6 +179,25 @@ const EventsPage = () => {
                     router.push(`/dashboard/events/edit/${event.id}`)
                 }
             />
+
+            <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Delete Event</DialogTitle>
+                        <DialogDescription>
+                            Are you sure you want to delete this event? This action cannot be undone.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button variant="outline" onClick={cancelDelete}>
+                            Cancel
+                        </Button>
+                        <Button variant="destructive" onClick={confirmDelete}>
+                            Delete
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };
