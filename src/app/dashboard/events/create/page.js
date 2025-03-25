@@ -23,6 +23,7 @@ const CreateEventPage = () => {
         location: "",
         startDate: "",
         endDate: "",
+        timing: "",
         videoUrl: "",
     });
     const [thumbnail, setThumbnail] = useState(null);
@@ -85,7 +86,7 @@ const CreateEventPage = () => {
             });
 
             const data = await response.json();
-
+            console.log(data)
             if (response.ok) {
                 toast({
                     title: "Event created",
@@ -124,7 +125,7 @@ const CreateEventPage = () => {
                         />
                     </div>
 
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                         <Label htmlFor="slug">Slug</Label>
                         <Input
                             id="slug"
@@ -133,7 +134,7 @@ const CreateEventPage = () => {
                             onChange={handleChange}
                             required
                         />
-                    </div>
+                    </div> */}
 
                     <div className="space-y-2">
                         <Label htmlFor="location">Location</Label>
@@ -150,7 +151,7 @@ const CreateEventPage = () => {
                         <Input
                             id="startDate"
                             name="startDate"
-                            type="datetime-local"
+                            type="date"
                             value={formData.startDate}
                             onChange={handleChange}
                         />
@@ -161,8 +162,18 @@ const CreateEventPage = () => {
                         <Input
                             id="endDate"
                             name="endDate"
-                            type="datetime-local"
+                            type="date"
                             value={formData.endDate}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="timing">Timing</Label>
+                        <Input
+                            id="timing"
+                            name="timing"
+                            value={formData.timing}
                             onChange={handleChange}
                         />
                     </div>

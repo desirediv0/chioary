@@ -24,6 +24,7 @@ model Event {
   shortDescription String?
   startDate        DateTime?
   endDate          DateTime?
+  timing           String?
   location         String?
   thumbnail        String?
   videoUrl         String?

@@ -1,9 +1,9 @@
 import { service1, service2, service3 } from "@/assets";
-import {UtensilsCrossed, GraduationCap, Droplets, Stethoscope, Leaf, HeartHandshake } from "lucide-react"
+import {UtensilsCrossed, GraduationCap, Droplets, Stethoscope, Leaf, HeartHandshake, Brain } from "lucide-react"
 
 export const services = [
   {
-    icon: <Droplets />,
+    icon: <GraduationCap />,
     title: "Education",
     description:
       "We firmly believe that education is the most powerful tool for change.",
@@ -13,7 +13,7 @@ export const services = [
     accentColor: "bg-[#FFA500]",
   },
   {
-    icon: <GraduationCap />,
+    icon: <UtensilsCrossed />,
     title: "Fighting Malnutrition",
     description:
       "A well-fed body leads to a strong mind and a productive life.",
@@ -23,7 +23,7 @@ export const services = [
     accentColor: "bg-[#1a2721]",
   },
   {
-    icon: <UtensilsCrossed />,
+    icon: <Brain />,
     title: "Mental Wellness",
     description: "Mental well-being is just as important as physical health.",
     image: service3,

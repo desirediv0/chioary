@@ -18,6 +18,8 @@ export async function GET(request) {
                 slug: true,
                 shortDescription: true,
                 startDate: true,
+                timing: true,
+                location: true,
                 thumbnail: true,
                 endDate: true,
                 createdAt: true,

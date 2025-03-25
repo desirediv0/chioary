@@ -27,6 +27,7 @@ const EditEventPage = ({ params }) => {
         location: "",
         startDate: "",
         endDate: "",
+        timing: "",
         videoUrl: "",
     });
 
@@ -43,6 +44,8 @@ const EditEventPage = ({ params }) => {
 
                 const data = await response.json();
                 setEvent(data);
+                console.log(data);
+                
 
                 // Format dates for datetime-local input
                 const formatDate = (dateStr) => {
@@ -59,6 +62,7 @@ const EditEventPage = ({ params }) => {
                     location: data.location || "",
                     startDate: formatDate(data.startDate),
                     endDate: formatDate(data.endDate),
+                    timing: data.timing || "",
                     videoUrl: data.videoUrl || "",
                 });
 
@@ -180,7 +184,7 @@ const EditEventPage = ({ params }) => {
                         />
                     </div>
 
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                         <Label htmlFor="slug">Slug</Label>
                         <Input
                             id="slug"
@@ -189,7 +193,7 @@ const EditEventPage = ({ params }) => {
                             onChange={handleChange}
                             required
                         />
-                    </div>
+                    </div> */}
 
                     <div className="space-y-2">
                         <Label htmlFor="location">Location</Label>
@@ -206,7 +210,7 @@ const EditEventPage = ({ params }) => {
                         <Input
                             id="startDate"
                             name="startDate"
-                            type="datetime-local"
+                            type="date"
                             value={formData.startDate}
                             onChange={handleChange}
                         />
@@ -217,8 +221,18 @@ const EditEventPage = ({ params }) => {
                         <Input
                             id="endDate"
                             name="endDate"
-                            type="datetime-local"
+                            type="date"
                             value={formData.endDate}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="timing">Timing</Label>
+                        <Input
+                            id="timing"
+                            name="timing"
+                            value={formData.timing}
                             onChange={handleChange}
                         />
                     </div>

@@ -27,10 +27,14 @@ export async function POST(request) {
             slug = slugify(title, { lower: true, strict: true });
         }
 
+        // console.log(formData,"form data");
+        
+
         const description = formData.get("description");
         const shortDescription = formData.get("shortDescription");
         const startDate = formData.get("startDate") ? new Date(formData.get("startDate")) : null;
         const endDate = formData.get("endDate") ? new Date(formData.get("endDate")) : null;
+        const timing = formData.get("timing");
         const location = formData.get("location");
         const videoUrl = formData.get("videoUrl") || null;
 
@@ -55,6 +59,7 @@ export async function POST(request) {
                     shortDescription,
                     startDate,
                     endDate,
+                    timing,
                     location,
                     thumbnail,
                     videoUrl,

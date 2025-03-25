@@ -287,12 +287,15 @@ const Page = ({ params }) => {
                     <div className="flex items-center gap-2">
                       <Calendar className="w-5 h-5 text-amber-400" />
                       <span>{formatDate(event.startDate)}</span>
+                      {/* <span>{console.log(event.startDate)}</span> */}
                     </div>
                   )}
                   {isClient && event.startDate && (
                     <div className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-amber-400" />
-                      <span>{formatTime(event.startDate)}</span>
+                      {/* <span>{formatTime(event.startDate)}</span> */}
+                      <span>{event.timing}</span>
+
                     </div>
                   )}
                   {event.location && (
@@ -400,12 +403,12 @@ const Page = ({ params }) => {
                                 <span className="font-medium">Duration:</span> {formatDateRange(event.startDate, event.endDate)}
                               </p>
                               <p className="text-gray-600 mt-1">
-                                <span className="font-medium">Start:</span> {formatTime(event.startDate)}
+                                <span className="font-medium">Start:</span> {event.timing}
                               </p>
                             </>
                           ) : isClient && event.startDate ? (
                             <p className="text-gray-600 mt-1">
-                              {formatDate(event.startDate)} at {formatTime(event.startDate)}
+                              {formatDate(event.startDate)} at {event.timing}
                             </p>
                           ) : (
                             <p className="text-gray-600 mt-1">Date to be announced</p>
@@ -476,7 +479,7 @@ const Page = ({ params }) => {
                     </li>
                     <li className="flex items-center gap-3 text-gray-700">
                       <Clock className="w-5 h-5 text-amber-500" />
-                      <span>{isClient && event.startDate ? formatTime(event.startDate) : 'Time to be announced'}</span>
+                      <span>{isClient && event.startDate ? event.timing : 'Time to be announced'}</span>
                     </li>
                     <li className="flex items-start gap-3 text-gray-700">
                       <MapPin className="w-5 h-5 text-amber-500 mt-1" />
@@ -512,7 +515,7 @@ const Page = ({ params }) => {
               </div> */}
 
               {/* CTA Section */}
-              <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 rounded-xl shadow-lg text-white">
+              <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 rounded-xl shadow-lg text-white mt-3">
                 <h3 className="text-xl font-bold mb-3">Interested in this event?</h3>
                 <p className="mb-4 opacity-90">Stay updated about this and future events.</p>
                 <Link

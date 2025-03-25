@@ -181,6 +181,8 @@ export default function EventsSchedule() {
               animate="visible"
             >
               {events.length > 0 ? events.map((event) => (
+                              // console.log(event),
+                              
                 <motion.div
                   key={event.id}
                   variants={itemVariants}
@@ -228,7 +230,7 @@ export default function EventsSchedule() {
                                 {event.title}
                               </h2>
                               <div className="bg-amber-500 text-white text-xs uppercase font-bold px-3 py-1 rounded-full">
-                                Upcoming
+                              {event.startDate && new Date(event.startDate) > new Date() ? 'Upcoming Event' : 'Past Event'}
                               </div>
                             </div>
 
@@ -236,13 +238,14 @@ export default function EventsSchedule() {
                               {isClient && event.startDate && (
                                 <div className="flex items-center text-gray-600">
                                   <Clock className="h-5 w-5 mr-2 text-amber-500" />
-                                  <span>{formatTime(event.startDate)}</span>
+                                  {/* <span>{formatTime(event.startDate)}</span> */}
+                                  <span>{event.timing}</span>
                                 </div>
                               )}
 
                               <div className="flex items-center text-gray-600">
                                 <MapPin className="h-5 w-5 mr-2 text-amber-500" />
-                                <span>Event Hall</span>
+                                <span>{event.location}</span>
                               </div>
                             </div>
 
