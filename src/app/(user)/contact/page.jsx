@@ -39,7 +39,7 @@ const Page = () => {
     <>
       <Breadcrumb title={"Contact Us"} Breadcrumb={"Home"} discription={"Contact Us"}/>
 
-      <div className="flex flex-col lg:flex-row max-w-5xl mx-auto my-6 md:my-10 gap-6 p-4 sm:p-5">
+      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto my-6 md:my-10 gap-6 p-4 sm:p-5">
         {/* Left */}
         <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
           <motion.h2
@@ -91,7 +91,7 @@ const Page = () => {
                 placeholder="Write here your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2 sm:p-3 border text-sm sm:text-base"
+                className="w-full p-2 sm:p-3 rounded-lg border text-sm sm:text-base"
               />
             </div>
             <div>
@@ -101,7 +101,7 @@ const Page = () => {
                 placeholder="Write here your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-2 sm:p-3 border text-sm sm:text-base"
+                className="w-full p-2 sm:p-3 border rounded-lg  text-sm sm:text-base"
               />
             </div>
             <div>
@@ -111,7 +111,7 @@ const Page = () => {
                 placeholder="I would like to discuss"
                 value={formData.topic}
                 onChange={handleChange}
-                className="w-full p-2 sm:p-3 border text-sm sm:text-base"
+                className="w-full p-2 sm:p-3 border rounded-lg  text-sm sm:text-base"
               />
             </div>
             <div>
@@ -121,7 +121,7 @@ const Page = () => {
                 value={formData.comments}
                 onChange={handleChange}
                 rows="4"
-                className="w-full p-2 sm:p-3 border text-sm sm:text-base"
+                className="w-full p-2 sm:p-3 border rounded-lg  text-sm sm:text-base"
               ></textarea>
             </div>
             <motion.div

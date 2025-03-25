@@ -36,7 +36,6 @@ const Page = ({ params }) => {
         }
 
         const data = await response.json();
-        console.log("Event data:", data); // For debugging
         setEvent(data);
         setError(null);
       } catch (err) {
@@ -62,24 +61,7 @@ const Page = ({ params }) => {
     }
   };
 
-  const stagger = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
 
-  const tagVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: "spring", stiffness: 100 }
-    }
-  };
 
   // Format date function
   const formatDate = (dateString) => {
@@ -505,7 +487,7 @@ const Page = ({ params }) => {
               </div>
 
               {/* Event Contact Info */}
-              <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-gray-100">
+              {/* <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-gray-100">
                 <h3 className="text-xl font-bold mb-4 text-gray-800">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -527,7 +509,7 @@ const Page = ({ params }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* CTA Section */}
               <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 rounded-xl shadow-lg text-white">

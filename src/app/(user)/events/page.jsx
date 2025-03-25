@@ -53,8 +53,6 @@ export default function EventsSchedule() {
       setPagination(prev => ({ ...prev, page: newPage }))
     }
   }
-
-  // Format date function
   const formatDate = (dateString) => {
     if (!dateString) return '';
 
@@ -71,8 +69,6 @@ export default function EventsSchedule() {
       return 'Invalid date';
     }
   }
-
-  // Get time from date string
   const formatTime = (dateString) => {
     if (!dateString) return '';
 
@@ -89,14 +85,12 @@ export default function EventsSchedule() {
     }
   }
 
-  // Add client-side only rendering to prevent hydration mismatch
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Animation variants for staggered children
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -117,16 +111,11 @@ export default function EventsSchedule() {
       }
     }
   }
-
-  // Add this helper function before the return statement
   const truncateHtml = (html, maxLength) => {
     if (!html) return '';
-    // Create a temporary element to parse HTML and extract text
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
     const textContent = tempDiv.textContent || tempDiv.innerText;
-
-    // Return truncated text with ellipsis if needed
     return textContent.length > maxLength ?
       textContent.substring(0, maxLength) + '...' :
       textContent;

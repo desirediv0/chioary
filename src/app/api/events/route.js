@@ -19,6 +19,8 @@ export async function GET(request) {
                 shortDescription: true,
                 startDate: true,
                 thumbnail: true,
+                endDate: true,
+                createdAt: true,
             },
             orderBy: {
                 startDate: "desc",
