@@ -44,15 +44,16 @@ const EditEventPage = ({ params }) => {
 
                 const data = await response.json();
                 setEvent(data);
-                console.log(data);
-                
 
-                // Format dates for datetime-local input
+                // Format dates for date input
                 const formatDate = (dateStr) => {
                     if (!dateStr) return "";
                     const date = new Date(dateStr);
-                    return date.toISOString().slice(0, 16);
+                    return date.toISOString().split('T')[0]; // Format as YYYY-MM-DD
                 };
+
+                // Extract time from timing field (stored as HH:MM)
+                const timing = data.timing || "";
 
                 setFormData({
                     title: data.title || "",
@@ -62,7 +63,7 @@ const EditEventPage = ({ params }) => {
                     location: data.location || "",
                     startDate: formatDate(data.startDate),
                     endDate: formatDate(data.endDate),
-                    timing: data.timing || "",
+                    timing: timing, // Use the extracted time
                     videoUrl: data.videoUrl || "",
                 });
 
@@ -228,13 +229,15 @@ const EditEventPage = ({ params }) => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="timing">Timing</Label>
+                        <Label htmlFor="timing">Time</Label>
                         <Input
                             id="timing"
                             name="timing"
+                            type="time"
                             value={formData.timing}
                             onChange={handleChange}
                         />
+                        <p className="text-sm text-muted-foreground">Event start time</p>
                     </div>
 
                     <div className="space-y-2">

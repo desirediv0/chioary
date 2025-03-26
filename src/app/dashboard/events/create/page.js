@@ -23,7 +23,7 @@ const CreateEventPage = () => {
         location: "",
         startDate: "",
         endDate: "",
-        timing: "",
+        timing: "", // This will now store time in HH:MM format
         videoUrl: "",
     });
     const [thumbnail, setThumbnail] = useState(null);
@@ -169,13 +169,16 @@ const CreateEventPage = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="timing">Timing</Label>
+                        <Label htmlFor="timing">Time</Label>
                         <Input
                             id="timing"
                             name="timing"
+                            type="time"
                             value={formData.timing}
                             onChange={handleChange}
+                            placeholder="HH:MM"
                         />
+                        <p className="text-sm text-muted-foreground">Event start time</p>
                     </div>
 
                     <div className="space-y-2">

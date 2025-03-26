@@ -46,6 +46,7 @@ export async function PUT(request, { params }) {
         const startDate = formData.get("startDate") ? new Date(formData.get("startDate")) : existingEvent.startDate;
         const endDate = formData.get("endDate") ? new Date(formData.get("endDate")) : existingEvent.endDate;
         const location = formData.get("location");
+        const timing = formData.get("timing") || existingEvent.timing; // Get the timing value
         const videoUrl = formData.get("videoUrl") || null;
 
         const thumbnailFile = formData.get("thumbnail");
@@ -99,6 +100,7 @@ export async function PUT(request, { params }) {
                     endDate,
                     location,
                     thumbnail,
+                    timing, // Add the timing field here
                     videoUrl,
                 },
             });

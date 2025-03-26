@@ -10,6 +10,7 @@ import { getImageUrl } from "../../../../utils/imageHelpers"
 
 export default function EventsSchedule() {
   const [events, setEvents] = useState([])
+  const [filteredEvents, setFilteredEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [pagination, setPagination] = useState({
@@ -18,6 +19,7 @@ export default function EventsSchedule() {
     total: 0,
     totalPages: 0
   })
+  const [activeFilter, setActiveFilter] = useState('all')
 
   const fetchEvents = async (page = 1, limit = 10) => {
     setLoading(true)
@@ -69,21 +71,6 @@ export default function EventsSchedule() {
       return 'Invalid date';
     }
   }
-  const formatTime = (dateString) => {
-    if (!dateString) return '';
-
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-      });
-    } catch (error) {
-      console.error('Time formatting error:', error);
-      return '';
-    }
-  }
 
   const [isClient, setIsClient] = useState(false);
 
@@ -120,6 +107,42 @@ export default function EventsSchedule() {
       textContent.substring(0, maxLength) + '...' :
       textContent;
   }
+
+  const getEventStatus = (startDate, endDate) => {
+    if (!startDate) return 'past';
+
+    const eventStartDate = new Date(startDate);
+    const eventEndDate = endDate ? new Date(endDate) : new Date(startDate);
+    const currentDate = new Date();
+
+    if (eventStartDate > currentDate) {
+      return 'upcoming';
+    } else if (eventEndDate < currentDate) {
+      return 'past';
+    } else {
+      return 'ongoing';
+    }
+  }
+
+
+  const filterEvents = (status) => {
+    setActiveFilter(status);
+
+    if (status === 'all') {
+      setFilteredEvents(events);
+    } else {
+      const filtered = events.filter(event =>
+        getEventStatus(event.startDate, event.endDate) === status
+      );
+      setFilteredEvents(filtered);
+    }
+  }
+
+  useEffect(() => {
+    if (events.length > 0) {
+      filterEvents(activeFilter);
+    }
+  }, [events]);
 
   return (
     <>
@@ -174,118 +197,204 @@ export default function EventsSchedule() {
           </motion.div>
         ) : (
           <>
+            {/* Event Filter */}
             <motion.div
-              className="grid grid-cols-2 gap-8 p-4"
+              className="flex flex-wrap justify-center gap-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <button
+                onClick={() => filterEvents('all')}
+                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'all'
+                  ? 'bg-amber-500 text-white'
+                  : 'bg-white text-gray-700 hover:bg-amber-50'
+                  }`}
+              >
+                All Events
+              </button>
+              <button
+                onClick={() => filterEvents('upcoming')}
+                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'upcoming'
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white text-gray-700 hover:bg-green-50'
+                  }`}
+              >
+                Upcoming
+              </button>
+              <button
+                onClick={() => filterEvents('ongoing')}
+                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'ongoing'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-white text-gray-700 hover:bg-blue-50'
+                  }`}
+              >
+                Ongoing
+              </button>
+              <button
+                onClick={() => filterEvents('past')}
+                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'past'
+                  ? 'bg-gray-500 text-white'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                  }`}
+              >
+                Past Events
+              </button>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {events.length > 0 ? events.map((event) => (
-                              // console.log(event),
-                              
-                <motion.div
-                  key={event.id}
-                  variants={itemVariants}
-                >
-                  <Link href={`/events/${event.slug}`}>
-                    <motion.div
-                      className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-                      whileHover={{
-                        scale: 1.02,
-                        transition: {
-                          duration: 0.3,
-                          ease: "easeInOut",
-                        },
-                      }}
-                    >
-                      <div className="flex flex-col md:flex-row">
-                        <div className="w-full md:w-2/5 relative">
-                          {event.thumbnail ? (
-                            <div className="relative w-full aspect-square md:aspect-auto md:h-full overflow-hidden">
-                              <Image
-                                src={getImageUrl(event.thumbnail)}
-                                alt={event.title}
-                                fill
-                                className="object-cover transition-transform duration-700 hover:scale-110"
-                              />
-                              {isClient && event.startDate && (
-                                <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-full shadow-md">
-                                  <div className="flex items-center gap-2">
-                                    <Calendar className="h-4 w-4 text-amber-600" />
-                                    <span className="font-medium">{formatDate(event.startDate)}</span>
+              {filteredEvents.length > 0 ? filteredEvents.map((event) => {
+                // Determine event status
+                const eventStatus = getEventStatus(event.startDate, event.endDate);
+                const upcoming = eventStatus === 'upcoming';
+                const ongoing = eventStatus === 'ongoing';
+
+                return (
+                  <motion.div
+                    key={event.id}
+                    variants={itemVariants}
+                    className="h-full"
+                  >
+                    <Link href={`/events/${event.slug}`} className="h-full block">
+                      <motion.div
+                        className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full relative"
+                        whileHover={{
+                          scale: 1.02,
+                          transition: {
+                            duration: 0.3,
+                            ease: "easeInOut",
+                          },
+                        }}
+                      >
+                        {/* Status Badge - Positioned absolutely to the card */}
+                        {isClient && (
+                          <div className={`absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs uppercase font-bold shadow-md ${upcoming ? 'bg-green-500 text-white' :
+                            ongoing ? 'bg-blue-500 text-white' :
+                              'bg-gray-500 text-white'
+                            }`}>
+                            {upcoming ? 'Upcoming' : ongoing ? 'Ongoing' : 'Past Event'}
+                          </div>
+                        )}
+
+                        <div className="flex flex-col md:flex-row h-full">
+                          <div className="w-full md:w-2/5 relative h-56 md:h-auto">
+                            {event.thumbnail ? (
+                              <div className="relative w-full h-full overflow-hidden">
+                                <Image
+                                  src={getImageUrl(event.thumbnail)}
+                                  alt={event.title}
+                                  fill
+                                  className={`object-cover transition-transform duration-700 hover:scale-110 ${upcoming ? '' : ongoing ? 'brightness-105' : 'grayscale'
+                                    }`}
+                                />
+                                {isClient && event.startDate && (
+                                  <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-full shadow-md">
+                                    <div className="flex items-center gap-2">
+                                      <Calendar className="h-4 w-4 text-amber-600" />
+                                      <span className="font-medium">{formatDate(event.startDate)}</span>
+                                    </div>
                                   </div>
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            <div className="w-full h-full min-h-[300px] bg-gradient-to-r from-amber-100 to-amber-200 flex items-center justify-center">
-                              <Calendar className="h-16 w-16 text-amber-500 opacity-50" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-between">
-                          <div>
-                            <div className="flex justify-between items-start mb-4">
-                              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 group-hover:text-amber-600 transition-colors">
-                                {event.title}
-                              </h2>
-                              <div className="bg-amber-500 text-white text-xs uppercase font-bold px-3 py-1 rounded-full">
-                              {event.startDate && new Date(event.startDate) > new Date() ? 'Upcoming Event' : 'Past Event'}
-                              </div>
-                            </div>
-
-                            <div className="mb-6 space-y-3">
-                              {isClient && event.startDate && (
-                                <div className="flex items-center text-gray-600">
-                                  <Clock className="h-5 w-5 mr-2 text-amber-500" />
-                                  {/* <span>{formatTime(event.startDate)}</span> */}
-                                  <span>{event.timing}</span>
-                                </div>
-                              )}
-
-                              <div className="flex items-center text-gray-600">
-                                <MapPin className="h-5 w-5 mr-2 text-amber-500" />
-                                <span>{event.location}</span>
-                              </div>
-                            </div>
-
-                            {event.shortDescription && (
-                              <div className="text-gray-600 mt-4 prose-sm">
-                                {isClient ? (
-                                  <p>{truncateHtml(event.shortDescription, 150)}</p>
-                                ) : (
-                                  <p>Loading description...</p>
                                 )}
+                              </div>
+                            ) : (
+                              <div className={`w-full h-full flex items-center justify-center ${upcoming ? 'bg-gradient-to-r from-amber-100 to-amber-200' :
+                                ongoing ? 'bg-gradient-to-r from-blue-100 to-blue-200' :
+                                  'bg-gradient-to-r from-gray-100 to-gray-200'
+                                }`}>
+                                <Calendar className={`h-16 w-16 opacity-50 ${upcoming ? 'text-amber-500' :
+                                  ongoing ? 'text-blue-500' :
+                                    'text-gray-500'
+                                  }`} />
                               </div>
                             )}
                           </div>
+                          <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col flex-grow">
+                            <div className="flex-grow">
+                              <h2 className={`text-2xl font-bold mb-4 transition-colors ${upcoming ? 'text-gray-800' :
+                                ongoing ? 'text-blue-800' :
+                                  'text-gray-600'
+                                }`}>
+                                {event.title}
+                              </h2>
 
-                          <div className="mt-6">
-                            <motion.div
-                              className="inline-flex items-center gap-2 text-amber-600 font-medium"
-                              whileHover={{ x: 5 }}
-                            >
-                              <span>Read More</span>
-                              <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-                                <ArrowRight className="h-4 w-4" />
+                              <div className="mb-6 space-y-3">
+                                {isClient && event.startDate && (
+                                  <div className="flex items-center text-gray-600">
+                                    <Clock className={`h-5 w-5 mr-2 ${upcoming ? 'text-amber-500' :
+                                      ongoing ? 'text-blue-500' :
+                                        'text-gray-400'
+                                      }`} />
+                                    <span>{event.timing}</span>
+                                  </div>
+                                )}
+
+                                <div className="flex items-center text-gray-600">
+                                  <MapPin className={`h-5 w-5 mr-2 ${upcoming ? 'text-amber-500' :
+                                    ongoing ? 'text-blue-500' :
+                                      'text-gray-400'
+                                    }`} />
+                                  <span>{event.location}</span>
+                                </div>
                               </div>
-                            </motion.div>
+
+                              {event.shortDescription && (
+                                <div className="text-gray-600 mt-4 prose-sm">
+                                  {isClient ? (
+                                    <p>{truncateHtml(event.shortDescription, 120)}</p>
+                                  ) : (
+                                    <p>Loading description...</p>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="mt-6">
+                              <motion.div
+                                className={`inline-flex items-center gap-2 font-medium ${upcoming ? 'text-amber-600' :
+                                  ongoing ? 'text-blue-600' :
+                                    'text-gray-500'
+                                  }`}
+                                whileHover={{ x: 5 }}
+                              >
+                                <span>Read More</span>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${upcoming ? 'bg-amber-100' :
+                                  ongoing ? 'bg-blue-100' :
+                                    'bg-gray-100'
+                                  }`}>
+                                  <ArrowRight className="h-4 w-4" />
+                                </div>
+                              </motion.div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                </motion.div>
-              )) : (
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+                );
+              }) : (
                 <motion.div
-                  className="col-span-1 text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100"
+                  className="col-span-full text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
                   <Calendar className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-xl text-gray-500 font-medium">No events found</p>
-                  <p className="text-gray-400 mt-2">Check back later for upcoming events</p>
+                  <p className="text-xl text-gray-500 font-medium">No {activeFilter !== 'all' ? activeFilter : ''} events found</p>
+                  <p className="text-gray-400 mt-2">
+                    {activeFilter !== 'all' ?
+                      <button
+                        onClick={() => filterEvents('all')}
+                        className="text-amber-500 underline hover:text-amber-600"
+                      >
+                        Show all events
+                      </button> :
+                      'Check back later for upcoming events'}
+                  </p>
                 </motion.div>
               )}
             </motion.div>
