@@ -92,6 +92,16 @@ const EventsPage = () => {
         setEventToDelete(null);
     };
 
+    const truncateHtml = (html, maxLength) => {
+        if (!html) return '';
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const textContent = tempDiv.textContent || tempDiv.innerText;
+        return textContent.length > maxLength ?
+            textContent.substring(0, maxLength) + '...' :
+            textContent;
+    }
+
     const columns = [
         {
             accessorKey: "thumbnail",
@@ -119,7 +129,9 @@ const EventsPage = () => {
             header: "Description",
             cell: ({ row }) => {
                 const description = row.original.shortDescription || "";
-                return <div className="truncate max-w-xs">{description}</div>;
+                return <div className="truncate max-w-xs">{
+                    truncateHtml(description, 100)
+                }</div>;
             },
         },
         {
