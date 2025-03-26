@@ -562,30 +562,15 @@ const Page = ({ params }) => {
 
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3 text-gray-700">
-                      <Calendar className={`w-5 h-5 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
-                        ? 'text-green-500'
-                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
-                          ? 'text-blue-500'
-                          : 'text-gray-500'
-                        }`} />
+                      <Calendar className="w-5 h-5 text-amber-500" />
                       <span>{isClient && event.startDate ? formatDate(event.startDate) : 'Date to be announced'}</span>
                     </li>
                     <li className="flex items-center gap-3 text-gray-700">
-                      <Clock className={`w-5 h-5 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
-                        ? 'text-green-500'
-                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
-                          ? 'text-blue-500'
-                          : 'text-gray-500'
-                        }`} />
+                      <Clock className="w-5 h-5 text-amber-500" />
                       <span>{isClient && event.startDate ? event.timing : 'Time to be announced'}</span>
                     </li>
                     <li className="flex items-start gap-3 text-gray-700">
-                      <MapPin className={`w-5 h-5 mt-1 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
-                        ? 'text-green-500'
-                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
-                          ? 'text-blue-500'
-                          : 'text-gray-500'
-                        }`} />
+                      <MapPin className="w-5 h-5 mt-1 text-amber-500" />
                       <span>{event.location || 'Location to be announced'}</span>
                     </li>
                   </ul>
@@ -593,12 +578,7 @@ const Page = ({ params }) => {
               </div>
 
               {/* CTA Section - Make it event status aware */}
-              <div className={`p-6 rounded-xl shadow-lg text-white mt-3 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
-                ? 'bg-gradient-to-r from-green-500 to-green-600'
-                : getEventStatus(event.startDate, event.endDate) === 'ongoing'
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-600'
-                  : 'bg-gradient-to-r from-amber-500 to-amber-600'
-                }`}>
+              <div className="p-6 rounded-xl shadow-lg text-white mt-3 bg-gradient-to-r from-amber-500 to-amber-600">
                 <h3 className="text-xl font-bold mb-3">
                   {getEventStatus(event.startDate, event.endDate) === 'upcoming'
                     ? 'Interested in attending?'
@@ -615,14 +595,7 @@ const Page = ({ params }) => {
                 </p>
                 <Link
                   href="/contact"
-                  className="w-full py-3 bg-white rounded-lg font-medium text-center block hover:bg-gray-100 transition-colors"
-                  style={{
-                    color: getEventStatus(event.startDate, event.endDate) === 'upcoming'
-                      ? '#10b981' // green-500
-                      : getEventStatus(event.startDate, event.endDate) === 'ongoing'
-                        ? '#3b82f6' // blue-500
-                        : '#f59e0b' // amber-500
-                  }}
+                  className="w-full py-3 bg-white rounded-lg font-medium text-center block hover:bg-gray-100 transition-colors text-amber-500"
                 >
                   Contact Us
                 </Link>

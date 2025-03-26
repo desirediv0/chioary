@@ -85,13 +85,15 @@ export default function Header() {
           }`}
       >
         {/* Logo */}
+        <Link href="/">
         <Image
           src="/logo.png"
-          className="logo-shadow"
+          className="glowing-logo"
           width={160}
           height={160}
           alt="Logo"
         />
+        </Link>
 
         {/* Mobile Menu Button */}
         <button

@@ -173,12 +173,10 @@ const CreateEventPage = () => {
                         <Input
                             id="timing"
                             name="timing"
-                            type="time"
                             value={formData.timing}
                             onChange={handleChange}
-                            placeholder="HH:MM"
                         />
-                        <p className="text-sm text-muted-foreground">Event start time</p>
+                        {/* <p className="text-sm text-muted-foreground">Event start time</p> */}
                     </div>
 
                     <div className="space-y-2">

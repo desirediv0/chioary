@@ -90,3 +90,21 @@
 .logo-shadow{
   filter: drop-shadow(2px 2px 2px #993432);
 }
+
+.glowing-logo {
+   /* Adjust size as needed */
+  filter: drop-shadow(0 0 10px #993432);
+  animation: glow 2s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+      filter: drop-shadow(0 0 1px #993432);
+  }
+  50% {
+      filter: drop-shadow(0 0 5px #993432);
+  }
+  100% {
+      filter: drop-shadow(0 0 1px #993432);
+  }
+}

@@ -238,7 +238,6 @@ const EditEventPage = ({ params }) => {
                         <Input
                             id="timing"
                             name="timing"
-                            type="time"
                             value={formData.timing}
                             onChange={handleChange}
                         />

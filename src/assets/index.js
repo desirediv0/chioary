@@ -8,9 +8,9 @@ import sliderB2 from "./banaras.jpg"
 import sliderB3 from "./slider-2-3.jpg"
 import sliderB4 from "./slider-2-4.jpg"
 // import service1 from "./services-3-1.jpg";
-import service1 from "./education.jpg";
+import service1 from "./education.png";
 // import service2 from "./services-3-2.jpg";
-import service2 from "./fighting-malnutrition.jpg";
+import service2 from "./fighting-malnutrition.png";
 // import service3 from "./services-3-3.jpg";
 import service3 from "./mental-wellness.jpg";
 import team1 from "./team-1.png";

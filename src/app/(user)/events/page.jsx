@@ -205,7 +205,7 @@ export default function EventsSchedule() {
                         {/* Status Badge - Positioned absolutely to the card */}
                         {isClient && (
                           <div className={`absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs uppercase font-bold shadow-md ${upcoming ? 'bg-green-500 text-white' :
-                            ongoing ? 'bg-blue-500 text-white' :
+                            ongoing ? 'bg-amber-600 text-white' :
                               'bg-gray-500 text-white'
                             }`}>
                             {upcoming ? 'Upcoming' : ongoing ? 'Ongoing' : 'Past Event'}
@@ -220,8 +220,9 @@ export default function EventsSchedule() {
                                   src={getImageUrl(event.thumbnail)}
                                   alt={event.title}
                                   fill
-                                  className={`object-cover transition-transform duration-700 hover:scale-110 ${upcoming ? '' : ongoing ? 'brightness-105' : 'grayscale'
-                                    }`}
+                                  // className={`object-cover transition-transform duration-700 hover:scale-110 ${upcoming ? '' : ongoing ? 'brightness-105' : 'grayscale'
+                                  //   }`}
+                                  className="object-cover transition-transform duration-700 hover:scale-110"
                                 />
                                 {isClient && event.startDate && (
                                   <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-full shadow-md">
@@ -237,38 +238,38 @@ export default function EventsSchedule() {
                                 ongoing ? 'bg-gradient-to-r from-blue-100 to-blue-200' :
                                   'bg-gradient-to-r from-gray-100 to-gray-200'
                                 }`}>
-                                <Calendar className={`h-16 w-16 opacity-50 ${upcoming ? 'text-amber-500' :
-                                  ongoing ? 'text-blue-500' :
-                                    'text-gray-500'
-                                  }`} />
+                                {/* <Calendar className={`h-16 w-16 opacity-50 ${upcoming ? 'text-amber-500' :
+                                  ongoing ? 'text-blue-500' : 'text-gray-500'}`} /> */}
+                                  <Calendar className="text-amber-500" />
                               </div>
                             )}
                           </div>
                           <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col flex-grow">
                             <div className="flex-grow">
-                              <h2 className={`text-2xl font-bold mb-4 transition-colors ${upcoming ? 'text-gray-800' :
+                              {/* <h2 className={`text-2xl font-bold mb-4 transition-colors ${upcoming ? 'text-gray-800' :
                                 ongoing ? 'text-blue-800' :
                                   'text-gray-600'
                                 }`}>
+                                {event.title}
+                              </h2> */}
+                              <h2 className="text-2xl font-bold mb-4 transition-colors text-gray-800">
                                 {event.title}
                               </h2>
 
                               <div className="mb-6 space-y-3">
                                 {isClient && event.startDate && (
                                   <div className="flex items-center text-gray-600">
-                                    <Clock className={`h-5 w-5 mr-2 ${upcoming ? 'text-amber-500' :
+                                    {/* <Clock className={`h-5 w-5 mr-2 ${upcoming ? 'text-amber-500' :
                                       ongoing ? 'text-blue-500' :
                                         'text-gray-400'
-                                      }`} />
+                                      }`} /> */}
+                                      <Clock className="h-5 w-5 mr-2 text-amber-500" />
                                     <span>{event.timing}</span>
                                   </div>
                                 )}
 
                                 <div className="flex items-center text-gray-600">
-                                  <MapPin className={`h-5 w-5 mr-2 ${upcoming ? 'text-amber-500' :
-                                    ongoing ? 'text-blue-500' :
-                                      'text-gray-400'
-                                    }`} />
+                                  <MapPin className="h-5 w-5 mr-2 text-amber-500" />
                                   <span>{event.location}</span>
                                 </div>
                               </div>
@@ -286,17 +287,11 @@ export default function EventsSchedule() {
 
                             <div className="mt-6">
                               <motion.div
-                                className={`inline-flex items-center gap-2 font-medium ${upcoming ? 'text-amber-600' :
-                                  ongoing ? 'text-blue-600' :
-                                    'text-gray-500'
-                                  }`}
+                                className="inline-flex items-center gap-2 font-medium text-amber-600"
                                 whileHover={{ x: 5 }}
                               >
                                 <span>Read More</span>
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${upcoming ? 'bg-amber-100' :
-                                  ongoing ? 'bg-blue-100' :
-                                    'bg-gray-100'
-                                  }`}>
+                                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-amber-100">
                                   <ArrowRight className="h-4 w-4" />
                                 </div>
                               </motion.div>
