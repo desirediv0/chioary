@@ -149,14 +149,12 @@ export default function EventsSchedule() {
 
         {loading ? (
           <div className="flex justify-center items-center min-h-[400px]">
-            <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-amber-500"></div>
-              <p className="mt-4 text-amber-600 font-medium">Loading events...</p>
-            </motion.div>
+            <div class="text-center">
+              <div
+                class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"
+              ></div>
+              <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2>
+            </div>
           </div>
         ) : error ? (
           <motion.div
