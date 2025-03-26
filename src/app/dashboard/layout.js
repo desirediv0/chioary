@@ -24,10 +24,10 @@ const Layout = ({ children }) => {
 
     return (
         <div className="h-full relative">
-            <div className="hidden h-full md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
+            <div className=" h-full flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
                 <Sidenav />
             </div>
-            <main className="md:pl-56 h-full">
+            <main className="md:pl-64 h-full">
                 <div className="p-4 md:p-8">{children}</div>
             </main>
         </div>
