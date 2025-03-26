@@ -61,7 +61,22 @@ const Page = ({ params }) => {
     }
   };
 
+  // Get event status
+  const getEventStatus = (startDate, endDate) => {
+    if (!startDate) return 'past';
 
+    const eventStartDate = new Date(startDate);
+    const eventEndDate = endDate ? new Date(endDate) : new Date(startDate);
+    const currentDate = new Date();
+
+    if (eventStartDate > currentDate) {
+      return 'upcoming';
+    } else if (eventEndDate < currentDate) {
+      return 'past';
+    } else {
+      return 'ongoing';
+    }
+  }
 
   // Format date function
   const formatDate = (dateString) => {
@@ -276,9 +291,20 @@ const Page = ({ params }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <span className="inline-block px-4 py-1 bg-amber-500 rounded-full text-sm font-medium mb-4">
-                  {isClient && event.startDate && new Date(event.startDate) > new Date() ? 'Upcoming Event' : 'Past Event'}
-                </span>
+                {isClient && event.startDate && (
+                  <span className={`inline-block px-4 py-1 rounded-full text-sm font-bold mb-4 shadow-md ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                    ? 'bg-green-500 text-white'
+                    : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-500 text-white'
+                    }`}>
+                    {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                      ? 'Upcoming Event'
+                      : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                        ? 'Ongoing Event'
+                        : 'Past Event'}
+                  </span>
+                )}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                   {event.title}
                 </h1>
@@ -319,6 +345,32 @@ const Page = ({ params }) => {
               className="lg:w-2/3"
             >
               <div className="bg-white rounded-xl shadow-xl p-6 sm:p-8 md:p-10">
+                {/* Add status indicator at the top of the content area as well */}
+                {isClient && event.startDate && (
+                  <div className="mb-6">
+                    <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                      ? 'bg-green-100 text-green-800'
+                      : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                        ? 'bg-blue-100 text-blue-800'
+                        : 'bg-gray-100 text-gray-800'
+                      }`}>
+                      <div className={`w-3 h-3 rounded-full ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                        ? 'bg-green-500'
+                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                          ? 'bg-blue-500 animate-pulse'
+                          : 'bg-gray-500'
+                        }`}></div>
+                      <span className="font-medium">
+                        {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                          ? 'This is an upcoming event'
+                          : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                            ? 'This event is currently ongoing'
+                            : 'This event has ended'}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Event details section */}
                 <div className="prose prose-lg max-w-none">
                   {/* Event description */}
@@ -460,10 +512,44 @@ const Page = ({ params }) => {
                       fill
                       className="object-cover"
                     />
+                    {/* Add status badge to sidebar image too */}
+                    {isClient && event.startDate && (
+                      <div className="absolute top-4 right-4">
+                        <div className={`px-3 py-1 rounded-full text-xs uppercase font-bold shadow-md ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                          ? 'bg-green-500 text-white'
+                          : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-500 text-white'
+                          }`}>
+                          {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                            ? 'Upcoming'
+                            : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                              ? 'Ongoing'
+                              : 'Past Event'}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-4 text-gray-800">Event Summary</h3>
+
+                  {isClient && event.startDate && (
+                    <div className={`mb-4 p-2 rounded-lg ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                      ? 'bg-green-50 border-l-4 border-green-500'
+                      : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                        ? 'bg-blue-50 border-l-4 border-blue-500'
+                        : 'bg-gray-50 border-l-4 border-gray-500'
+                      }`}>
+                      <p className="text-sm font-medium">
+                        {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                          ? 'This event will start soon'
+                          : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                            ? 'This event is happening now'
+                            : 'This event has already taken place'}
+                      </p>
+                    </div>
+                  )}
 
                   {event.shortDescription && isClient && (
                     <div
@@ -474,53 +560,67 @@ const Page = ({ params }) => {
 
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3 text-gray-700">
-                      <Calendar className="w-5 h-5 text-amber-500" />
+                      <Calendar className={`w-5 h-5 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                        ? 'text-green-500'
+                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                          ? 'text-blue-500'
+                          : 'text-gray-500'
+                        }`} />
                       <span>{isClient && event.startDate ? formatDate(event.startDate) : 'Date to be announced'}</span>
                     </li>
                     <li className="flex items-center gap-3 text-gray-700">
-                      <Clock className="w-5 h-5 text-amber-500" />
+                      <Clock className={`w-5 h-5 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                        ? 'text-green-500'
+                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                          ? 'text-blue-500'
+                          : 'text-gray-500'
+                        }`} />
                       <span>{isClient && event.startDate ? event.timing : 'Time to be announced'}</span>
                     </li>
                     <li className="flex items-start gap-3 text-gray-700">
-                      <MapPin className="w-5 h-5 text-amber-500 mt-1" />
+                      <MapPin className={`w-5 h-5 mt-1 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                        ? 'text-green-500'
+                        : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                          ? 'text-blue-500'
+                          : 'text-gray-500'
+                        }`} />
                       <span>{event.location || 'Location to be announced'}</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              {/* Event Contact Info */}
-              {/* <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-gray-100">
-                <h3 className="text-xl font-bold mb-4 text-gray-800">Contact Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-amber-100 rounded-full">
-                      <User className="w-5 h-5 text-amber-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Event Organizer</p>
-                      <p className="text-gray-600">Event Management Team</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-amber-100 rounded-full">
-                      <MapPin className="w-5 h-5 text-amber-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Location</p>
-                      <p className="text-gray-600">{event.location || 'To be announced'}</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* CTA Section */}
-              <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 rounded-xl shadow-lg text-white mt-3">
-                <h3 className="text-xl font-bold mb-3">Interested in this event?</h3>
-                <p className="mb-4 opacity-90">Stay updated about this and future events.</p>
+              {/* CTA Section - Make it event status aware */}
+              <div className={`p-6 rounded-xl shadow-lg text-white mt-3 ${getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                ? 'bg-gradient-to-r from-green-500 to-green-600'
+                : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                  ? 'bg-gradient-to-r from-blue-500 to-blue-600'
+                  : 'bg-gradient-to-r from-amber-500 to-amber-600'
+                }`}>
+                <h3 className="text-xl font-bold mb-3">
+                  {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                    ? 'Interested in attending?'
+                    : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                      ? 'Event is happening now!'
+                      : 'Missed this event?'}
+                </h3>
+                <p className="mb-4 opacity-90">
+                  {getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                    ? 'Get more information about this upcoming event.'
+                    : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                      ? 'Contact us for last-minute details.'
+                      : 'Stay updated about future events like this one.'}
+                </p>
                 <Link
                   href="/contact"
-                  className="w-full py-3 bg-white text-amber-600 rounded-lg font-medium text-center block hover:bg-gray-100 transition-colors"
+                  className="w-full py-3 bg-white rounded-lg font-medium text-center block hover:bg-gray-100 transition-colors"
+                  style={{
+                    color: getEventStatus(event.startDate, event.endDate) === 'upcoming'
+                      ? '#10b981' // green-500
+                      : getEventStatus(event.startDate, event.endDate) === 'ongoing'
+                        ? '#3b82f6' // blue-500
+                        : '#f59e0b' // amber-500
+                  }}
                 >
                   Contact Us
                 </Link>

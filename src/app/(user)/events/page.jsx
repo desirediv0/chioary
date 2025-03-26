@@ -10,7 +10,6 @@ import { getImageUrl } from "../../../../utils/imageHelpers"
 
 export default function EventsSchedule() {
   const [events, setEvents] = useState([])
-  const [filteredEvents, setFilteredEvents] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [pagination, setPagination] = useState({
@@ -19,7 +18,6 @@ export default function EventsSchedule() {
     total: 0,
     totalPages: 0
   })
-  const [activeFilter, setActiveFilter] = useState('all')
 
   const fetchEvents = async (page = 1, limit = 10) => {
     setLoading(true)
@@ -124,26 +122,6 @@ export default function EventsSchedule() {
     }
   }
 
-
-  const filterEvents = (status) => {
-    setActiveFilter(status);
-
-    if (status === 'all') {
-      setFilteredEvents(events);
-    } else {
-      const filtered = events.filter(event =>
-        getEventStatus(event.startDate, event.endDate) === status
-      );
-      setFilteredEvents(filtered);
-    }
-  }
-
-  useEffect(() => {
-    if (events.length > 0) {
-      filterEvents(activeFilter);
-    }
-  }, [events]);
-
   return (
     <>
       <Breadcrumb title={"Events"} Breadcrumb={"Home"} discription={"Events"} />
@@ -197,58 +175,13 @@ export default function EventsSchedule() {
           </motion.div>
         ) : (
           <>
-            {/* Event Filter */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-4 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <button
-                onClick={() => filterEvents('all')}
-                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'all'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-amber-50'
-                  }`}
-              >
-                All Events
-              </button>
-              <button
-                onClick={() => filterEvents('upcoming')}
-                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'upcoming'
-                  ? 'bg-green-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-green-50'
-                  }`}
-              >
-                Upcoming
-              </button>
-              <button
-                onClick={() => filterEvents('ongoing')}
-                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'ongoing'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-blue-50'
-                  }`}
-              >
-                Ongoing
-              </button>
-              <button
-                onClick={() => filterEvents('past')}
-                className={`px-6 py-2 rounded-full font-medium shadow-sm transition-all ${activeFilter === 'past'
-                  ? 'bg-gray-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
-                  }`}
-              >
-                Past Events
-              </button>
-            </motion.div>
-
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {filteredEvents.length > 0 ? filteredEvents.map((event) => {
+              {events.length > 0 ? events.map((event) => {
                 // Determine event status
                 const eventStatus = getEventStatus(event.startDate, event.endDate);
                 const upcoming = eventStatus === 'upcoming';
@@ -384,17 +317,8 @@ export default function EventsSchedule() {
                   transition={{ delay: 0.3 }}
                 >
                   <Calendar className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-xl text-gray-500 font-medium">No {activeFilter !== 'all' ? activeFilter : ''} events found</p>
-                  <p className="text-gray-400 mt-2">
-                    {activeFilter !== 'all' ?
-                      <button
-                        onClick={() => filterEvents('all')}
-                        className="text-amber-500 underline hover:text-amber-600"
-                      >
-                        Show all events
-                      </button> :
-                      'Check back later for upcoming events'}
-                  </p>
+                  <p className="text-xl text-gray-500 font-medium">No events found</p>
+                  <p className="text-gray-400 mt-2">Check back later for upcoming events</p>
                 </motion.div>
               )}
             </motion.div>
