@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import { useInView } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import { about1, donation, service3 } from "@/assets"
+import { project1, cow, project2, project3 } from "@/assets"
 
 export default function HumanitarianProject() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
@@ -17,7 +17,7 @@ export default function HumanitarianProject() {
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
 
-  const images = [service3, donation, about1, service3, donation, about1]
+  const images = [project2, project1, cow, project3, project2, project1, cow, project3]
 
   // Auto-play functionality
   useEffect(() => {

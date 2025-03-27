@@ -1,5 +1,5 @@
 "use client";
-import { about1, about2 } from "@/assets";
+import { about1, about2, cow } from "@/assets";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
@@ -34,7 +34,7 @@ export default function AboutSection({ show = true }) {
 
           <div className="flex flex-col gap-6 md:flex-row">
             <Image
-              src={about1}
+              src={cow}
               alt="Person in need wearing yellow head covering"
               width={300}
               height={100}

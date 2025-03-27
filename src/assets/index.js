@@ -19,12 +19,13 @@ import team3 from "./team-3.png";
 import team4 from "./team-4.png";
 import teambg from "./team-shape-bg-1.png";
 // import donation from "./donation-img-1.jpg";
-import donation from "./cow.webp";
+import donation from "./donation.png";
 import process1 from "./1.png";
 import process2 from "./2.png";
 import process3 from "./3.png";
 // import about1 from "./about-three-left-img-1.jpg"
 import about1 from "./cow1.png"
+import cow from "./cow.png"
 // import about2 from "./about-three-right-img-1.png"
 import about2 from "./about2.jpeg"
 import course1 from "./courses-3-1.jpg";
@@ -49,6 +50,9 @@ import event1 from "./event-1.jpg"
 import event2 from "./event-2.jpg"  
 import event3 from "./event-3.jpg"
 import event4 from "./event-4.jpg"
+import project1 from "./project1.png"
+import project2 from "./project2.png"
+import project3 from "./project3.png"
 
 export {
   logo,
@@ -92,5 +96,9 @@ export {
   event1,
   event2,
   event3,
-  event4
+  event4,
+  cow,
+  project1,
+  project2,
+  project3
 };
