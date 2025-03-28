@@ -10,10 +10,7 @@ export async function middleware(request) {
     const token = await getToken({
         req: request,
         secret: process.env.NEXTAUTH_SECRET,
-        // secureCookie: process.env.NODE_ENV === "production",
     });
-
-    console.log("Middleware Debug:", { pathname, token }); // Debug
 
     if (isPublicPath && token) {
         return NextResponse.redirect(new URL('/dashboard', request.url));

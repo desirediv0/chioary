@@ -45,7 +45,6 @@ export const authOptions = {
             return token;
         },
         session: async ({ session, token }) => {
-            console.log("Session Callback:", token); // Debug
             if (token?.userId) {
                 session.user = {
                     ...session.user,
