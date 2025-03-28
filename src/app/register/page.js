@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
@@ -36,6 +36,10 @@ export default function RegisterPage() {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const router = useRouter()
+
+    useEffect(() => {
+        router.push('/login')
+    }, [router])
 
     const form = useForm({
         resolver: zodResolver(formSchema),

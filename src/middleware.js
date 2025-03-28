@@ -4,6 +4,10 @@ import { getToken } from 'next-auth/jwt';
 export async function middleware(request) {
     const { pathname } = request.nextUrl;
 
+    if (pathname === '/register') {
+        return NextResponse.redirect(new URL('/login', request.url));
+    }
+
     const publicPaths = ['/login', '/register'];
     const isPublicPath = publicPaths.some(publicPath => pathname === publicPath);
 
