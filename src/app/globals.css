@@ -108,3 +108,28 @@
       filter: drop-shadow(0 0 1px #993432);
   }
 }
+
+#google_translate_element {
+  position: relative;
+  z-index: 9999; /* Ensures it's on top */
+}
+.goog-te-banner-frame {
+  display: none !important; /* Hides the top Google Translate banner */
+}
+
+
+.goog-te-gadget {
+  pointer-events: auto !important;
+}
+.goog-te-menu-frame {
+  pointer-events: auto !important;
+  z-index: 9999 !important;
+}
+
+#google_translate_element img{
+  display: none;
+}
+#google_translate_element .goog-te-gadget-simple{
+  padding: 10px;
+  border-radius: 10px;
+}

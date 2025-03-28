@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import AnimatedButton from "./AnimatedButton";
 import { MdArrowOutward } from "react-icons/md";
+import GoogleTranslate from "./GoogleTranslate";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -196,6 +197,7 @@ export default function Header() {
             ))}
           </ul>
         </div>
+        <GoogleTranslate/>
 
         {/* Donation Button - Desktop */}
         <div className="hidden md:block ">
