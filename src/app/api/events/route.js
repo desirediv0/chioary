@@ -5,7 +5,7 @@ import { prisma } from "../../../../prisma/client";
 export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
-    try {
+    try { 
         const { searchParams } = new URL(request.url);
         const limit = searchParams.get("limit") ? parseInt(searchParams.get("limit")) : 10;
         const page = searchParams.get("page") ? parseInt(searchParams.get("page")) : 1;
