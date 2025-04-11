@@ -16,7 +16,7 @@ export default function Home() {
       <HumanitarianProject />
       <WorkingProcess />
       <Events  />
-      <DonationForm />
+      {/* <DonationForm /> */}
       <Testimonials />
     </>
   );

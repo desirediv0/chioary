@@ -129,14 +129,14 @@ export default function HumanitarianProject() {
                         />
 
                         {/* Red circle with arrow */}
-                        <motion.div
+                        {/* <motion.div
                           className="absolute top-[70%] left-[40%] md:left-[45%] transform -translate-x-1/2 -translate-y-1/2
                                    bg-[#983532] rounded-full p-4 cursor-pointer"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                         >
                           <ArrowUpRight className="w-6 h-6 text-white" />
-                        </motion.div>
+                        </motion.div> */}
 
                         {/* Shine effect */}
                         <motion.div
